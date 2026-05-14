@@ -463,7 +463,14 @@ function Index() {
                   <button key={b} onClick={() => setBudget(b)} className={`pill interactive ${budget === b ? "active" : ""}`}>{b}</button>
                 ))}
               </div>
-              <form onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }} className="reveal" style={{
+              <form onSubmit={(e) => {
+                e.preventDefault();
+                if (!email) return;
+                const subject = encodeURIComponent(`New project enquiry — ${budget}`);
+                const body = encodeURIComponent(`Hi Voxen,\n\nI'd like to discuss a project.\nBudget: ${budget}\nEmail: ${email}\n\n— Sent from voxen.com`);
+                window.location.href = `mailto:hello@voxen.com?subject=${subject}&body=${body}`;
+                setSent(true);
+              }} className="reveal" style={{
                 marginTop: 40, display: "flex", gap: 16, alignItems: "center",
                 maxWidth: 640, margin: "40px auto 0", flexWrap: "wrap", justifyContent: "center",
               }}>
