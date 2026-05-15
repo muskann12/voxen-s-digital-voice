@@ -6,11 +6,9 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-// Configured for Vercel deployment with Node.js serverless functions
+// Configure for Vercel Node.js serverless deployment
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
-    adapter: "node-server",
   },
 });
