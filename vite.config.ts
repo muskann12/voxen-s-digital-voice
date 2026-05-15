@@ -9,8 +9,8 @@ export default defineConfig({
   },
   tanstackStart: {
     server: { entry: "server" },
-    spa: { enabled: true },
-    pages: [{ path: "/", prerender: { enabled: true } }],
+    spa: { enabled: true, prerender: { outputPath: "/index" } },
+    pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index" } }],
     sitemap: { enabled: false },
   },
 });
