@@ -8,6 +8,34 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 // Configure for Vercel Node.js serverless deployment
 export default defineConfig({
+  vite: {
+    build: {
+      chunkSizeWarningLimit: 1000, // Increase limit to 1000 kB
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "vendor-react": ["react", "react-dom"],
+            "vendor-ui": [
+              "@radix-ui/react-accordion",
+              "@radix-ui/react-alert-dialog",
+              "@radix-ui/react-avatar",
+              "@radix-ui/react-checkbox",
+              "@radix-ui/react-dialog",
+              "@radix-ui/react-dropdown-menu",
+              "@radix-ui/react-select",
+              "@radix-ui/react-tabs",
+              "@radix-ui/react-tooltip",
+            ],
+            "vendor-tanstack": [
+              "@tanstack/react-router",
+              "@tanstack/react-query",
+              "@tanstack/react-start",
+            ],
+          },
+        },
+      },
+    },
+  },
   tanstackStart: {
     server: { entry: "server" },
   },
