@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/Logo";
 import { Cursor } from "@/components/Cursor";
 import { HeroScene } from "@/components/HeroScene";
+import { FloatingBox3D } from "@/components/FloatingBox3D";
+import { Project3DCard } from "@/components/Project3DCard";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -151,11 +153,11 @@ function SideDots({ active, onJump }: { active: string; onJump: (id: string) => 
 }
 
 const PROJECTS = [
-  { name: "NexaShop", cat: "E-Commerce", stack: "Next.js + Shopify", result: "+140% Revenue", desc: "A high-conversion storefront engineered for scale across regions." },
-  { name: "AnalytixHQ", cat: "SaaS Dashboard", stack: "UI/UX Redesign", result: "+67% Retention", desc: "Reimagined data surfaces that turn complexity into clarity." },
-  { name: "PulseHR", cat: "Landing Page", stack: "CRO + Copywriting", result: "+89% Sign-ups", desc: "Sharp narrative, sharp design, sharp pipeline." },
-  { name: "ClearPay", cat: "Fintech Platform", stack: "UX Design", result: "-38% Drop-off", desc: "Trust-first checkout flows for cross-border payments." },
-  { name: "EstatePro", cat: "Real Estate Portal", stack: "Web Dev", result: "+3x Enquiries", desc: "Immersive listings with cinematic 3D walkthroughs." },
+  { name: "NexaShop", cat: "E-Commerce", stack: "Next.js + Shopify", result: "+140% Revenue", desc: "A high-conversion storefront engineered for scale across regions.", color: "#a855f7" },
+  { name: "AnalytixHQ", cat: "SaaS Dashboard", stack: "UI/UX Redesign", result: "+67% Retention", desc: "Reimagined data surfaces that turn complexity into clarity.", color: "#ec4899" },
+  { name: "PulseHR", cat: "Landing Page", stack: "CRO + Copywriting", result: "+89% Sign-ups", desc: "Sharp narrative, sharp design, sharp pipeline.", color: "#8b5cf6" },
+  { name: "ClearPay", cat: "Fintech Platform", stack: "UX Design", result: "-38% Drop-off", desc: "Trust-first checkout flows for cross-border payments.", color: "#06b6d4" },
+  { name: "EstatePro", cat: "Real Estate Portal", stack: "Web Dev", result: "+3x Enquiries", desc: "Immersive listings with cinematic 3D walkthroughs.", color: "#f59e0b" },
 ];
 
 const AWARDS = {
@@ -269,9 +271,9 @@ function Index() {
       <Marquee reverse items={["3D Websites", "UI/UX Design", "Web Development", "Brand Identity", "SEO", "Digital Marketing", "SaaS Automation", "Recruitment"]} />
 
       {/* STORY */}
-      <section id="story" style={{ padding: "140px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+      <section id="story" style={{ padding: "140px 6vw", maxWidth: 1500, margin: "0 auto", position: "relative" }}>
         <div className="sec-label reveal">01 — Our Story</div>
-        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 80, marginTop: 32 }} className="story-grid">
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 80, marginTop: 32, position: "relative", zIndex: 1 }} className="story-grid">
           <div>
             <h2 className="reveal" style={{
               fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
@@ -349,10 +351,30 @@ function Index() {
           fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
         }}>Projects <span className="grad-text">that perform.</span></h2>
         <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} >
-          {PROJECTS.slice(0, 3).map(p => <ProjectCard key={p.name} p={p} />)}
+          {PROJECTS.slice(0, 3).map(p => (
+            <Project3DCard 
+              key={p.name}
+              name={p.name}
+              category={p.cat}
+              description={p.desc}
+              result={p.result}
+              stack={p.stack}
+              color={p.color}
+            />
+          ))}
         </div>
         <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20, marginTop: 20 }}>
-          {PROJECTS.slice(3).map(p => <ProjectCard key={p.name} p={p} />)}
+          {PROJECTS.slice(3).map(p => (
+            <Project3DCard 
+              key={p.name}
+              name={p.name}
+              category={p.cat}
+              description={p.desc}
+              result={p.result}
+              stack={p.stack}
+              color={p.color}
+            />
+          ))}
         </div>
         <style>{`
           @media (max-width: 900px) {
@@ -517,22 +539,5 @@ function Index() {
         <style>{`@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }`}</style>
       </footer>
     </>
-  );
-}
-
-function ProjectCard({ p }: { p: typeof PROJECTS[number] }) {
-  return (
-    <div className="proj-card interactive">
-      <div className="arrow" style={{ fontSize: 20 }}>↗</div>
-      <div>
-        <div className="proj-tag"><span className="dot" />{p.cat}</div>
-        <div style={{ marginTop: 18, fontSize: 26, fontWeight: 600, fontFamily: "'DM Serif Display', serif", fontStyle: "italic" }}>{p.name}</div>
-        <div style={{ marginTop: 12, fontSize: 14, color: "rgba(233,213,255,0.6)", lineHeight: 1.55, maxWidth: 360 }}>{p.desc}</div>
-      </div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 28, paddingTop: 20, borderTop: "1px solid rgba(168,85,247,0.1)" }}>
-        <span style={{ fontSize: 11, letterSpacing: 1.5, color: "rgba(233,213,255,0.5)", textTransform: "uppercase" }}>{p.stack}</span>
-        <span style={{ fontSize: 12, color: "#C084FC", fontWeight: 500 }}>{p.result}</span>
-      </div>
-    </div>
   );
 }

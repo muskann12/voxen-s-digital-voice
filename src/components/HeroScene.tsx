@@ -42,7 +42,7 @@ export function HeroScene() {
 
     // Inner torus knot core
     const knot = new THREE.Mesh(
-      new THREE.TorusKnotGeometry(0.9, 0.22, 128, 16),
+      new THREE.TorusKnotGeometry(0.9, 0.22, 64, 8),
       new THREE.MeshStandardMaterial({ color: 0x7c3aed, metalness: 0.85, roughness: 0.15, emissive: 0x4c1d95, emissiveIntensity: 0.4 }),
     );
     knot.position.set(-6, 1.2, -2);
@@ -67,7 +67,7 @@ export function HeroScene() {
     // Rings
     const mkRing = (r: number, color: number, tilt: THREE.Euler) => {
       const m = new THREE.Mesh(
-        new THREE.RingGeometry(r, r + 0.025, 160),
+        new THREE.RingGeometry(r, r + 0.025, 64),
         new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.4, side: THREE.DoubleSide }),
       );
       m.rotation.copy(tilt);
@@ -80,11 +80,11 @@ export function HeroScene() {
 
     // Particles
     const layers = isMobile
-      ? [{ count: 400, color: 0x7c3aed, size: 0.05, spread: 30 }, { count: 300, color: 0xe9d5ff, size: 0.04, spread: 36 }]
+      ? [{ count: 200, color: 0x7c3aed, size: 0.05, spread: 30 }, { count: 150, color: 0xe9d5ff, size: 0.04, spread: 36 }]
       : [
-          { count: 800, color: 0x7c3aed, size: 0.04, spread: 30 },
-          { count: 600, color: 0xa855f7, size: 0.05, spread: 24 },
-          { count: 400, color: 0xe9d5ff, size: 0.03, spread: 36 },
+          { count: 400, color: 0x7c3aed, size: 0.04, spread: 30 },
+          { count: 300, color: 0xa855f7, size: 0.05, spread: 24 },
+          { count: 200, color: 0xe9d5ff, size: 0.03, spread: 36 },
         ];
     const disposables: { dispose: () => void }[] = [];
     layers.forEach(L => {
