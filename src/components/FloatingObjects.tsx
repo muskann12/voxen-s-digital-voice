@@ -19,7 +19,7 @@ export function FloatingObjects() {
     el.appendChild(renderer.domElement);
 
     // Create floating objects
-    const objects = [];
+    const objects: THREE.Mesh[] = [];
 
     for (let i = 0; i < 5; i++) {
       const geometry = [
