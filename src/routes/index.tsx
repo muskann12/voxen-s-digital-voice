@@ -5,7 +5,6 @@ import { Cursor } from "@/components/Cursor";
 import { HeroScene } from "@/components/HeroScene";
 import { FloatingBox3D } from "@/components/FloatingBox3D";
 import { Project3DCard } from "@/components/Project3DCard";
-import { OurWorkSection } from "@/components/OurWorkSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -318,7 +317,31 @@ function Index() {
       </section>
 
       {/* SERVICES */}
-      <OurWorkSection />
+      <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">— Services</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
+        }}>What we do, <span className="grad-text">end to end.</span></h2>
+        <div className="reveal-stagger">
+          {[
+            { t: "3D Websites & WebGL", d: "Three.js, custom shaders, performance-first." },
+            { t: "UI/UX Design", d: "Product surfaces, design systems, prototypes." },
+            { t: "Web Development", d: "Next.js, headless CMS, edge deploys." },
+            { t: "Brand Identity", d: "Naming, marks, tone, guidelines." },
+            { t: "SEO & Growth", d: "Technical SEO, content engines, analytics." },
+            { t: "SaaS Automation", d: "AI workflows, integrations, internal tools." },
+          ].map(s => (
+            <div key={s.t} className="svc-row interactive">
+              <div>
+                <div style={{ fontSize: 22, fontWeight: 500 }}>{s.t}</div>
+                <div style={{ fontSize: 13, color: "rgba(233,213,255,0.55)", marginTop: 6 }}>{s.d}</div>
+              </div>
+              <div style={{ color: "#C084FC", fontSize: 18 }}>↗</div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* WORK */}
       <section id="work" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
