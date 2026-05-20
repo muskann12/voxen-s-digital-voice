@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WebDevelopmentRouteImport } from './routes/web-development'
+import { Route as VideoEditingRouteImport } from './routes/video-editing'
+import { Route as UiUxDesignRouteImport } from './routes/ui-ux-design'
+import { Route as SoftwareAutomationRouteImport } from './routes/software-automation'
+import { Route as SeoGrowthRouteImport } from './routes/seo-growth'
+import { Route as RecruitingRouteImport } from './routes/recruiting'
+import { Route as GraphicDesigningRouteImport } from './routes/graphic-designing'
+import { Route as AiChatbotDevelopmentRouteImport } from './routes/ai-chatbot-development'
 import { Route as IndexRouteImport } from './routes/index'
 
+const WebDevelopmentRoute = WebDevelopmentRouteImport.update({
+  id: '/web-development',
+  path: '/web-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideoEditingRoute = VideoEditingRouteImport.update({
+  id: '/video-editing',
+  path: '/video-editing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UiUxDesignRoute = UiUxDesignRouteImport.update({
+  id: '/ui-ux-design',
+  path: '/ui-ux-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoftwareAutomationRoute = SoftwareAutomationRouteImport.update({
+  id: '/software-automation',
+  path: '/software-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoGrowthRoute = SeoGrowthRouteImport.update({
+  id: '/seo-growth',
+  path: '/seo-growth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitingRoute = RecruitingRouteImport.update({
+  id: '/recruiting',
+  path: '/recruiting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraphicDesigningRoute = GraphicDesigningRouteImport.update({
+  id: '/graphic-designing',
+  path: '/graphic-designing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiChatbotDevelopmentRoute = AiChatbotDevelopmentRouteImport.update({
+  id: '/ai-chatbot-development',
+  path: '/ai-chatbot-development',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ai-chatbot-development': typeof AiChatbotDevelopmentRoute
+  '/graphic-designing': typeof GraphicDesigningRoute
+  '/recruiting': typeof RecruitingRoute
+  '/seo-growth': typeof SeoGrowthRoute
+  '/software-automation': typeof SoftwareAutomationRoute
+  '/ui-ux-design': typeof UiUxDesignRoute
+  '/video-editing': typeof VideoEditingRoute
+  '/web-development': typeof WebDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ai-chatbot-development': typeof AiChatbotDevelopmentRoute
+  '/graphic-designing': typeof GraphicDesigningRoute
+  '/recruiting': typeof RecruitingRoute
+  '/seo-growth': typeof SeoGrowthRoute
+  '/software-automation': typeof SoftwareAutomationRoute
+  '/ui-ux-design': typeof UiUxDesignRoute
+  '/video-editing': typeof VideoEditingRoute
+  '/web-development': typeof WebDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ai-chatbot-development': typeof AiChatbotDevelopmentRoute
+  '/graphic-designing': typeof GraphicDesigningRoute
+  '/recruiting': typeof RecruitingRoute
+  '/seo-growth': typeof SeoGrowthRoute
+  '/software-automation': typeof SoftwareAutomationRoute
+  '/ui-ux-design': typeof UiUxDesignRoute
+  '/video-editing': typeof VideoEditingRoute
+  '/web-development': typeof WebDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/ai-chatbot-development'
+    | '/graphic-designing'
+    | '/recruiting'
+    | '/seo-growth'
+    | '/software-automation'
+    | '/ui-ux-design'
+    | '/video-editing'
+    | '/web-development'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/ai-chatbot-development'
+    | '/graphic-designing'
+    | '/recruiting'
+    | '/seo-growth'
+    | '/software-automation'
+    | '/ui-ux-design'
+    | '/video-editing'
+    | '/web-development'
+  id:
+    | '__root__'
+    | '/'
+    | '/ai-chatbot-development'
+    | '/graphic-designing'
+    | '/recruiting'
+    | '/seo-growth'
+    | '/software-automation'
+    | '/ui-ux-design'
+    | '/video-editing'
+    | '/web-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AiChatbotDevelopmentRoute: typeof AiChatbotDevelopmentRoute
+  GraphicDesigningRoute: typeof GraphicDesigningRoute
+  RecruitingRoute: typeof RecruitingRoute
+  SeoGrowthRoute: typeof SeoGrowthRoute
+  SoftwareAutomationRoute: typeof SoftwareAutomationRoute
+  UiUxDesignRoute: typeof UiUxDesignRoute
+  VideoEditingRoute: typeof VideoEditingRoute
+  WebDevelopmentRoute: typeof WebDevelopmentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/web-development': {
+      id: '/web-development'
+      path: '/web-development'
+      fullPath: '/web-development'
+      preLoaderRoute: typeof WebDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/video-editing': {
+      id: '/video-editing'
+      path: '/video-editing'
+      fullPath: '/video-editing'
+      preLoaderRoute: typeof VideoEditingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ui-ux-design': {
+      id: '/ui-ux-design'
+      path: '/ui-ux-design'
+      fullPath: '/ui-ux-design'
+      preLoaderRoute: typeof UiUxDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/software-automation': {
+      id: '/software-automation'
+      path: '/software-automation'
+      fullPath: '/software-automation'
+      preLoaderRoute: typeof SoftwareAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-growth': {
+      id: '/seo-growth'
+      path: '/seo-growth'
+      fullPath: '/seo-growth'
+      preLoaderRoute: typeof SeoGrowthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruiting': {
+      id: '/recruiting'
+      path: '/recruiting'
+      fullPath: '/recruiting'
+      preLoaderRoute: typeof RecruitingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/graphic-designing': {
+      id: '/graphic-designing'
+      path: '/graphic-designing'
+      fullPath: '/graphic-designing'
+      preLoaderRoute: typeof GraphicDesigningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-chatbot-development': {
+      id: '/ai-chatbot-development'
+      path: '/ai-chatbot-development'
+      fullPath: '/ai-chatbot-development'
+      preLoaderRoute: typeof AiChatbotDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +217,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AiChatbotDevelopmentRoute: AiChatbotDevelopmentRoute,
+  GraphicDesigningRoute: GraphicDesigningRoute,
+  RecruitingRoute: RecruitingRoute,
+  SeoGrowthRoute: SeoGrowthRoute,
+  SoftwareAutomationRoute: SoftwareAutomationRoute,
+  UiUxDesignRoute: UiUxDesignRoute,
+  VideoEditingRoute: VideoEditingRoute,
+  WebDevelopmentRoute: WebDevelopmentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
