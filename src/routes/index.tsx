@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const SECTIONS = ["hero", "story", "work", "voices", "awards", "connect"];
+const SECTIONS = ["hero", "pricing", "story", "services", "work", "voices", "connect"];
 
 function useReveal() {
   useEffect(() => {
