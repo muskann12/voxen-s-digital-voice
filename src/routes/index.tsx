@@ -224,7 +224,7 @@ const QUOTES = [
 
 function Index() {
   const [active, setActive] = useState("hero");
-  const [openCat, setOpenCat] = useState<string | null>("Awwwards");
+  
   const [budget, setBudget] = useState("$5K–$15K");
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
