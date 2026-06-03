@@ -1,7 +1,7 @@
 import logo from "@/assets/logo.png";
 
 export function Logo({
-  size = 80,
+  size = 140, // pehle 80 tha
   withWord = false,
 }: {
   size?: number;
@@ -24,7 +24,7 @@ export function Logo({
           style={{
             fontWeight: 700,
             letterSpacing: 1.5,
-            fontSize: 16,
+            fontSize: 20,
             color: "#fff",
           }}
         >
