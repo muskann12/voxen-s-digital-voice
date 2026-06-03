@@ -325,9 +325,43 @@ function Index() {
       <Marquee items={["NexaShop", "AnalytixHQ", "PulseHR", "ClearPay", "EstatePro", "Rebrand Studio", "Pakistan · UAE · UK · US"]} />
       <Marquee reverse items={["3D Websites", "UI/UX Design", "Web Development", "Brand Identity", "SEO", "Digital Marketing", "SaaS Automation", "Recruitment"]} />
 
+      {/* PRICING / VALUE */}
+      <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">01 — Pricing</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(34px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em", maxWidth: 1000,
+        }}>
+          Agency-level work, <span className="grad-text">without the agency-level invoice.</span>
+        </h2>
+        <p className="reveal" style={{
+          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 680, fontWeight: 300, marginBottom: 56,
+        }}>
+          We charge a fraction of what traditional agencies bill — same craft, same senior team,
+          honest pricing built for founders and growing brands.
+        </p>
+        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          {[
+            { k: "Up to 60%", l: "Less than agency rates", d: "Lean team, zero overhead, all senior talent — savings passed straight to you." },
+            { k: "Flat &", l: "Transparent quotes", d: "No surprise invoices, no scope-creep games. One clear price, locked from day one." },
+            { k: "Built for", l: "Real budgets", d: "Startup, SMB or enterprise — we shape a scope that fits, not one that bleeds you." },
+          ].map(c => (
+            <div key={c.l} className="cap-card interactive" style={{ padding: 32 }}>
+              <div style={{
+                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                fontSize: 34, color: "#fff", letterSpacing: "-0.01em",
+              }}>{c.k}</div>
+              <div style={{ fontSize: 14, color: "#C084FC", marginTop: 6, fontWeight: 500, letterSpacing: 0.5 }}>{c.l}</div>
+              <div style={{ marginTop: 16, fontSize: 14, color: "rgba(233,213,255,0.65)", lineHeight: 1.6 }}>{c.d}</div>
+            </div>
+          ))}
+        </div>
+        <style>{`@media (max-width: 900px) { #pricing > div[style*="repeat(3"] { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
       {/* STORY */}
       <section id="story" style={{ padding: "140px 6vw", maxWidth: 1500, margin: "0 auto", position: "relative" }}>
-        <div className="sec-label reveal">01 — Our Story</div>
+        <div className="sec-label reveal">02 — Our Story</div>
         <div style={{ display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 80, marginTop: 32, position: "relative", zIndex: 1 }} className="story-grid">
           <div>
             <h2 className="reveal" style={{
@@ -393,7 +427,7 @@ function Index() {
 
       {/* WORK */}
       <section id="work" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">02 — Selected Work</div>
+        <div className="sec-label reveal">03 — Selected Work</div>
         <h2 className="reveal" style={{
           fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
           fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
@@ -434,7 +468,7 @@ function Index() {
       {/* VOICES */}
       <section id="voices" style={{ padding: "120px 6vw", background: "#0E0818" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
-          <div className="sec-label reveal">03 — Voices</div>
+          <div className="sec-label reveal">04 — Voices</div>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
             fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 60px", fontWeight: 400, letterSpacing: "-0.015em",
@@ -466,93 +500,6 @@ function Index() {
         </div>
       </section>
 
-      {/* AWARDS */}
-      <section id="awards" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">04 — Recognition</div>
-        <h2 className="reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em", maxWidth: 900,
-        }}>Recognition for work that <span className="grad-text">pushes what's possible.</span></h2>
-        <div className="reveal">
-          {Object.entries(AWARDS).map(([cat, rows]) => {
-            const open = openCat === cat;
-            return (
-              <div key={cat} style={{ borderTop: "1px solid rgba(168,85,247,0.18)" }}>
-                <button onClick={() => setOpenCat(open ? null : cat)} className="interactive" style={{
-                  width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
-                  padding: "28px 8px", background: "none", border: "none", color: "#fff",
-                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic", fontSize: 28,
-                }}>
-                  <span>{cat} <span style={{ fontSize: 14, fontFamily: "Inter", fontStyle: "normal", color: "#C084FC", marginLeft: 12 }}>/ {rows.length}</span></span>
-                  <span style={{ fontSize: 24, transition: "transform 0.4s", transform: open ? "rotate(45deg)" : "rotate(0)" }}>+</span>
-                </button>
-                <div style={{
-                  maxHeight: open ? rows.length * 80 + 40 : 0, overflow: "hidden",
-                  transition: "max-height 0.5s ease",
-                }}>
-                  <div style={{ paddingBottom: 12 }}>
-                    {rows.map((r, i) => (
-                      <div key={i} className="award-row interactive">
-                        <span style={{ fontWeight: 500 }}>{r.project}</span>
-                        <span style={{ color: "rgba(233,213,255,0.6)" }}>{r.note}</span>
-                        <span style={{ color: "#C084FC", fontSize: 13 }}>{r.year}</span>
-                        <span style={{ color: "#C084FC" }}>↗</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-          <div style={{ borderTop: "1px solid rgba(168,85,247,0.18)" }} />
-        </div>
-      </section>
-
-      {/* PRICING / VALUE */}
-      <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">05 — Pricing</div>
-        <h2 className="reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(34px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em", maxWidth: 1000,
-        }}>
-          Agency-level work, <span className="grad-text">without the agency-level invoice.</span>
-        </h2>
-        <p className="reveal" style={{
-          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 680, fontWeight: 300, marginBottom: 56,
-        }}>
-          We charge a fraction of what traditional agencies bill — same craft, same senior team,
-          honest pricing built for founders and growing brands.
-        </p>
-        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-          {[
-            { k: "Up to 60%", l: "Less than agency rates", d: "Lean team, zero overhead, all senior talent — savings passed straight to you." },
-            { k: "Flat &", l: "Transparent quotes", d: "No surprise invoices, no scope-creep games. One clear price, locked from day one." },
-            { k: "Built for", l: "Real budgets", d: "Startup, SMB or enterprise — we shape a scope that fits, not one that bleeds you." },
-          ].map(c => (
-            <div key={c.l} className="cap-card interactive" style={{ padding: 32 }}>
-              <div style={{
-                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                fontSize: 34, color: "#fff", letterSpacing: "-0.01em",
-              }}>{c.k}</div>
-              <div style={{ fontSize: 14, color: "#C084FC", marginTop: 6, fontWeight: 500, letterSpacing: 0.5 }}>{c.l}</div>
-              <div style={{ marginTop: 16, fontSize: 14, color: "rgba(233,213,255,0.65)", lineHeight: 1.6 }}>{c.d}</div>
-            </div>
-          ))}
-        </div>
-        <div className="reveal" style={{
-          marginTop: 48, padding: "22px 28px", borderRadius: 14,
-          border: "1px solid rgba(168,85,247,0.25)",
-          background: "linear-gradient(90deg, rgba(124,58,237,0.10), rgba(192,132,252,0.05))",
-          display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap",
-        }}>
-          <div style={{ fontSize: 15, color: "rgba(233,213,255,0.85)" }}>
-            <span style={{ color: "#E8C07A", fontWeight: 600 }}>✦ Free 30-min strategy call</span>
-            {" "}— get a fixed quote before you commit a single rupee.
-          </div>
-          <button onClick={() => jump("connect")} className="btn-violet">Get My Quote →</button>
-        </div>
-        <style>{`@media (max-width: 900px) { #pricing > div[style*="repeat(3"] { grid-template-columns: 1fr !important; } }`}</style>
-      </section>
 
       {/* CONNECT */}
 
