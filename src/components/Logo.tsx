@@ -1,6 +1,6 @@
 import logoAsset from "@/assets/logo.png.asset.json";
 
-export function Logo({ size = 28, withWord = true }: { size?: number; withWord?: boolean }) {
+export function Logo({ size = 56, withWord = false }: { size?: number; withWord?: boolean }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
       <img
@@ -16,3 +16,4 @@ export function Logo({ size = 28, withWord = true }: { size?: number; withWord?:
     </div>
   );
 }
+
