@@ -1,7 +1,7 @@
 import logo from "@/assets/logo.png";
 
 export function Logo({
-  size = 140, // pehle 80 tha
+  size = 200, // pehle 80 tha
   withWord = false,
 }: {
   size?: number;
