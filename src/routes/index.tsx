@@ -454,7 +454,54 @@ function Index() {
         </div>
       </section>
 
+      {/* PRICING / VALUE */}
+      <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">05 — Pricing</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(34px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em", maxWidth: 1000,
+        }}>
+          Agency-level work, <span className="grad-text">without the agency-level invoice.</span>
+        </h2>
+        <p className="reveal" style={{
+          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 680, fontWeight: 300, marginBottom: 56,
+        }}>
+          We charge a fraction of what traditional agencies bill — same craft, same senior team,
+          honest pricing built for founders and growing brands.
+        </p>
+        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          {[
+            { k: "Up to 60%", l: "Less than agency rates", d: "Lean team, zero overhead, all senior talent — savings passed straight to you." },
+            { k: "Flat &", l: "Transparent quotes", d: "No surprise invoices, no scope-creep games. One clear price, locked from day one." },
+            { k: "Built for", l: "Real budgets", d: "Startup, SMB or enterprise — we shape a scope that fits, not one that bleeds you." },
+          ].map(c => (
+            <div key={c.l} className="cap-card interactive" style={{ padding: 32 }}>
+              <div style={{
+                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                fontSize: 34, color: "#fff", letterSpacing: "-0.01em",
+              }}>{c.k}</div>
+              <div style={{ fontSize: 14, color: "#C084FC", marginTop: 6, fontWeight: 500, letterSpacing: 0.5 }}>{c.l}</div>
+              <div style={{ marginTop: 16, fontSize: 14, color: "rgba(233,213,255,0.65)", lineHeight: 1.6 }}>{c.d}</div>
+            </div>
+          ))}
+        </div>
+        <div className="reveal" style={{
+          marginTop: 48, padding: "22px 28px", borderRadius: 14,
+          border: "1px solid rgba(168,85,247,0.25)",
+          background: "linear-gradient(90deg, rgba(124,58,237,0.10), rgba(192,132,252,0.05))",
+          display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap",
+        }}>
+          <div style={{ fontSize: 15, color: "rgba(233,213,255,0.85)" }}>
+            <span style={{ color: "#E8C07A", fontWeight: 600 }}>✦ Free 30-min strategy call</span>
+            {" "}— get a fixed quote before you commit a single rupee.
+          </div>
+          <button onClick={() => jump("connect")} className="btn-violet">Get My Quote →</button>
+        </div>
+        <style>{`@media (max-width: 900px) { #pricing > div[style*="repeat(3"] { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
       {/* CONNECT */}
+
       <section id="connect" style={{ padding: "140px 6vw", background: "#0E0818" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
           <h2 className="reveal" style={{
