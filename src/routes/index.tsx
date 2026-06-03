@@ -572,7 +572,7 @@ function Index() {
           </div>
         </div>
         <div style={{ display: "flex", justifyContent: "center", margin: "60px 0 24px" }}>
-          <Logo size={36} />
+          <Logo size={56} />
         </div>
         <div style={{ textAlign: "center", fontSize: 11, color: "rgba(233,213,255,0.4)", letterSpacing: 1 }}>
           © {new Date().getFullYear()} VOXEN — All rights reserved · Pakistan · UAE · UK · USA
