@@ -71,6 +71,8 @@ function Preloader() {
 function Nav({ active }: { active: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [svcOpen, setSvcOpen] = useState(false);
+  const [svcOpenMobile, setSvcOpenMobile] = useState(false);
   useEffect(() => {
     const f = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f);
@@ -79,8 +81,7 @@ function Nav({ active }: { active: string }) {
   const links = [
     { id: "work", label: "Work" },
     { id: "story", label: "Our Story" },
-    { id: "services", label: "Services" },
-    { id: "awards", label: "Insights" },
+    { id: "pricing", label: "Pricing" },
   ];
   return (
     <nav className={scrolled ? "nav-scrolled" : ""} style={{
@@ -91,13 +92,52 @@ function Nav({ active }: { active: string }) {
       <button onClick={() => go("hero")} style={{ background: "none", border: "none", padding: 0 }}>
         <Logo />
       </button>
-      <div className="hide-md" style={{ display: "flex", gap: 36, fontSize: 13, color: "rgba(233,213,255,0.85)" }}>
+      <div className="hide-md" style={{ display: "flex", gap: 36, fontSize: 13, color: "rgba(233,213,255,0.85)", alignItems: "center" }}>
         {links.map(l => (
           <button key={l.id} onClick={() => go(l.id)} style={{
             background: "none", border: "none", color: active === l.id ? "#fff" : "inherit",
             fontSize: 13, padding: 0, transition: "color 0.2s",
           }}>{l.label}</button>
         ))}
+        <div
+          onMouseEnter={() => setSvcOpen(true)}
+          onMouseLeave={() => setSvcOpen(false)}
+          style={{ position: "relative" }}
+        >
+          <button onClick={() => go("services")} style={{
+            background: "none", border: "none", color: active === "services" ? "#fff" : "inherit",
+            fontSize: 13, padding: 0, transition: "color 0.2s", display: "flex", alignItems: "center", gap: 4,
+          }}>
+            Services <span style={{ fontSize: 9, opacity: 0.7 }}>▾</span>
+          </button>
+          {svcOpen && (
+            <div style={{
+              position: "absolute", top: "100%", right: 0, paddingTop: 14, minWidth: 280,
+            }}>
+              <div style={{
+                background: "rgba(22,14,40,0.97)", backdropFilter: "blur(20px)",
+                border: "1px solid rgba(168,85,247,0.18)", borderRadius: 14,
+                padding: 10, display: "flex", flexDirection: "column",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+              }}>
+                {SERVICES.map(s => (
+                  <Link key={s.slug} to={s.to} className="interactive" style={{
+                    textDecoration: "none", color: "rgba(233,213,255,0.85)",
+                    padding: "10px 14px", borderRadius: 8, fontSize: 13,
+                    display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16,
+                    transition: "background 0.2s, color 0.2s",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(168,85,247,0.12)"; e.currentTarget.style.color = "#fff"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(233,213,255,0.85)"; }}
+                  >
+                    <span>{s.title}</span>
+                    <span style={{ color: "#C084FC", fontSize: 14 }}>↗</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
       <button onClick={() => go("connect")} className="hide-md" style={{
         background: "none", border: "none", color: "#C084FC", fontSize: 13, fontWeight: 500,
@@ -109,9 +149,23 @@ function Nav({ active }: { active: string }) {
         <div style={{
           position: "fixed", inset: "70px 0 0 0", background: "rgba(8,5,15,0.97)",
           backdropFilter: "blur(20px)", display: "flex", flexDirection: "column",
-          padding: 40, gap: 28, fontSize: 22,
+          padding: 40, gap: 28, fontSize: 22, overflowY: "auto",
         }}>
           {links.map(l => <button key={l.id} onClick={() => go(l.id)} style={{ background: "none", border: "none", color: "#fff", textAlign: "left", fontSize: 22 }}>{l.label}</button>)}
+          <div>
+            <button onClick={() => setSvcOpenMobile(!svcOpenMobile)} style={{ background: "none", border: "none", color: "#fff", textAlign: "left", fontSize: 22, display: "flex", alignItems: "center", gap: 8 }}>
+              Services <span style={{ fontSize: 14, transform: svcOpenMobile ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+            </button>
+            {svcOpenMobile && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 16, paddingLeft: 14, borderLeft: "1px solid rgba(168,85,247,0.25)" }}>
+                {SERVICES.map(s => (
+                  <Link key={s.slug} to={s.to} onClick={() => setOpen(false)} style={{ color: "rgba(233,213,255,0.85)", textDecoration: "none", fontSize: 16 }}>
+                    {s.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <button onClick={() => go("connect")} style={{ background: "none", border: "none", color: "#C084FC", textAlign: "left", fontSize: 22 }}>Connect →</button>
         </div>
       )}
