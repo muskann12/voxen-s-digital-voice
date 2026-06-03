@@ -215,26 +215,6 @@ const PROJECTS = [
   { name: "EstatePro", cat: "Real Estate Portal", stack: "Web Dev", result: "+3x Enquiries", desc: "Immersive listings with cinematic 3D walkthroughs.", color: "#f59e0b" },
 ];
 
-const AWARDS = {
-  Awwwards: [
-    { project: "NexaShop", note: "Site of the Day · Nominee", year: "2024" },
-    { project: "AnalytixHQ", note: "Mobile Excellence · Nominee", year: "2024" },
-    { project: "EstatePro", note: "Developer Award · Honorable", year: "2025" },
-  ],
-  Clutch: [
-    { project: "Voxen", note: "Top B2B Agency Pakistan", year: "2024" },
-    { project: "Voxen", note: "Top UX Studio MENA", year: "2024" },
-    { project: "PulseHR", note: "Top Conversion Project", year: "2024" },
-    { project: "ClearPay", note: "Top Fintech UX", year: "2025" },
-    { project: "Voxen", note: "Global Top 100 Agency", year: "2025" },
-  ],
-  Google: [
-    { project: "Voxen", note: "Premier Partner", year: "2024" },
-    { project: "Voxen", note: "Web Performance Cert.", year: "2024" },
-    { project: "EstatePro", note: "Core Web Vitals A+", year: "2025" },
-    { project: "NexaShop", note: "Mobile Excellence", year: "2025" },
-  ],
-};
 
 const QUOTES = [
   { q: "Voxen gave our business a presence we never had. The results were immediate.", n: "Ahmed R.", t: "CEO, NexaShop" },
