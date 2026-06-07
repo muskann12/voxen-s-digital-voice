@@ -525,7 +525,7 @@ function Index() {
       {/* VOICES */}
       <section id="voices" style={{ padding: "120px 6vw", background: "#0E0818" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
-          <div className="sec-label reveal">04 — Voices</div>
+          <div className="sec-label reveal">05 — Voices</div>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
             fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 60px", fontWeight: 400, letterSpacing: "-0.015em",
