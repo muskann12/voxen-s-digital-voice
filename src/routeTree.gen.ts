@@ -18,6 +18,7 @@ import { Route as RecruitingRouteImport } from './routes/recruiting'
 import { Route as GraphicDesigningRouteImport } from './routes/graphic-designing'
 import { Route as AiChatbotDevelopmentRouteImport } from './routes/ai-chatbot-development'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
 
 const WebDevelopmentRoute = WebDevelopmentRouteImport.update({
   id: '/web-development',
@@ -64,6 +65,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaseStudiesSlugRoute = CaseStudiesSlugRouteImport.update({
+  id: '/case-studies/$slug',
+  path: '/case-studies/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
   '/web-development': typeof WebDevelopmentRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
   '/web-development': typeof WebDevelopmentRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
   '/web-development': typeof WebDevelopmentRoute
+  '/case-studies/$slug': typeof CaseStudiesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/ui-ux-design'
     | '/video-editing'
     | '/web-development'
+    | '/case-studies/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/ui-ux-design'
     | '/video-editing'
     | '/web-development'
+    | '/case-studies/$slug'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/ui-ux-design'
     | '/video-editing'
     | '/web-development'
+    | '/case-studies/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   UiUxDesignRoute: typeof UiUxDesignRoute
   VideoEditingRoute: typeof VideoEditingRoute
   WebDevelopmentRoute: typeof WebDevelopmentRoute
+  CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case-studies/$slug': {
+      id: '/case-studies/$slug'
+      path: '/case-studies/$slug'
+      fullPath: '/case-studies/$slug'
+      preLoaderRoute: typeof CaseStudiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   UiUxDesignRoute: UiUxDesignRoute,
   VideoEditingRoute: VideoEditingRoute,
   WebDevelopmentRoute: WebDevelopmentRoute,
+  CaseStudiesSlugRoute: CaseStudiesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
