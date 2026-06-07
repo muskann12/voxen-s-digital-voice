@@ -446,6 +446,82 @@ function Index() {
         `}</style>
       </section>
 
+      {/* FEATURED CASE STUDIES */}
+      <section id="case-studies" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">04 — Featured Case Studies</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em",
+        }}>Real systems, <span className="grad-text">real outcomes.</span></h2>
+        <p className="reveal" style={{
+          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 720, fontWeight: 300, marginBottom: 50,
+        }}>
+          AI inventory, ecommerce automation, voice AI — production-grade software shipped for real clients.
+        </p>
+        <div className="reveal-stagger cs-feat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
+          {FEATURED_CASES.map(cs => (
+            <Link key={cs.slug} to={"/case-studies/$slug"} params={{ slug: cs.slug }} className="interactive" style={{
+              textDecoration: "none", color: "inherit",
+              border: "1px solid rgba(168,85,247,0.18)", borderRadius: 16,
+              background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
+              overflow: "hidden", display: "flex", flexDirection: "column",
+              transition: "all 0.35s ease",
+            }}>
+              <div style={{
+                position: "relative", aspectRatio: "16 / 10",
+                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #0E0818`,
+                borderBottom: "1px solid rgba(168,85,247,0.15)",
+                display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10,
+              }}>
+                <div style={{
+                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                  fontSize: 72, color: cs.color, letterSpacing: "-0.02em", lineHeight: 1,
+                }}>{cs.initial}</div>
+                <div style={{
+                  position: "absolute", top: 14, left: 14,
+                  fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+                  padding: "4px 10px", borderRadius: 999,
+                  background: cs.color + "22", color: cs.color, border: `1px solid ${cs.color}55`,
+                }}>{cs.industry}</div>
+              </div>
+              <div style={{ padding: 26, display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
+                <h3 style={{
+                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                  fontSize: 22, margin: 0, lineHeight: 1.25, color: "#fff", fontWeight: 400,
+                }}>{cs.shortTitle}</h3>
+                <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "rgba(233,213,255,0.65)", margin: 0 }}>
+                  {cs.summary}
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 4 }}>
+                  {cs.technologies.slice(0, 4).map(t => (
+                    <span key={t} style={{
+                      fontSize: 10.5, padding: "3px 8px", borderRadius: 4,
+                      background: "rgba(124,58,237,0.18)", color: "#E9D5FF",
+                      border: "1px solid rgba(168,85,247,0.22)",
+                    }}>{t}</span>
+                  ))}
+                </div>
+                <div style={{
+                  marginTop: "auto", paddingTop: 16,
+                  borderTop: "1px solid rgba(168,85,247,0.12)",
+                  display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
+                }}>
+                  <div>
+                    <div style={{ fontSize: 10, letterSpacing: 2, color: "rgba(233,213,255,0.5)", textTransform: "uppercase" }}>Outcome</div>
+                    <div style={{ fontSize: 13, color: "#fff", marginTop: 2 }}>{cs.outcome}</div>
+                  </div>
+                  <span style={{ fontSize: 12, color: cs.color, letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500 }}>
+                    View Case Study →
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <style>{`@media (max-width: 1100px) { .cs-feat-grid { grid-template-columns: 1fr 1fr !important; } } @media (max-width: 750px) { .cs-feat-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
+
       {/* VOICES */}
       <section id="voices" style={{ padding: "120px 6vw", background: "#0E0818" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
