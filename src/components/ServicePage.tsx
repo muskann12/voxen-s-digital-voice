@@ -170,7 +170,7 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
               </>
             );
             return c.to ? (
-              <Link key={c.id} to={c.to} className="interactive" style={cardStyle}>{inner}</Link>
+              <Link key={c.id} to={c.to as string} className="interactive" style={cardStyle}>{inner}</Link>
             ) : (
               <article key={c.id} className="interactive" style={cardStyle}>{inner}</article>
             );
