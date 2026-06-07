@@ -6,6 +6,7 @@ import { HeroScene } from "@/components/HeroScene";
 import { FloatingBox3D } from "@/components/FloatingBox3D";
 import { Project3DCard } from "@/components/Project3DCard";
 import { SERVICES } from "@/lib/services";
+import { FEATURED_CASES } from "@/lib/caseStudies";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -25,7 +26,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const SECTIONS = ["hero", "pricing", "story", "services", "work", "voices", "connect"];
+const SECTIONS = ["hero", "pricing", "story", "services", "work", "case-studies", "voices", "connect"];
 
 function useReveal() {
   useEffect(() => {
