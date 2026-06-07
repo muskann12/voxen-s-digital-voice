@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type PortfolioCard } from "@/components/ServicePage";
+import { CASE_STUDIES } from "@/lib/caseStudies";
 
 export const Route = createFileRoute("/ai-chatbot-development")({
   component: Page,
-  head: () => ({ meta: [{ title: "AI Chatbot Development — Voxen" }, { name: "description", content: "Custom bots, LLM integrations, automation." }] }),
+  head: () => ({ meta: [
+    { title: "AI Chatbot Development — Voxen" },
+    { name: "description", content: "Custom AI chatbots, voice assistants and LLM integrations — real case studies from Voxen." },
+    { property: "og:title", content: "AI Chatbot Development — Voxen" },
+    { property: "og:description", content: "Voice AI, conversational bots and LLM-powered assistants — real client work." },
+  ]}),
 });
 
 const Bubble = ({ side, w, children }: { side: "l" | "r"; w: string; children: React.ReactNode }) => (
@@ -37,7 +43,20 @@ const Platforms = ({ items }: { items: string[] }) => (
   </div>
 );
 
+const appointmentCS = CASE_STUDIES.find(c => c.slug === "ai-appointment-recovery")!;
+
 const cards: PortfolioCard[] = [
+  {
+    id: "case-appointment",
+    title: appointmentCS.shortTitle,
+    description: appointmentCS.summary,
+    category: "Voice AI",
+    tag: "Case Study",
+    tagColor: appointmentCS.color,
+    thumbnail: <Chat a="Hi, this is Sara from Smile Dental." b="Oh hi, sorry I missed yesterday." c="No worries — can I rebook you?" />,
+    footer: <Platforms items={["GPT", "ElevenLabs", "GSM"]} />,
+    to: `/case-studies/${appointmentCS.slug}`,
+  },
   { id: "1", title: "Helix Support Bot", description: "Tier-1 support assistant handling 70% of inbound tickets with handoff.", category: "Customer Support", tag: "Support", tagColor: "#06b6d4", thumbnail: <Chat a="Hi, my card was declined." b="Let me check that for you." c="I can see the issue — fixed." />, footer: <Platforms items={["Website", "WhatsApp"]} /> },
   { id: "2", title: "Drift Lead Qualifier", description: "Conversational qualifier capturing budget, timeline, and intent.", category: "Lead Gen", tag: "Lead Gen", tagColor: "#C084FC", thumbnail: <Chat a="Looking for a quote." b="Happy to help — what's the budget?" c="Got it. Booking a call." />, footer: <Platforms items={["Website", "Messenger"]} /> },
   { id: "3", title: "Atlas Ops Copilot", description: "Internal Slack copilot answering ops questions from a private corpus.", category: "Internal Tools", tag: "Internal", tagColor: "#7C3AED", thumbnail: <Chat a="What's our refund SLA?" b="48 hours for verified orders." c="Where in the docs?" />, footer: <Platforms items={["Slack", "Notion"]} /> },
@@ -50,9 +69,10 @@ function Page() {
   return (
     <ServicePage
       title="AI Chatbot Development"
-      oneLiner="Custom LLM-powered assistants across web, WhatsApp, and internal tools."
-      filters={["All", "Customer Support", "Lead Gen", "Internal Tools", "E-commerce Bots"]}
+      oneLiner="Custom LLM-powered assistants and voice AI — from clinical voice automation to web and WhatsApp bots."
+      filters={["All", "Voice AI", "Customer Support", "Lead Gen", "Internal Tools", "E-commerce Bots"]}
       cards={cards}
+      featuredFirst
     />
   );
 }

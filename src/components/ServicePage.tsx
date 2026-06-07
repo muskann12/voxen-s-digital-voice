@@ -13,6 +13,7 @@ export type PortfolioCard = {
   thumbnail?: ReactNode;
   meta?: ReactNode;
   footer?: ReactNode;
+  to?: string;
 };
 
 type Props = {
@@ -105,64 +106,75 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
         <div className="svc-grid" style={{
           display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22,
         }}>
-          {filtered.map((c, i) => (
-            <article
-              key={c.id}
-              className="interactive"
-              style={{
-                gridColumn: featuredFirst && i === 0 ? "span 2" : undefined,
-                border: "1px solid rgba(168,85,247,0.18)",
-                borderRadius: 14,
-                background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
-                overflow: "hidden",
-                display: "flex", flexDirection: "column",
-                transition: "all 0.35s ease",
-              }}
-            >
-              <div style={{
-                position: "relative",
-                aspectRatio: featuredFirst && i === 0 ? "21 / 9" : "16 / 9",
-                background: "radial-gradient(circle at 30% 30%, rgba(124,58,237,0.18), transparent 60%), #0E0818",
-                borderBottom: "1px solid rgba(168,85,247,0.15)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}>
-                {c.thumbnail}
-                {c.meta && (
-                  <div style={{
-                    position: "absolute", right: 12, bottom: 12,
-                    padding: "4px 10px", borderRadius: 6,
-                    background: "rgba(8,5,15,0.75)", border: "1px solid rgba(168,85,247,0.2)",
-                    fontSize: 11, color: "#E9D5FF", letterSpacing: 0.5,
-                  }}>{c.meta}</div>
-                )}
-              </div>
-              <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-                {c.tag && (
-                  <span style={{
-                    alignSelf: "flex-start", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
-                    padding: "4px 10px", borderRadius: 999,
-                    background: (c.tagColor ?? "#7C3AED") + "22",
-                    color: c.tagColor ?? "#C084FC",
-                    border: "1px solid " + (c.tagColor ?? "#7C3AED") + "55",
-                  }}>{c.tag}</span>
-                )}
-                <h3 style={{
-                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                  fontSize: 22, margin: 0, lineHeight: 1.2, color: "#fff", fontWeight: 400,
-                }}>{c.title}</h3>
-                <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "rgba(233,213,255,0.62)", margin: 0 }}>
-                  {c.description}
-                </p>
-                {c.footer && (
-                  <div style={{
-                    marginTop: "auto", paddingTop: 14,
-                    borderTop: "1px solid rgba(168,85,247,0.12)",
-                    fontSize: 12, color: "rgba(233,213,255,0.7)",
-                  }}>{c.footer}</div>
-                )}
-              </div>
-            </article>
-          ))}
+          {filtered.map((c, i) => {
+            const cardStyle: React.CSSProperties = {
+              gridColumn: featuredFirst && i === 0 ? "span 2" : undefined,
+              border: "1px solid rgba(168,85,247,0.18)",
+              borderRadius: 14,
+              background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
+              overflow: "hidden",
+              display: "flex", flexDirection: "column",
+              transition: "all 0.35s ease",
+              textDecoration: "none", color: "inherit",
+            };
+            const inner = (
+              <>
+                <div style={{
+                  position: "relative",
+                  aspectRatio: featuredFirst && i === 0 ? "21 / 9" : "16 / 9",
+                  background: "radial-gradient(circle at 30% 30%, rgba(124,58,237,0.18), transparent 60%), #0E0818",
+                  borderBottom: "1px solid rgba(168,85,247,0.15)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                }}>
+                  {c.thumbnail}
+                  {c.meta && (
+                    <div style={{
+                      position: "absolute", right: 12, bottom: 12,
+                      padding: "4px 10px", borderRadius: 6,
+                      background: "rgba(8,5,15,0.75)", border: "1px solid rgba(168,85,247,0.2)",
+                      fontSize: 11, color: "#E9D5FF", letterSpacing: 0.5,
+                    }}>{c.meta}</div>
+                  )}
+                </div>
+                <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
+                  {c.tag && (
+                    <span style={{
+                      alignSelf: "flex-start", fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
+                      padding: "4px 10px", borderRadius: 999,
+                      background: (c.tagColor ?? "#7C3AED") + "22",
+                      color: c.tagColor ?? "#C084FC",
+                      border: "1px solid " + (c.tagColor ?? "#7C3AED") + "55",
+                    }}>{c.tag}</span>
+                  )}
+                  <h3 style={{
+                    fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                    fontSize: 22, margin: 0, lineHeight: 1.2, color: "#fff", fontWeight: 400,
+                  }}>{c.title}</h3>
+                  <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "rgba(233,213,255,0.62)", margin: 0 }}>
+                    {c.description}
+                  </p>
+                  {c.footer && (
+                    <div style={{
+                      marginTop: "auto", paddingTop: 14,
+                      borderTop: "1px solid rgba(168,85,247,0.12)",
+                      fontSize: 12, color: "rgba(233,213,255,0.7)",
+                    }}>{c.footer}</div>
+                  )}
+                  {c.to && (
+                    <div style={{
+                      marginTop: c.footer ? 10 : "auto", paddingTop: c.footer ? 0 : 14,
+                      fontSize: 12, color: "#C084FC", letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500,
+                    }}>View Case Study →</div>
+                  )}
+                </div>
+              </>
+            );
+            return c.to ? (
+              <Link key={c.id} to={c.to as any} className="interactive" style={cardStyle}>{inner}</Link>
+            ) : (
+              <article key={c.id} className="interactive" style={cardStyle}>{inner}</article>
+            );
+          })}
         </div>
       </section>
 
