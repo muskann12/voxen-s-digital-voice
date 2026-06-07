@@ -460,7 +460,7 @@ function Index() {
         </p>
         <div className="reveal-stagger cs-feat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
           {FEATURED_CASES.map(cs => (
-            <Link key={cs.slug} to={"/case-studies/$slug"} params={{ slug: cs.slug }} className="interactive" style={{
+            <Link key={cs.slug} to={"/case-studies/$slug" as any} params={{ slug: cs.slug }} className="interactive" style={{
               textDecoration: "none", color: "inherit",
               border: "1px solid rgba(168,85,247,0.18)", borderRadius: 16,
               background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
