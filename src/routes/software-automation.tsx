@@ -1,24 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type PortfolioCard } from "@/components/ServicePage";
+import { CASE_STUDIES } from "@/lib/caseStudies";
 
 export const Route = createFileRoute("/software-automation")({
   component: Page,
-  head: () => ({ meta: [{ title: "Software Automation — Voxen" }, { name: "description", content: "AI workflows, integrations, internal tools." }] }),
+  head: () => ({ meta: [
+    { title: "Software Automation — Voxen" },
+    { name: "description", content: "AI inventory, ecommerce automation, voice AI and custom internal tools — real case studies from Voxen." },
+    { property: "og:title", content: "Software Automation — Voxen" },
+    { property: "og:description", content: "Real-world software automation case studies: AI inventory, ecommerce sync, voice calling." },
+  ]}),
 });
 
-const Time = ({ value, label }: { value: string; label: string }) => (
-  <div style={{ textAlign: "center" }}>
+const CaseThumb = ({ cs }: { cs: typeof CASE_STUDIES[number] }) => (
+  <div style={{
+    width: "78%", aspectRatio: "16 / 9", borderRadius: 12,
+    background: `linear-gradient(135deg, ${cs.color}28, ${cs.color}08)`,
+    border: `1px solid ${cs.color}55`,
+    display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 8,
+    padding: 18,
+  }}>
     <div style={{
       fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-      fontSize: 52, color: "#E8C07A", letterSpacing: "-0.02em", lineHeight: 1,
-    }}>{value}</div>
-    <div style={{ marginTop: 8, fontSize: 11, letterSpacing: 2, textTransform: "uppercase", color: "rgba(233,213,255,0.5)" }}>{label}</div>
+      fontSize: 56, color: cs.color, letterSpacing: "-0.02em", lineHeight: 1,
+    }}>{cs.initial}</div>
+    <div style={{ fontSize: 10, letterSpacing: 2, textTransform: "uppercase", color: "rgba(233,213,255,0.65)", textAlign: "center" }}>
+      {cs.industry}
+    </div>
   </div>
 );
 
 const Tools = ({ items }: { items: string[] }) => (
   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-    {items.map(t => (
+    {items.slice(0, 4).map(t => (
       <span key={t} style={{
         fontSize: 10.5, padding: "3px 8px", borderRadius: 4,
         background: "rgba(124,58,237,0.18)", color: "#E9D5FF",
@@ -28,22 +42,27 @@ const Tools = ({ items }: { items: string[] }) => (
   </div>
 );
 
-const cards: PortfolioCard[] = [
-  { id: "1", title: "PulseHR Lead Router", description: "Auto-routes inbound leads to AEs by region and ICP score.", category: "CRM Automation", tag: "CRM", tagColor: "#C084FC", thumbnail: <Time value="40 hrs/wk" label="Time Saved" />, footer: <Tools items={["Zapier", "HubSpot", "Slack"]} /> },
-  { id: "2", title: "NexaShop Order Pipeline", description: "Nightly ETL from 4 sources into a unified order warehouse.", category: "Data Pipelines", tag: "Data", tagColor: "#7C3AED", thumbnail: <Time value="22 hrs/wk" label="Time Saved" />, footer: <Tools items={["Python", "Airflow", "BigQuery"]} /> },
-  { id: "3", title: "Atlas Listings Sync", description: "Two-way sync of property data across CMS, MLS, and CRM.", category: "API Integrations", tag: "API", tagColor: "#06b6d4", thumbnail: <Time value="35 hrs/wk" label="Time Saved" />, footer: <Tools items={["Make", "Node.js", "Webhooks"]} /> },
-  { id: "4", title: "Helix Compliance Tool", description: "Internal dashboard generating audit-ready reports on demand.", category: "Internal Tools", tag: "Internal", tagColor: "#E8C07A", thumbnail: <Time value="60 hrs/mo" label="Time Saved" />, footer: <Tools items={["Retool", "Postgres", "Python"]} /> },
-  { id: "5", title: "Drift Reorder Bot", description: "Predictive reorder triggers based on stock and velocity signals.", category: "CRM Automation", tag: "CRM", tagColor: "#C084FC", thumbnail: <Time value="18 hrs/wk" label="Time Saved" />, footer: <Tools items={["n8n", "Shopify", "Klaviyo"]} /> },
-  { id: "6", title: "Lumen Reporting Engine", description: "Auto-generates weekly client reports with charts and commentary.", category: "Internal Tools", tag: "Internal", tagColor: "#E8C07A", thumbnail: <Time value="12 hrs/wk" label="Time Saved" />, footer: <Tools items={["Python", "OpenAI", "Notion"]} /> },
-];
+const studies = CASE_STUDIES.filter(c => c.services.includes("software-automation"));
+
+const cards: PortfolioCard[] = studies.map(cs => ({
+  id: cs.slug,
+  title: cs.shortTitle,
+  description: cs.summary,
+  category: cs.industry,
+  tag: cs.outcome,
+  tagColor: cs.color,
+  thumbnail: <CaseThumb cs={cs} />,
+  footer: <Tools items={cs.technologies} />,
+  to: `/case-studies/${cs.slug}`,
+}));
 
 function Page() {
   return (
     <ServicePage
       title="Software Automation"
-      oneLiner="Automating busywork with custom workflows, integrations, and internal tools."
-      filters={["All", "CRM Automation", "Data Pipelines", "API Integrations", "Internal Tools"]}
+      oneLiner="Real case studies — AI inventory, ecommerce sync, voice automation and internal tools."
       cards={cards}
+      featuredFirst
     />
   );
 }
