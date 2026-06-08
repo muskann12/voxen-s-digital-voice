@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type PortfolioCard } from "@/components/ServicePage";
 import proball from "@/assets/10008.webp.asset.json";
-import babes from "@/assets/10010.webp.asset.json";
+import babes from "@/assets/10015.webp.asset.json";
 import gravity from "@/assets/10005.webp.asset.json";
-import tandoori from "@/assets/10009.webp.asset.json";
+import tandoori from "@/assets/10013.webp.asset.json";
 
 export const Route = createFileRoute("/graphic-designing")({
   component: Page,
