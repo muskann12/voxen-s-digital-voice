@@ -4,6 +4,12 @@ import proball from "@/assets/10008.webp.asset.json";
 import babes from "@/assets/10015.webp.asset.json";
 import gravity from "@/assets/10005.webp.asset.json";
 import tandoori from "@/assets/10013.webp.asset.json";
+import banner1 from "@/assets/banner_1.png.asset.json";
+import banner2 from "@/assets/banner_2.png.asset.json";
+import banner3 from "@/assets/banner_3.png.asset.json";
+import banner5 from "@/assets/banner_5.png.asset.json";
+import banner8 from "@/assets/banner_8.png.asset.json";
+import banner9 from "@/assets/banner_9.png.asset.json";
 
 export const Route = createFileRoute("/graphic-designing")({
   component: Page,
@@ -36,12 +42,12 @@ const ImgThumb = ({ src, alt }: { src: string; alt: string }) => (
 
 const cards: PortfolioCard[] = [
   // Banners
-  { id: "b1", title: "New Collection Drop – Fashion Season", description: "Seasonal banner set for men's, women's, and accessories collection. Up to 60% off promotional creative.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="F" color={COLORS.Banners} /> },
-  { id: "b2", title: "Smarter Workflow – AI Automation Suite", description: "Tech banner series for business automation, real estate, and travel packages. Clean corporate layout.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="AI" color={COLORS.Banners} /> },
-  { id: "b3", title: "Smart Solar – Clean Energy Campaign", description: "Minimalist solar energy banner focused on cutting bills without cutting comfort.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="S" color={COLORS.Banners} /> },
-  { id: "b4", title: "Back to School – Essentials Collection", description: "Bright, family-friendly banners for school supplies, college gear, and kids' learning products.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="B" color={COLORS.Banners} /> },
-  { id: "b5", title: "Game On – Gaming Gear Series", description: "High-energy gaming peripherals banner with bold typography and action-driven copy.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="G" color={COLORS.Banners} /> },
-  { id: "b6", title: "Jheelstreet Real Estate – Property Showcase", description: "Full real estate campaign with prime locations, investment highlights, and client trust metrics.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <Thumb label="J" color={COLORS.Banners} /> },
+  { id: "b1", title: "New Collection Drop – Fashion Season", description: "Seasonal banner set for men's, women's, and accessories collection. Up to 60% off promotional creative.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner1.url} alt="New Collection Drop – Fashion Season banner" /> },
+  { id: "b2", title: "Smarter Workflow – AI Automation Suite", description: "Tech banner series for business automation, real estate, and travel packages. Clean corporate layout.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner2.url} alt="Smarter Workflow – AI Automation Suite banner" /> },
+  { id: "b3", title: "Smart Solar – Clean Energy Campaign", description: "Minimalist solar energy banner focused on cutting bills without cutting comfort.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner3.url} alt="Smart Solar – Clean Energy Campaign banner" /> },
+  { id: "b4", title: "Back to School – Essentials Collection", description: "Bright, family-friendly banners for school supplies, college gear, and kids' learning products.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner5.url} alt="Back to School – Essentials Collection banner" /> },
+  { id: "b5", title: "Game On – Gaming Gear Series", description: "High-energy gaming peripherals banner with bold typography and action-driven copy.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner8.url} alt="Game On – Gaming Gear Series banner" /> },
+  { id: "b6", title: "Jheelstreet Real Estate – Property Showcase", description: "Full real estate campaign with prime locations, investment highlights, and client trust metrics.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner9.url} alt="Jheelstreet Real Estate – Property Showcase banner" /> },
 
   // Social Media
   { id: "s1", title: "Proball Arena – Indoor Sports Campaign", description: "Social media graphics for padel and cricket arena. Court booking, night matches, and squad culture.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={proball.url} alt="Proball Arena social media" /> },
