@@ -41,12 +41,10 @@ const ViewLink = () => (
 );
 
 const cards: PortfolioCard[] = [
-  { id: "1", title: "Helix Mobile App", description: "End-to-end UX for an iOS fintech app — onboarding to investing flows.", category: "Mobile Apps", tag: "Mobile", tagColor: "#C084FC", thumbnail: <Phone accent="#C084FC" />, footer: <ViewLink /> },
-  { id: "2", title: "AnalytixHQ Dashboard", description: "Information-dense analytics surfaces with progressive disclosure.", category: "Dashboards", tag: "Dashboard", tagColor: "#7C3AED", thumbnail: <Desktop accent="#7C3AED" />, footer: <ViewLink /> },
-  { id: "3", title: "Voxen Design System", description: "Token-driven component library with theming and accessibility baked in.", category: "Design Systems", tag: "System", tagColor: "#E8C07A", thumbnail: <Desktop accent="#E8C07A" />, footer: <ViewLink /> },
-  { id: "4", title: "Drift Shopping Proto", description: "Hi-fidelity prototype for a DTC bundle-builder experience.", category: "Prototypes", tag: "Prototype", tagColor: "#ec4899", thumbnail: <Phone accent="#ec4899" />, footer: <ViewLink /> },
-  { id: "5", title: "PulseHR Admin", description: "People-ops admin surfaces with bulk actions and contextual modals.", category: "Dashboards", tag: "Dashboard", tagColor: "#7C3AED", thumbnail: <Desktop accent="#06b6d4" />, footer: <ViewLink /> },
-  { id: "6", title: "Atlas Booking App", description: "Discovery and checkout flows for a multi-city property app.", category: "Mobile Apps", tag: "Mobile", tagColor: "#C084FC", thumbnail: <Phone accent="#06b6d4" />, footer: <ViewLink /> },
+  { id: "1", title: "Brew & Co. – Coffee Ordering App", description: "End-to-end mobile interface for a specialty coffee brand. Menu browsing, customization, loyalty integration, and fast checkout flows.", category: "Mobile Apps", tag: "Mobile", tagColor: "#C084FC", thumbnail: <Phone accent="#C084FC" />, footer: <ViewLink /> },
+  { id: "2", title: "SmartGuard – Home Security Dashboard", description: "Real-time security monitoring dashboard with device controls, alert logs, and multi-property views. Designed for homeowners and renters.", category: "Dashboards", tag: "Dashboard", tagColor: "#7C3AED", thumbnail: <Desktop accent="#7C3AED" />, footer: <ViewLink /> },
+  { id: "3", title: "Digitra – Digital Agency Component Library", description: "Modular UI system for a modern digital agency. Reusable components, service cards, case study grids, and consistent typography scale.", category: "Design Systems", tag: "System", tagColor: "#E8C07A", thumbnail: <Desktop accent="#E8C07A" />, footer: <ViewLink /> },
+  { id: "4", title: "Lumiere – Fine Jewelry E‑commerce", description: "High-fidelity prototype for a luxury jewelry brand. Product discovery, collection navigation, and seamless checkout experience.", category: "Prototypes", tag: "Prototype", tagColor: "#ec4899", thumbnail: <Phone accent="#ec4899" />, footer: <ViewLink /> },
 ];
 
 function Page() {
