@@ -58,7 +58,6 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
       <Cursor />
       <Header />
 
-      {/* Hero */}
       <section style={{ padding: "80px 6vw 40px", maxWidth: 1500, margin: "0 auto" }}>
         <nav style={{ fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "rgba(233,213,255,0.5)" }}>
           <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>Home</Link>
@@ -79,20 +78,21 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
         </p>
       </section>
 
-      {/* Filters */}
       {filters && filters.length > 0 && (
         <section style={{ padding: "0 6vw", maxWidth: 1500, margin: "0 auto" }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 10 }}>
             {filters.map(f => (
               <button
                 key={f}
+                className="svc-filter"
+                data-active={active === f ? "true" : "false"}
                 onClick={() => setActive(f)}
                 style={{
                   padding: "10px 18px", borderRadius: 999, cursor: "pointer",
                   fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase",
-                  border: "1px solid " + (active === f ? "rgba(168,85,247,0.55)" : "rgba(168,85,247,0.18)"),
-                  background: active === f ? "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(192,132,252,0.12))" : "transparent",
-                  color: active === f ? "#fff" : "rgba(233,213,255,0.7)",
+                  border: `1px solid ${active === f ? "#3b82f6" : "rgba(255,255,255,0.2)"}`,
+                  background: active === f ? "rgba(255,255,255,0.1)" : "transparent",
+                  color: active === f ? "#f0f0f0" : "rgba(233,213,255,0.7)",
                   transition: "all 0.25s ease",
                 }}
               >{f}</button>
@@ -101,21 +101,25 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
         </section>
       )}
 
-      {/* Grid */}
       <section style={{ padding: "40px 6vw 140px", maxWidth: 1500, margin: "0 auto" }}>
         <div className="svc-grid" style={{
-          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22,
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 22,
+          background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.02), transparent 55%)",
         }}>
           {filtered.map((c, i) => {
             const cardStyle: React.CSSProperties = {
               gridColumn: featuredFirst && i === 0 ? "span 2" : undefined,
-              border: "1px solid rgba(168,85,247,0.18)",
+              border: "1px solid rgba(255,255,255,0.08)",
               borderRadius: 14,
               background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
               overflow: "hidden",
-              display: "flex", flexDirection: "column",
-              transition: "all 0.35s ease",
-              textDecoration: "none", color: "inherit",
+              display: "flex",
+              flexDirection: "column",
+              transition: "transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease",
+              textDecoration: "none",
+              color: "inherit",
             };
             const inner = (
               <>
@@ -148,37 +152,40 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
                   )}
                   <h3 style={{
                     fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                    fontSize: 22, margin: 0, lineHeight: 1.2, color: "#fff", fontWeight: 400,
+                    fontSize: 22, margin: 0, lineHeight: 1.2, color: "#f0f0f0", fontWeight: 400,
                   }}>{c.title}</h3>
                   <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "rgba(233,213,255,0.62)", margin: 0 }}>
                     {c.description}
                   </p>
                   {c.footer && (
-                    <div style={{
+                    <div className="svc-footer" style={{
                       marginTop: "auto", paddingTop: 14,
                       borderTop: "1px solid rgba(168,85,247,0.12)",
                       fontSize: 12, color: "rgba(233,213,255,0.7)",
                     }}>{c.footer}</div>
                   )}
                   {c.to && (
-                    <div style={{
+                    <div className="svc-footer" style={{
                       marginTop: c.footer ? 10 : "auto", paddingTop: c.footer ? 0 : 14,
-                      fontSize: 12, color: "#C084FC", letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500,
-                    }}>View Case Study →</div>
+                      fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500,
+                    }}>
+                      <span className="svc-view-link">
+                        View Case Study <span className="svc-view-link__arrow">→</span>
+                      </span>
+                    </div>
                   )}
                 </div>
               </>
             );
             return c.to ? (
-              <Link key={c.id} to={c.to as any} className="interactive" style={cardStyle}>{inner}</Link>
+              <Link key={c.id} to={c.to as any} className="svc-card interactive" style={cardStyle}>{inner}</Link>
             ) : (
-              <article key={c.id} className="interactive" style={cardStyle}>{inner}</article>
+              <article key={c.id} className="svc-card interactive" style={cardStyle}>{inner}</article>
             );
           })}
         </div>
       </section>
 
-      {/* Footer CTA */}
       <section style={{ padding: "60px 6vw 100px", maxWidth: 1500, margin: "0 auto", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 3, color: "#C084FC", textTransform: "uppercase" }}>Ready to start</div>
         <h2 style={{
@@ -193,9 +200,36 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
       </section>
 
       <style>{`
+        .svc-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 0 15px rgba(255,255,255,0.05), 0 10px 25px -5px rgba(100,150,255,0.15);
+          border-color: rgba(255,255,255,0.12) !important;
+        }
+        .svc-filter[data-active="false"]:hover {
+          border-color: rgba(255,255,255,0.5) !important;
+        }
+        .svc-view-link {
+          color: rgba(233,213,255,0.82);
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          transition: color 0.25s ease;
+        }
+        .svc-view-link__arrow {
+          display: inline-block;
+          transition: transform 0.25s ease;
+        }
+        .svc-card:hover .svc-view-link,
+        .svc-footer:hover .svc-view-link {
+          color: #60a5fa;
+        }
+        .svc-card:hover .svc-view-link__arrow,
+        .svc-footer:hover .svc-view-link__arrow {
+          transform: translateX(4px);
+        }
         @media (max-width: 900px) {
           .svc-grid { grid-template-columns: 1fr !important; }
-          .svc-grid > article { grid-column: auto !important; }
+          .svc-grid > * { grid-column: auto !important; }
         }
         @media (min-width: 901px) and (max-width: 1200px) {
           .svc-grid { grid-template-columns: repeat(2, 1fr) !important; }
