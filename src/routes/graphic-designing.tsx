@@ -1,37 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServicePage, type PortfolioCard } from "@/components/ServicePage";
-import proball from "@/assets/10008.webp.asset.json";
-import babes from "@/assets/10015.webp.asset.json";
-import gravity from "@/assets/10005.webp.asset.json";
-import tandoori from "@/assets/10013.webp.asset.json";
-import banner1 from "@/assets/banner_1.png.asset.json";
-import banner2 from "@/assets/banner_2.png.asset.json";
-import banner3 from "@/assets/banner_3.png.asset.json";
-import banner5 from "@/assets/banner_5.png.asset.json";
-import banner8 from "@/assets/banner_8.png.asset.json";
-import banner9 from "@/assets/banner_9.png.asset.json";
 
 export const Route = createFileRoute("/graphic-designing")({
   component: Page,
   head: () => ({ meta: [{ title: "Graphic Designing — Voxen" }, { name: "description", content: "Logos, branding, print, and social media visuals by Voxen." }] }),
 });
 
+const BASE_URL = "https://raw.githubusercontent.com/muskann12/portfloio-images/main/";
 const CATS = ["Logos", "Branding", "Print Design", "Social Media", "Banners"] as const;
 const COLORS: Record<string, string> = {
-  Logos: "#C084FC", Branding: "#E8C07A", "Print Design": "#7C3AED",
-  "Social Media": "#06b6d4", Banners: "#ec4899",
+  Logos: "#C084FC",
+  Branding: "#E8C07A",
+  "Print Design": "#7C3AED",
+  "Social Media": "#06b6d4",
+  Banners: "#ec4899",
 };
-
-const Thumb = ({ label, color }: { label: string; color: string }) => (
-  <div style={{
-    width: "70%", aspectRatio: "4 / 3", borderRadius: 10,
-    background: `linear-gradient(135deg, ${color}33, ${color}11)`,
-    border: `1px solid ${color}55`,
-    display: "flex", alignItems: "center", justifyContent: "center",
-    fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-    fontSize: 38, color: color, letterSpacing: "-0.02em",
-  }}>{label}</div>
-);
 
 const ImgThumb = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} loading="lazy" style={{
@@ -40,23 +23,36 @@ const ImgThumb = ({ src, alt }: { src: string; alt: string }) => (
   }} />
 );
 
+const imageUrl = (filename: string) => `${BASE_URL}${filename}`;
+
 const cards: PortfolioCard[] = [
-  // Banners
-  { id: "b1", title: "New Collection Drop – Fashion Season", description: "Seasonal banner set for men's, women's, and accessories collection. Up to 60% off promotional creative.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner1.url} alt="New Collection Drop – Fashion Season banner" /> },
-  { id: "b2", title: "Smarter Workflow – AI Automation Suite", description: "Tech banner series for business automation, real estate, and travel packages. Clean corporate layout.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner2.url} alt="Smarter Workflow – AI Automation Suite banner" /> },
-  { id: "b3", title: "Smart Solar – Clean Energy Campaign", description: "Minimalist solar energy banner focused on cutting bills without cutting comfort.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner3.url} alt="Smart Solar – Clean Energy Campaign banner" /> },
-  { id: "b4", title: "Back to School – Essentials Collection", description: "Bright, family-friendly banners for school supplies, college gear, and kids' learning products.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner5.url} alt="Back to School – Essentials Collection banner" /> },
-  { id: "b5", title: "Game On – Gaming Gear Series", description: "High-energy gaming peripherals banner with bold typography and action-driven copy.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner8.url} alt="Game On – Gaming Gear Series banner" /> },
-  { id: "b6", title: "Jheelstreet Real Estate – Property Showcase", description: "Full real estate campaign with prime locations, investment highlights, and client trust metrics.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={banner9.url} alt="Jheelstreet Real Estate – Property Showcase banner" /> },
+  { id: "b1", title: "New Collection Drop – Fashion Season", description: "Seasonal banner set for men's, women's, and accessories collection. Up to 60% off.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 1.png")} alt="New Collection Drop – Fashion Season" /> },
+  { id: "b2", title: "Smarter Workflow – AI Automation Suite", description: "Tech banner series for business automation, real estate, and travel packages.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 2.png")} alt="Smarter Workflow – AI Automation Suite" /> },
+  { id: "b3", title: "Smart Solar – Clean Energy Campaign", description: "Minimalist solar energy banner focused on cutting bills without cutting comfort.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 3.png")} alt="Smart Solar – Clean Energy Campaign" /> },
+  { id: "b4", title: "Refresh Your Space – Modern Furniture", description: "Modern furniture collection with premium quality and fast delivery.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 4.png")} alt="Refresh Your Space – Modern Furniture" /> },
+  { id: "b5", title: "Step Up – Premium Sneakers", description: "Sneaker banner highlighting comfort, style, and durability.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("baner 5.png")} alt="Step Up – Premium Sneakers" /> },
+  { id: "b6", title: "New Drop – Lightweight Performance", description: "High-performance footwear with max cushion and lightweight feel.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 6.png")} alt="New Drop – Lightweight Performance" /> },
+  { id: "b7", title: "Back to School – Smart Supplies", description: "School and college essentials for bright futures.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 7.png")} alt="Back to School – Smart Supplies" /> },
+  { id: "b8", title: "Game On – Elite Gaming Gear", description: "Precision gaming gear designed to dominate.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 8.png")} alt="Game On – Elite Gaming Gear" /> },
+  { id: "b9", title: "Jheelstreet Real Estate – Prime Locations", description: "Luxury homes and smart investments with trusted service.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 9.png")} alt="Jheelstreet Real Estate – Prime Locations" /> },
 
-  // Social Media
-  { id: "s1", title: "Proball Arena – Indoor Sports Campaign", description: "Social media graphics for padel and cricket arena. Court booking, night matches, and squad culture.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={proball.url} alt="Proball Arena social media" /> },
-  { id: "s2", title: "Babes Hot Chicken – Late Night Cravings", description: "Bold, playful social posts for hot chicken brand. Family meal deals, happy hour, and weekend specials.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={babes.url} alt="Babes Hot Chicken social media" /> },
-  { id: "s3", title: "Gravity Gym – 3 Months Transformation", description: "Fitness motivation carousel-style posts. Before/after messaging, Eid greeting, and strength training focus.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={gravity.url} alt="Gravity Gym social media" /> },
-  { id: "s4", title: "Tandoori Kitchen – Authentic Flavors", description: "Warm-toned social creatives for Indian cuisine. Tandoori chicken, korma, and tikka masala highlights.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={tandoori.url} alt="Tandoori Kitchen social media" /> },
+  { id: "s1", title: "Study Smarter – IELTS Bootcamp", description: "Intensive IELTS prep with proven score increase techniques.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10001.webp")} alt="Study Smarter – IELTS Bootcamp" /> },
+  { id: "s2", title: "Gravity Gym – 3 Month Transformation", description: "Fitness motivation and strength training carousel posts.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10005.webp")} alt="Gravity Gym – 3 Month Transformation" /> },
+  { id: "s3", title: "CodeBase – Start Coding Today", description: "Software development masterclass and coding bootcamp.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10003.webp")} alt="CodeBase – Start Coding Today" /> },
+  { id: "s4", title: "Proball Arena – Two Sports One Arena", description: "Indoor cricket and padel arena with court booking.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10008.webp")} alt="Proball Arena – Two Sports One Arena" /> },
+  { id: "s5", title: "Proball – Padel Match Culture", description: "Night matches and squad culture for padel players.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10009.webp")} alt="Proball – Padel Match Culture" /> },
+  { id: "s6", title: "Proball – Padel Tips & Drills", description: "Quick tips and bold padel graphics for social media.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10010.webp")} alt="Proball – Padel Tips & Drills" /> },
+  { id: "s7", title: "AngelGo Trips – Private Bus Charter", description: "Malaysia and Singapore tour packages with private transport.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10012.webp")} alt="AngelGo Trips – Private Bus Charter" /> },
+  { id: "s8", title: "Tandoori Kitchen – Authentic Indian Flavors", description: "Tandoori chicken, korma, and tikka masala social creatives.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10013.webp")} alt="Tandoori Kitchen – Authentic Indian Flavors" /> },
+  { id: "s9", title: "Babes Hot Chicken – Late Night Cravings", description: "Bold hot chicken posts with family meal deals and happy hour.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10014.webp")} alt="Babes Hot Chicken – Late Night Cravings" /> },
+  { id: "s10", title: "Babes Hot Chicken – Weekend Special", description: "Hot chicken tenders, fries, and exclusive offers.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10015.webp")} alt="Babes Hot Chicken – Weekend Special" /> },
+  { id: "s11", title: "11.11 Sale – Shopping Festival", description: "Limited time 40% off sale promo for November.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10016.webp")} alt="11.11 Sale – Shopping Festival" /> },
+  { id: "s12", title: "Fresh Roasted Coffee – Cafe Specials", description: "Caramel latte special and free pastry offers.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10019.webp")} alt="Fresh Roasted Coffee – Cafe Specials" /> },
+  { id: "s13", title: "Pet Grooming Services", description: "Professional grooming tips and pet care advice.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10020.webp")} alt="Pet Grooming Services" /> },
+  { id: "s14", title: "Luxury Living – Real Estate Highlights", description: "Dream kitchen, waterfront masterpiece, sold alerts.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10021.webp")} alt="Luxury Living – Real Estate Highlights" /> },
+  { id: "s15", title: "Gravity Gym – Price Table (placeholder)", description: "Gym membership plans and recharge packages.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10002.webp")} alt="Gravity Gym – Price Table (placeholder)" /> },
 
-  // Print Design
-  { id: "p1", title: "Bilal Mansoor – Interior Design Business Card", description: "Clean, professional business card layout with contact details, UAN, and company group branding.", category: "Print Design", tag: "Print", tagColor: COLORS["Print Design"], thumbnail: <Thumb label="BM" color={COLORS["Print Design"]} /> },
+  { id: "p1", title: "Bilal Mansoor – Interior Design Business Card", description: "Professional business card with contact details and UAN.", category: "Print Design", tag: "Print", tagColor: COLORS["Print Design"], thumbnail: <ImgThumb src={imageUrl("uiux (16).png")} alt="Bilal Mansoor – Interior Design Business Card" /> },
 ];
 
 function Page() {
