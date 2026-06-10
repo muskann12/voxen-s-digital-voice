@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const SECTIONS = ["hero", "pricing", "story", "services", "work", "case-studies", "voices", "connect"];
+const SECTIONS = ["hero", "pricing", "story", "services", "case-studies", "voices", "connect"];
 
 function useReveal() {
   useEffect(() => {
