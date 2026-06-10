@@ -51,7 +51,7 @@ function Preloader() {
   if (hide) return null;
   return (
     <div style={{
-      position: "fixed", inset: 0, zIndex: 10000, background: "#08050F",
+      position: "fixed", inset: 0, zIndex: 10000, background: "#0f172a",
       display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 24,
       opacity: gone ? 0 : 1, transition: "opacity 0.6s ease", pointerEvents: gone ? "none" : "auto",
     }}>
@@ -179,7 +179,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
   const doubled = [...items, ...items, ...items, ...items];
   return (
     <div style={{
-      background: "#160E28", borderTop: "1px solid rgba(168,85,247,0.12)",
+      background: "#1e293b", borderTop: "1px solid rgba(168,85,247,0.12)",
       borderBottom: "1px solid rgba(168,85,247,0.12)", padding: "18px 0", overflow: "hidden",
     }}>
       <div className={`marquee-track ${reverse ? "rev" : ""}`}>
@@ -536,7 +536,7 @@ function Index() {
             }}>
               <div style={{
                 position: "relative", aspectRatio: "16 / 10",
-                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #0E0818`,
+                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #111827`,
                 borderBottom: "1px solid rgba(168,85,247,0.15)",
                 display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10,
               }}>
@@ -590,7 +590,7 @@ function Index() {
 
 
       {/* VOICES */}
-      <section id="voices" style={{ padding: "120px 6vw", background: "#0E0818" }}>
+      <section id="voices" style={{ padding: "120px 6vw", background: "#111827" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
           <div className="sec-label reveal">05 — Voices</div>
           <h2 className="reveal" style={{
@@ -600,7 +600,7 @@ function Index() {
           <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {QUOTES.map(q => (
               <div key={q.n} className="interactive" style={{
-                background: "#160E28", border: "1px solid rgba(168,85,247,0.1)",
+                background: "#1e293b", border: "1px solid rgba(168,85,247,0.1)",
                 borderRadius: 18, padding: 36, display: "flex", flexDirection: "column", gap: 28,
               }}>
                 <div style={{
@@ -627,7 +627,7 @@ function Index() {
 
       {/* CONNECT */}
 
-      <section id="connect" style={{ padding: "140px 6vw", background: "#0E0818" }}>
+      <section id="connect" style={{ padding: "140px 6vw", background: "#111827" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",

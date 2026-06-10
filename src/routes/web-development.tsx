@@ -9,7 +9,7 @@ export const Route = createFileRoute("/web-development")({
 const Browser = ({ accent }: { accent: string }) => (
   <div style={{
     width: "78%", aspectRatio: "16 / 10", borderRadius: 8,
-    border: "1px solid rgba(168,85,247,0.3)", background: "#08050F",
+    border: "1px solid rgba(168,85,247,0.3)", background: "#0f172a",
     overflow: "hidden", display: "flex", flexDirection: "column",
   }}>
     <div style={{
