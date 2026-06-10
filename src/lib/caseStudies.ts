@@ -30,7 +30,10 @@ export type CaseStudy = {
   scalability?: string;
   roadmap?: string[];
   modules?: Section[];
+  videoUrl?: string;
+  showDemoForm?: boolean;
 };
+
 
 export const CASE_STUDIES: CaseStudy[] = [
   {
