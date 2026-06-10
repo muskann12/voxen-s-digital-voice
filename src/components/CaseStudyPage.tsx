@@ -77,6 +77,71 @@ function Flow({ steps, color }: { steps: WorkflowStep[]; color: string }) {
   );
 }
 
+function DemoForm({ color }: { color: string }) {
+  const [submitted, setSubmitted] = useState(false);
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const payload = Object.fromEntries(fd.entries());
+    console.log("[Demo Request]", payload);
+    setSubmitted(true);
+  };
+  const input: React.CSSProperties = {
+    width: "100%", padding: "12px 14px", borderRadius: 10,
+    background: "rgba(22,14,40,0.6)", border: "1px solid rgba(168,85,247,0.22)",
+    color: "#fff", fontSize: 14, outline: "none",
+  };
+  const label: React.CSSProperties = {
+    fontSize: 11, letterSpacing: 2, textTransform: "uppercase",
+    color: "rgba(233,213,255,0.65)", marginBottom: 8, display: "block",
+  };
+  return (
+    <section style={{ padding: "60px 6vw", maxWidth: 900, margin: "0 auto" }}>
+      <div style={{
+        border: `1px solid ${color}44`,
+        borderRadius: 18,
+        background: "linear-gradient(135deg, rgba(22,14,40,0.9), rgba(14,8,24,0.9))",
+        padding: 40,
+      }}>
+        <div style={{ fontSize: 11, letterSpacing: 3, color, textTransform: "uppercase", marginBottom: 10 }}>
+          Talk to us
+        </div>
+        <h2 style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(28px, 3.6vw, 44px)", margin: "0 0 24px", color: "#fff", fontWeight: 400,
+        }}>
+          Request a Demo
+        </h2>
+        {submitted ? (
+          <p style={{ fontSize: 16, color: "#86efac" }}>
+            Thanks — we've received your request and will be in touch shortly.
+          </p>
+        ) : (
+          <form onSubmit={onSubmit} style={{ display: "grid", gap: 18 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="cs-2col">
+              <div><label style={label}>Name</label><input required name="name" style={input} /></div>
+              <div><label style={label}>Email</label><input required type="email" name="email" style={input} /></div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="cs-2col">
+              <div><label style={label}>Company</label><input required name="company" style={input} /></div>
+              <div><label style={label}>Phone (optional)</label><input name="phone" style={input} /></div>
+            </div>
+            <div>
+              <label style={label}>Message</label>
+              <textarea required name="message" rows={4} style={{ ...input, resize: "vertical" }} />
+            </div>
+            <button type="submit" className="btn-violet" style={{ justifySelf: "start" }}>
+              Get a Quote →
+            </button>
+          </form>
+        )}
+      </div>
+    </section>
+  );
+}
+
+
+
 export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
   useEffect(() => { window.scrollTo({ top: 0 }); }, [cs.slug]);
 
