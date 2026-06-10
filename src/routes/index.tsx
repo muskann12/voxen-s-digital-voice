@@ -306,6 +306,73 @@ function Index() {
       <Marquee items={["NexaShop", "AnalytixHQ", "PulseHR", "ClearPay", "EstatePro", "Rebrand Studio", "Pakistan · UAE · UK · US"]} />
       <Marquee reverse items={["3D Websites", "UI/UX Design", "Web Development", "Brand Identity", "SEO", "Digital Marketing", "SaaS Automation", "Recruitment"]} />
 
+      {/* AI AUTOMATION SUITE FEATURED */}
+      <section id="automation-suite" style={{ padding: "100px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="reveal" style={{
+          position: "relative",
+          borderRadius: 24,
+          padding: "clamp(28px, 4vw, 56px)",
+          background: "linear-gradient(135deg, rgba(34,211,238,0.10), rgba(124,58,237,0.18) 60%, rgba(14,8,24,0.9))",
+          border: "1px solid rgba(34,211,238,0.25)",
+          boxShadow: "0 40px 120px -40px rgba(34,211,238,0.35), inset 0 0 80px rgba(124,58,237,0.08)",
+          overflow: "hidden",
+        }}>
+          <div style={{
+            position: "absolute", inset: -2, pointerEvents: "none",
+            background: "radial-gradient(60% 60% at 20% 0%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(50% 50% at 100% 100%, rgba(192,132,252,0.18), transparent 60%)",
+          }} />
+          <div style={{
+            position: "relative",
+            display: "grid",
+            gridTemplateColumns: "1.05fr 1fr",
+            gap: 40,
+            alignItems: "center",
+          }} className="auto-suite-grid">
+            <div>
+              <div className="sec-label" style={{ color: "#22D3EE" }}>New — Case Study</div>
+              <h2 style={{
+                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                fontSize: "clamp(30px, 4.4vw, 56px)", margin: "16px 0 18px", fontWeight: 400,
+                letterSpacing: "-0.015em", color: "#fff",
+              }}>
+                AI-Powered <span className="grad-text">Automation Suite</span>
+              </h2>
+              <p style={{
+                fontSize: 17, lineHeight: 1.65, color: "rgba(233,213,255,0.78)", fontWeight: 300,
+                maxWidth: 560, marginBottom: 28,
+              }}>
+                WhatsApp &amp; Telegram integration, AI task assignment, Stripe invoicing,
+                real-time dashboard, and AI client memory. See how we automated an entire
+                business operation.
+              </p>
+              <Link
+                to="/case-studies/$slug"
+                params={{ slug: "ai-automation-suite" }}
+                className="btn-violet"
+                style={{ textDecoration: "none", display: "inline-block" }}
+              >
+                View Full Case Study →
+              </Link>
+            </div>
+            <div style={{
+              borderRadius: 16, overflow: "hidden",
+              border: "1px solid rgba(34,211,238,0.3)",
+              background: "#000",
+              boxShadow: "0 30px 80px -30px rgba(34,211,238,0.5)",
+            }}>
+              <video
+                src="https://raw.githubusercontent.com/muskann12/portfloio-images/main/dashboard-preview.mp4"
+                autoPlay muted loop playsInline
+                style={{ width: "100%", display: "block" }}
+              />
+            </div>
+          </div>
+        </div>
+        <style>{`@media (max-width: 900px) { .auto-suite-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
+
+
       {/* PRICING / VALUE */}
       <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
         <div className="sec-label reveal">01 — Pricing</div>
