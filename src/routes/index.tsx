@@ -1,12 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
+import {
+  Palette, Film, TrendingUp, Code2, LayoutGrid, Users, Bot, Zap, Sparkles,
+} from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Cursor } from "@/components/Cursor";
 import { HeroScene } from "@/components/HeroScene";
 import { FloatingBox3D } from "@/components/FloatingBox3D";
-import { Project3DCard } from "@/components/Project3DCard";
 import { SERVICES } from "@/lib/services";
 import { FEATURED_CASES } from "@/lib/caseStudies";
+
+const SERVICE_ICONS: Record<string, ComponentType<{ size?: number; strokeWidth?: number }>> = {
+  "graphic-designing": Palette,
+  "video-editing": Film,
+  "seo-growth": TrendingUp,
+  "web-development": Code2,
+  "ui-ux-design": LayoutGrid,
+  "recruiting": Users,
+  "ai-chatbot-development": Bot,
+  "software-automation": Zap,
+};
 
 export const Route = createFileRoute("/")({
   component: Index,
