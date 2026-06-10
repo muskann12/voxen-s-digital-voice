@@ -458,58 +458,55 @@ function Index() {
         <div className="sec-label reveal">— Services</div>
         <h2 className="reveal" style={{
           fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
-        }}>What we do, <span className="grad-text">end to end.</span></h2>
-        <div className="reveal-stagger">
-          {SERVICES.map(s => (
-            <Link key={s.slug} to={s.to} className="svc-row interactive" style={{ textDecoration: "none", color: "inherit" }}>
-              <div>
-                <div style={{ fontSize: 22, fontWeight: 500 }}>{s.title}</div>
-                <div style={{ fontSize: 13, color: "rgba(233,213,255,0.55)", marginTop: 6 }}>{s.tagline}</div>
-              </div>
-              <div style={{ color: "#C084FC", fontSize: 18 }}>↗</div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* WORK */}
-      <section id="work" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">03 — Selected Work</div>
-        <h2 className="reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
-        }}>Projects <span className="grad-text">that perform.</span></h2>
-        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} >
-          {PROJECTS.slice(0, 3).map(p => (
-            <Project3DCard 
-              key={p.name}
-              name={p.name}
-              category={p.cat}
-              description={p.desc}
-              result={p.result}
-              stack={p.stack}
-              color={p.color}
-            />
-          ))}
-        </div>
-        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20, marginTop: 20 }}>
-          {PROJECTS.slice(3).map(p => (
-            <Project3DCard 
-              key={p.name}
-              name={p.name}
-              category={p.cat}
-              description={p.desc}
-              result={p.result}
-              stack={p.stack}
-              color={p.color}
-            />
-          ))}
+          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 14px", fontWeight: 400, letterSpacing: "-0.015em",
+          display: "inline-block", position: "relative",
+        }}>
+          What we do, <span className="grad-text">end to end.</span>
+          <span style={{
+            display: "block", marginTop: 14, width: 96, height: 3, borderRadius: 3,
+            background: "linear-gradient(90deg, #3b82f6, #60a5fa, transparent)",
+          }} />
+        </h2>
+        <div className="reveal-stagger svc-card-grid" style={{
+          marginTop: 50, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20,
+        }}>
+          {SERVICES.map(s => {
+            const Icon = SERVICE_ICONS[s.slug] ?? Sparkles;
+            return (
+              <Link key={s.slug} to={s.to} className="svc-tile interactive" style={{
+                textDecoration: "none", color: "inherit",
+                background: "#1e293b",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 16, padding: 24, position: "relative",
+                display: "flex", flexDirection: "column", gap: 14, minHeight: 200,
+                transition: "transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
+              }}>
+                <div style={{
+                  width: 44, height: 44, borderRadius: 12,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(59,130,246,0.12)",
+                  border: "1px solid rgba(59,130,246,0.25)",
+                  color: "#60a5fa",
+                }}>
+                  <Icon size={22} strokeWidth={1.6} />
+                </div>
+                <div style={{ fontSize: 17, fontWeight: 600, color: "#f0f0f0", lineHeight: 1.25 }}>{s.title}</div>
+                <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.55 }}>
+                  {s.tagline} <span style={{ color: "#60a5fa" }}>↗</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
         <style>{`
-          @media (max-width: 900px) {
-            #work > div[style*="repeat(3"], #work > div[style*="repeat(2"] { grid-template-columns: 1fr !important; }
+          .svc-tile:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(59,130,246,0.55) !important;
+            box-shadow: 0 0 0 1px rgba(59,130,246,0.25), 0 18px 50px -18px rgba(59,130,246,0.55);
+            background: #233044 !important;
           }
+          @media (max-width: 1100px) { .svc-card-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 640px)  { .svc-card-grid { grid-template-columns: 1fr !important; } }
         `}</style>
       </section>
 
