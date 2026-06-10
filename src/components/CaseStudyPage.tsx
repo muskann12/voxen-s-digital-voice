@@ -318,7 +318,10 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
+      {cs.showDemoForm && <DemoForm color={cs.color} />}
+
       {/* CTA */}
+
       <section style={{ padding: "100px 6vw", maxWidth: 1400, margin: "0 auto", textAlign: "center" }}>
         <div style={{ fontSize: 11, letterSpacing: 3, color: "#C084FC", textTransform: "uppercase" }}>Ready to start</div>
         <h2 style={{
