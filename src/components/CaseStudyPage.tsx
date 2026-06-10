@@ -127,6 +127,30 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
         </div>
       </section>
 
+      {cs.videoUrl && (
+        <section style={{ padding: "20px 6vw 40px", maxWidth: 1400, margin: "0 auto" }}>
+          <div style={{
+            border: `1px solid ${cs.color}33`,
+            borderRadius: 18,
+            overflow: "hidden",
+            background: "#000",
+            boxShadow: `0 30px 80px -30px ${cs.color}55`,
+          }}>
+            <video
+              src={cs.videoUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              style={{ width: "100%", display: "block" }}
+            />
+          </div>
+        </section>
+      )}
+
+
+
       {/* CLIENT OVERVIEW */}
       <section style={{ padding: "60px 6vw", maxWidth: 1400, margin: "0 auto" }}>
         <SectionLabel n="01">Client Overview</SectionLabel>
