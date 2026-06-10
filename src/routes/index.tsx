@@ -477,7 +477,7 @@ function Index() {
           What we do, <span className="grad-text">end to end.</span>
           <span style={{
             display: "block", marginTop: 14, width: 96, height: 3, borderRadius: 3,
-            background: "linear-gradient(90deg, #3b82f6, #60a5fa, transparent)",
+            background: "linear-gradient(90deg, #d946ef, #e879f9, transparent)",
           }} />
         </h2>
         <div className="reveal-stagger svc-card-grid" style={{
@@ -499,13 +499,13 @@ function Index() {
                   display: "flex", alignItems: "center", justifyContent: "center",
                   background: "rgba(59,130,246,0.12)",
                   border: "1px solid rgba(59,130,246,0.25)",
-                  color: "#60a5fa",
+                  color: "#e879f9",
                 }}>
                   <Icon size={22} strokeWidth={1.6} />
                 </div>
                 <div style={{ fontSize: 17, fontWeight: 600, color: "#f0f0f0", lineHeight: 1.25 }}>{s.title}</div>
                 <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.55 }}>
-                  {s.tagline} <span style={{ color: "#60a5fa" }}>↗</span>
+                  {s.tagline} <span style={{ color: "#e879f9" }}>↗</span>
                 </div>
               </Link>
             );

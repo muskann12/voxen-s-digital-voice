@@ -90,7 +90,7 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
                 style={{
                   padding: "10px 18px", borderRadius: 999, cursor: "pointer",
                   fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase",
-                  border: `1px solid ${active === f ? "#3b82f6" : "rgba(255,255,255,0.2)"}`,
+                  border: `1px solid ${active === f ? "#d946ef" : "rgba(255,255,255,0.2)"}`,
                   background: active === f ? "rgba(255,255,255,0.1)" : "transparent",
                   color: active === f ? "#f0f0f0" : "rgba(233,213,255,0.7)",
                   transition: "all 0.25s ease",
@@ -221,7 +221,7 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
         }
         .svc-card:hover .svc-view-link,
         .svc-footer:hover .svc-view-link {
-          color: #60a5fa;
+          color: #e879f9;
         }
         .svc-card:hover .svc-view-link__arrow,
         .svc-footer:hover .svc-view-link__arrow {
