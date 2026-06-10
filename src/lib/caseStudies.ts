@@ -398,10 +398,82 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Advanced cohort analytics",
     ],
   },
+  {
+    slug: "ai-automation-suite",
+    shortTitle: "Enterprise AI Automation Suite",
+    title: "Enterprise AI Automation Suite – WhatsApp, Telegram, AI Task Assignment & Smart Invoicing",
+    industry: "AI Automation Development",
+    summary: "Unified platform automating WhatsApp/Telegram communication, AI-driven task assignment, Stripe invoicing, and real-time business intelligence.",
+    outcome: "70% reduction in manual task assignment time",
+    color: "#22D3EE",
+    initial: "AS",
+    technologies: ["Node.js", "React", "Python", "Stripe", "WhatsApp API", "Telegram API", "PostgreSQL", "Redis"],
+    services: ["software-automation", "ai-chatbot-development"],
+    videoUrl: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/dashboard-preview.mp4",
+    showDemoForm: true,
+    hero: {
+      eyebrow: "Case Study · AI Automation Development",
+      headline: "WhatsApp, Telegram, AI task assignment & smart invoicing — one unified suite.",
+      sub: "Automating communication, intelligently assigning tasks, and surfacing real-time business intelligence across an entire operation.",
+    },
+    clientOverview:
+      "The client managed multiple teams using manual processes – task assignment by managers, invoice follow-ups via email, scattered client communication across WhatsApp/Telegram, and no visibility into employee workload. They needed a unified system that automates communication, intelligently assigns tasks, and provides real-time business intelligence.",
+    challenges: [
+      "Manual task assignment by managers",
+      "Invoice follow-ups handled via email",
+      "Scattered client communication across WhatsApp/Telegram",
+      "No visibility into employee workload",
+      "No unified system for operations",
+    ],
+    goals: [
+      "Automate communication across channels",
+      "Intelligently assign tasks based on workload & skills",
+      "Automate invoicing and payment reminders",
+      "Provide real-time business intelligence",
+      "Centralize client and lead management",
+    ],
+    solution:
+      "We built a unified AI automation suite covering messaging, task assignment, invoicing, lead scoring, and live business intelligence.",
+    architecture: [
+      { label: "Backend: Node.js + Python (AI models)" },
+      { label: "Frontend: React + Tailwind" },
+      { label: "Messaging: WhatsApp Business API, Telegram Bot API" },
+      { label: "Payments: Stripe" },
+      { label: "Database: PostgreSQL with vector memory" },
+      { label: "Real-time: WebSockets + Redis" },
+    ],
+    features: [
+      "WhatsApp & Telegram Integration – Invoices sent automatically via WhatsApp, task notifications to employees on Telegram, lead follow-up reminders, and two-way communication logging.",
+      "AI Task Assignment – System automatically assigns tasks based on employee workload, skills, past performance, and availability. Zero manual intervention.",
+      "Stripe Invoicing + Auto-Send – Invoices generated and sent automatically. Real-time payment status. Auto reminders for pending/overdue invoices via WhatsApp/Telegram.",
+      "Client Management – Centralized client records with complete history. Any employee can view full client history.",
+      "Leads Management with AI Score – Each lead gets AI score (0-100%) based on source, interaction, budget. High-score leads prioritized and assigned to best employee.",
+      "Employee Monitoring & Task Load – Dashboard shows each employee's current tasks, monthly completed, availability score.",
+      "Real-time Dashboard – 6 KPI cards (Active clients, MRR, open leads, pending invoices, active tasks, employees online). Revenue trend chart (6 months). Live alerts section.",
+      "AI Client Memory – System remembers complete history of each client. AI suggests upsells.",
+    ],
+    stack: [
+      { group: "Backend", items: ["Node.js", "Python"] },
+      { group: "Frontend", items: ["React", "Tailwind"] },
+      { group: "Messaging", items: ["WhatsApp Business API", "Telegram Bot API"] },
+      { group: "Payments", items: ["Stripe"] },
+      { group: "Database", items: ["PostgreSQL", "Vector memory"] },
+      { group: "Real-time", items: ["WebSockets", "Redis"] },
+    ],
+    results: [
+      { value: "−70%", label: "Manual task assignment time" },
+      { value: "40%", label: "Faster invoice payments" },
+      { value: "85%", label: "Leads followed up <5 min" },
+      { value: "20%", label: "Better task distribution" },
+      { value: "−30%", label: "Flight delay impact (logistics)" },
+    ],
+  },
 ];
 
 export const FEATURED_SLUGS = [
+  "ai-automation-suite",
   "wholesale-shopify-sync",
+
   "product-scraping-sync",
   "ai-appointment-recovery",
 ];
