@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode, type FormEvent } from "react";
+
 import { Logo } from "@/components/Logo";
 import { Cursor } from "@/components/Cursor";
 import type { CaseStudy, WorkflowStep } from "@/lib/caseStudies";
