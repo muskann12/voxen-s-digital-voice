@@ -1,12 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ComponentType } from "react";
+import {
+  Palette, Film, TrendingUp, Code2, LayoutGrid, Users, Bot, Zap, Sparkles,
+} from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { Cursor } from "@/components/Cursor";
 import { HeroScene } from "@/components/HeroScene";
 import { FloatingBox3D } from "@/components/FloatingBox3D";
-import { Project3DCard } from "@/components/Project3DCard";
 import { SERVICES } from "@/lib/services";
 import { FEATURED_CASES } from "@/lib/caseStudies";
+
+const SERVICE_ICONS: Record<string, ComponentType<{ size?: number; strokeWidth?: number }>> = {
+  "graphic-designing": Palette,
+  "video-editing": Film,
+  "seo-growth": TrendingUp,
+  "web-development": Code2,
+  "ui-ux-design": LayoutGrid,
+  "recruiting": Users,
+  "ai-chatbot-development": Bot,
+  "software-automation": Zap,
+};
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -26,7 +39,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-const SECTIONS = ["hero", "pricing", "story", "services", "work", "case-studies", "voices", "connect"];
+const SECTIONS = ["hero", "pricing", "story", "services", "case-studies", "voices", "connect"];
 
 function useReveal() {
   useEffect(() => {
@@ -51,7 +64,7 @@ function Preloader() {
   if (hide) return null;
   return (
     <div style={{
-      position: "fixed", inset: 0, zIndex: 10000, background: "#08050F",
+      position: "fixed", inset: 0, zIndex: 10000, background: "#0f172a",
       display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 24,
       opacity: gone ? 0 : 1, transition: "opacity 0.6s ease", pointerEvents: gone ? "none" : "auto",
     }}>
@@ -179,7 +192,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
   const doubled = [...items, ...items, ...items, ...items];
   return (
     <div style={{
-      background: "#160E28", borderTop: "1px solid rgba(168,85,247,0.12)",
+      background: "#1e293b", borderTop: "1px solid rgba(168,85,247,0.12)",
       borderBottom: "1px solid rgba(168,85,247,0.12)", padding: "18px 0", overflow: "hidden",
     }}>
       <div className={`marquee-track ${reverse ? "rev" : ""}`}>
@@ -458,58 +471,55 @@ function Index() {
         <div className="sec-label reveal">— Services</div>
         <h2 className="reveal" style={{
           fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
-        }}>What we do, <span className="grad-text">end to end.</span></h2>
-        <div className="reveal-stagger">
-          {SERVICES.map(s => (
-            <Link key={s.slug} to={s.to} className="svc-row interactive" style={{ textDecoration: "none", color: "inherit" }}>
-              <div>
-                <div style={{ fontSize: 22, fontWeight: 500 }}>{s.title}</div>
-                <div style={{ fontSize: 13, color: "rgba(233,213,255,0.55)", marginTop: 6 }}>{s.tagline}</div>
-              </div>
-              <div style={{ color: "#C084FC", fontSize: 18 }}>↗</div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* WORK */}
-      <section id="work" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">03 — Selected Work</div>
-        <h2 className="reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 50px", fontWeight: 400, letterSpacing: "-0.015em",
-        }}>Projects <span className="grad-text">that perform.</span></h2>
-        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }} >
-          {PROJECTS.slice(0, 3).map(p => (
-            <Project3DCard 
-              key={p.name}
-              name={p.name}
-              category={p.cat}
-              description={p.desc}
-              result={p.result}
-              stack={p.stack}
-              color={p.color}
-            />
-          ))}
-        </div>
-        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 20, marginTop: 20 }}>
-          {PROJECTS.slice(3).map(p => (
-            <Project3DCard 
-              key={p.name}
-              name={p.name}
-              category={p.cat}
-              description={p.desc}
-              result={p.result}
-              stack={p.stack}
-              color={p.color}
-            />
-          ))}
+          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 14px", fontWeight: 400, letterSpacing: "-0.015em",
+          display: "inline-block", position: "relative",
+        }}>
+          What we do, <span className="grad-text">end to end.</span>
+          <span style={{
+            display: "block", marginTop: 14, width: 96, height: 3, borderRadius: 3,
+            background: "linear-gradient(90deg, #3b82f6, #60a5fa, transparent)",
+          }} />
+        </h2>
+        <div className="reveal-stagger svc-card-grid" style={{
+          marginTop: 50, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20,
+        }}>
+          {SERVICES.map(s => {
+            const Icon = SERVICE_ICONS[s.slug] ?? Sparkles;
+            return (
+              <Link key={s.slug} to={s.to} className="svc-tile interactive" style={{
+                textDecoration: "none", color: "inherit",
+                background: "#1e293b",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 16, padding: 24, position: "relative",
+                display: "flex", flexDirection: "column", gap: 14, minHeight: 200,
+                transition: "transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
+              }}>
+                <div style={{
+                  width: 44, height: 44, borderRadius: 12,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(59,130,246,0.12)",
+                  border: "1px solid rgba(59,130,246,0.25)",
+                  color: "#60a5fa",
+                }}>
+                  <Icon size={22} strokeWidth={1.6} />
+                </div>
+                <div style={{ fontSize: 17, fontWeight: 600, color: "#f0f0f0", lineHeight: 1.25 }}>{s.title}</div>
+                <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.55 }}>
+                  {s.tagline} <span style={{ color: "#60a5fa" }}>↗</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
         <style>{`
-          @media (max-width: 900px) {
-            #work > div[style*="repeat(3"], #work > div[style*="repeat(2"] { grid-template-columns: 1fr !important; }
+          .svc-tile:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(59,130,246,0.55) !important;
+            box-shadow: 0 0 0 1px rgba(59,130,246,0.25), 0 18px 50px -18px rgba(59,130,246,0.55);
+            background: #233044 !important;
           }
+          @media (max-width: 1100px) { .svc-card-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 640px)  { .svc-card-grid { grid-template-columns: 1fr !important; } }
         `}</style>
       </section>
 
@@ -536,7 +546,7 @@ function Index() {
             }}>
               <div style={{
                 position: "relative", aspectRatio: "16 / 10",
-                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #0E0818`,
+                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #111827`,
                 borderBottom: "1px solid rgba(168,85,247,0.15)",
                 display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10,
               }}>
@@ -590,7 +600,7 @@ function Index() {
 
 
       {/* VOICES */}
-      <section id="voices" style={{ padding: "120px 6vw", background: "#0E0818" }}>
+      <section id="voices" style={{ padding: "120px 6vw", background: "#111827" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
           <div className="sec-label reveal">05 — Voices</div>
           <h2 className="reveal" style={{
@@ -600,7 +610,7 @@ function Index() {
           <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {QUOTES.map(q => (
               <div key={q.n} className="interactive" style={{
-                background: "#160E28", border: "1px solid rgba(168,85,247,0.1)",
+                background: "#1e293b", border: "1px solid rgba(168,85,247,0.1)",
                 borderRadius: 18, padding: 36, display: "flex", flexDirection: "column", gap: 28,
               }}>
                 <div style={{
@@ -627,7 +637,7 @@ function Index() {
 
       {/* CONNECT */}
 
-      <section id="connect" style={{ padding: "140px 6vw", background: "#0E0818" }}>
+      <section id="connect" style={{ padding: "140px 6vw", background: "#111827" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",

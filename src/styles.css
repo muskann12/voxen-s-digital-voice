@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-bg: #08050F;
-  --color-deep: #0E0818;
-  --color-card: #160E28;
+  --color-bg: #0f172a;
+  --color-deep: #111827;
+  --color-card: #1e293b;
   --color-primary: #6B21A8;
   --color-violet: #7C3AED;
   --color-lavender: #A855F7;
@@ -19,9 +19,9 @@
 }
 
 :root {
-  --bg: #08050F;
-  --deep: #0E0818;
-  --card: #160E28;
+  --bg: #0f172a;
+  --deep: #111827;
+  --card: #1e293b;
   --primary: #6B21A8;
   --violet: #7C3AED;
   --lavender: #A855F7;

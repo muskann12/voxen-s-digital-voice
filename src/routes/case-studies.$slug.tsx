@@ -38,7 +38,7 @@ export const Route = createFileRoute("/case-studies/$slug")({
     };
   },
   notFoundComponent: () => (
-    <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#E9D5FF", background: "#08050F" }}>
+    <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", color: "#E9D5FF", background: "#0f172a" }}>
       Case study not found.
     </div>
   ),
