@@ -15,8 +15,9 @@ export const Route = createFileRoute("/seo-portfolio")({
   }),
 });
 
-const BASE = "https://github.com/muskann12/portfloio-images/blob/main/";
-const img = (filename: string) => BASE + encodeURI(filename);
+// ✅ Changed: raw.githubusercontent.com, not github.com/blob
+const BASE = "https://raw.githubusercontent.com/muskann12/portfloio-images/main/";
+const img = (filename: string) => BASE + filename;
 
 type CaseStudy = {
   id: string;
@@ -35,9 +36,9 @@ const CASES: CaseStudy[] = [
     metrics: ["177 keywords", "~2.5K monthly traffic", "Top 3 — 'roofers in london'"],
     result: "Secured top 3 rankings for high-value local keywords, growing organic traffic by over 10% and generating qualified leads for roofing services across London.",
     screenshots: [
-      { src: img("Screenshot 2026-06-11 at 4.52.30 AM.png"), alt: "Golden Roofing — keyword list" },
-      { src: img("Screenshot 2026-06-11 at 4.45.59 AM.png"), alt: "Golden Roofing — homepage" },
-      { src: img("Screenshot 2026-06-11 at 4.52.14 AM.png"), alt: "Golden Roofing — keyword view" },
+      { src: img("golden-keywords.png"), alt: "Golden Roofing — keyword list" },
+      { src: img("golden-home.png"), alt: "Golden Roofing — homepage" },
+      { src: img("golden-keywords-2.png"), alt: "Golden Roofing — keyword view" },
     ],
   },
   {
@@ -47,9 +48,9 @@ const CASES: CaseStudy[] = [
     metrics: ["4K+ keywords", "12.4K monthly traffic", "5/5 from 51,279 reviews"],
     result: "Optimised local landing pages for 11 UK regions, achieving #1 rankings for 'oven cleaning service' and driving franchise inquiries nationwide.",
     screenshots: [
-      { src: img("Screenshot 2026-06-11 at 4.51.29 AM.png"), alt: "Ovenu — overview with 4K keywords" },
-      { src: img("Screenshot 2026-06-11 at 4.44.11 AM.png"), alt: "Ovenu — homepage" },
-      { src: img("Screenshot 2026-06-11 at 4.51.42 AM.png"), alt: "Ovenu — keyword research" },
+      { src: img("ovenu-overview.png"), alt: "Ovenu — overview with 4K keywords" },
+      { src: img("ovenu-home.png"), alt: "Ovenu — homepage" },
+      { src: img("ovenu-keywords.png"), alt: "Ovenu — keyword research" },
     ],
   },
   {
@@ -59,9 +60,9 @@ const CASES: CaseStudy[] = [
     metrics: ["3,956+ keywords", "13.4K monthly traffic", "#1 — 'steel building'"],
     result: "Ranked #1 for multiple commercial steel building keywords, increasing organic traffic by 6% and generating high-value B2B leads across the UK.",
     screenshots: [
-      { src: img("Screenshot 2026-06-11 at 4.50.14 AM.png"), alt: "Steel Buildings — keyword list" },
-      { src: img("Screenshot 2026-06-11 at 4.49.58 AM.png"), alt: "Steel Buildings — overview" },
-      { src: img("Screenshot 2026-06-11 at 4.45.26 AM.png"), alt: "Steel Buildings — homepage" },
+      { src: img("steel-keywords.png"), alt: "Steel Buildings — keyword list" },
+      { src: img("steel-overview.png"), alt: "Steel Buildings — overview" },
+      { src: img("steel-home.png"), alt: "Steel Buildings — homepage" },
     ],
   },
   {
@@ -71,10 +72,10 @@ const CASES: CaseStudy[] = [
     metrics: ["602 keywords", "961 monthly traffic", "#1 — 'kitchen deep cleaning dubai'"],
     result: "Captured #1 ranking for 'kitchen deep cleaning dubai', growing non-branded traffic by 28% and dominating hyperlocal cleaning searches in Dubai.",
     screenshots: [
-      { src: img("Screenshot 2026-06-11 at 4.48.41 AM.png"), alt: "EcoClean — overview" },
-      { src: img("Screenshot 2026-06-11 at 4.48.15 AM.png"), alt: "EcoClean — keyword list" },
-      { src: img("Screenshot 2026-06-11 at 4.43.17 AM.png"), alt: "EcoClean — homepage" },
-      { src: img("Screenshot 2026-06-11 at 4.49.09 AM.png"), alt: "EcoClean — keyword research" },
+      { src: img("eco-overview.png"), alt: "EcoClean — overview" },
+    // Note: original 4.48.15 became nutri-keywords.png
+      { src: img("eco-home.png"), alt: "EcoClean — homepage" },
+      { src: img("eco-keywords-2.png"), alt: "EcoClean — keyword research" },
     ],
   },
   {
@@ -84,9 +85,9 @@ const CASES: CaseStudy[] = [
     metrics: ["1,144 keywords", "4K monthly traffic", "Ranks for global food terms"],
     result: "Acquired over 1,100 food-related keywords, driving organic traffic to the app's landing pages and positioning NutriScan as a top nutrition resource.",
     screenshots: [
-      { src: img("Screenshot 2026-06-11 at 4.48.00 AM.png"), alt: "NutriScan — overview" },
-      { src: img("Screenshot 2026-06-11 at 4.48.15 AM.png"), alt: "NutriScan — keyword list" },
-      { src: img("Screenshot 2026-06-11 at 4.46.21 AM.png"), alt: "NutriScan — homepage" },
+      { src: img("nutri-overview.png"), alt: "NutriScan — overview" },
+      { src: img("nutri-keywords.png"), alt: "NutriScan — keyword list" },
+      { src: img("nutri-home.png"), alt: "NutriScan — homepage" },
     ],
   },
 ];
