@@ -523,6 +523,84 @@ function Index() {
         `}</style>
       </section>
 
+      {/* SEO CASE STUDIES */}
+      <section id="seo-portfolio" style={{ padding: "100px 6vw 60px", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">— SEO Portfolio</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 14px", fontWeight: 400, letterSpacing: "-0.015em",
+          color: "#ffffff",
+        }}>
+          SEO Case Studies — <span style={{ color: "#d946ef" }}>Real Results for Real Clients.</span>
+        </h2>
+        <p className="reveal" style={{
+          fontSize: 16, lineHeight: 1.6, color: "rgba(229,231,235,0.7)", maxWidth: 720, fontWeight: 300, marginBottom: 36,
+        }}>
+          Top rankings, organic growth, and qualified leads — verified across the UK, Dubai, and global markets.
+        </p>
+        <div className="reveal-stagger seo-mini-grid" style={{
+          display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18,
+        }}>
+          {[
+            { name: "Golden Roofing", industry: "Roofing · UK", metrics: ["177 keywords", "Top 3 — 'roofers in london'"], img: "Screenshot 2026-06-11 at 4.45.59 AM.png" },
+            { name: "Ovenu", industry: "Oven Cleaning · UK", metrics: ["4K+ keywords", "12.4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.44.11 AM.png" },
+            { name: "Steel Buildings", industry: "Industrial · UK", metrics: ["3,956+ keywords", "13.4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.45.26 AM.png" },
+            { name: "EcoClean Dubai", industry: "Cleaning · Dubai", metrics: ["602 keywords", "#1 — kitchen deep cleaning dubai"], img: "Screenshot 2026-06-11 at 4.43.17 AM.png" },
+            { name: "NutriScan App", industry: "Nutrition · Global", metrics: ["1,144 keywords", "4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.46.21 AM.png" },
+          ].map(c => (
+            <Link key={c.name} to={"/seo-portfolio" as any} className="seo-mini-card interactive" style={{
+              textDecoration: "none", color: "inherit",
+              background: "#1a1f2e", border: "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 14, overflow: "hidden", display: "flex", flexDirection: "column",
+              transition: "transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease",
+            }}>
+              <div style={{ aspectRatio: "16 / 10", background: "#0a0a0a", overflow: "hidden" }}>
+                <img
+                  src={"https://raw.githubusercontent.com/muskann12/portfloio-images/main/" + encodeURI(c.img)}
+                  alt={c.name + " preview"}
+                  loading="lazy"
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                />
+              </div>
+              <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 10 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
+                  <h3 style={{ margin: 0, color: "#ffffff", fontSize: 18, fontWeight: 600 }}>{c.name}</h3>
+                  <span style={{ fontSize: 10.5, color: "#d946ef", letterSpacing: 1, textTransform: "uppercase" }}>{c.industry}</span>
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {c.metrics.map(m => (
+                    <span key={m} style={{
+                      fontSize: 11, padding: "4px 9px", borderRadius: 6,
+                      background: "rgba(217,70,239,0.1)", color: "#f5d0fe",
+                      border: "1px solid rgba(217,70,239,0.28)",
+                    }}>{m}</span>
+                  ))}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="reveal" style={{ marginTop: 32, textAlign: "center" }}>
+          <Link to={"/seo-portfolio" as any} style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            padding: "12px 22px", borderRadius: 999,
+            background: "#d946ef", color: "#ffffff", fontWeight: 500, fontSize: 14,
+            textDecoration: "none", letterSpacing: 0.3,
+            transition: "transform 0.2s ease, background 0.2s ease",
+          }} className="seo-cta">View Full SEO Case Studies →</Link>
+        </div>
+        <style>{`
+          .seo-mini-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(217,70,239,0.55) !important;
+            box-shadow: 0 0 0 1px rgba(217,70,239,0.2), 0 18px 50px -18px rgba(217,70,239,0.55);
+          }
+          .seo-cta:hover { background: #f0a3ff !important; transform: scale(1.03); }
+          @media (max-width: 1100px) { .seo-mini-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          @media (max-width: 640px)  { .seo-mini-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
+      </section>
+
       {/* FEATURED CASE STUDIES */}
       <section id="case-studies" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
         <div className="sec-label reveal">04 — Featured Case Studies</div>
