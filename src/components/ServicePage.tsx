@@ -54,7 +54,7 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
   useEffect(() => { window.scrollTo({ top: 0 }); }, []);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0f172a", color: "#E9D5FF" }}>
+    <div style={{ minHeight: "100vh", background: "#000000", color: "#E9D5FF" }}>
       <Cursor />
       <Header />
 
@@ -126,7 +126,7 @@ export function ServicePage({ title, oneLiner, filters, cards, featuredFirst }: 
                 <div style={{
                   position: "relative",
                   aspectRatio: featuredFirst && i === 0 ? "21 / 9" : "16 / 9",
-                  background: "radial-gradient(circle at 30% 30%, rgba(124,58,237,0.18), transparent 60%), #111827",
+                  background: "radial-gradient(circle at 30% 30%, rgba(124,58,237,0.18), transparent 60%), #0a0a0a",
                   borderBottom: "1px solid rgba(168,85,247,0.15)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>

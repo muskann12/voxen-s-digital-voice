@@ -64,7 +64,7 @@ function Preloader() {
   if (hide) return null;
   return (
     <div style={{
-      position: "fixed", inset: 0, zIndex: 10000, background: "#0f172a",
+      position: "fixed", inset: 0, zIndex: 10000, background: "#000000",
       display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 24,
       opacity: gone ? 0 : 1, transition: "opacity 0.6s ease", pointerEvents: gone ? "none" : "auto",
     }}>
@@ -192,7 +192,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
   const doubled = [...items, ...items, ...items, ...items];
   return (
     <div style={{
-      background: "#1e293b", borderTop: "1px solid rgba(168,85,247,0.12)",
+      background: "#1a1f2e", borderTop: "1px solid rgba(168,85,247,0.12)",
       borderBottom: "1px solid rgba(168,85,247,0.12)", padding: "18px 0", overflow: "hidden",
     }}>
       <div className={`marquee-track ${reverse ? "rev" : ""}`}>
@@ -488,7 +488,7 @@ function Index() {
             return (
               <Link key={s.slug} to={s.to} className="svc-tile interactive" style={{
                 textDecoration: "none", color: "inherit",
-                background: "#1e293b",
+                background: "#1a1f2e",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderRadius: 16, padding: 24, position: "relative",
                 display: "flex", flexDirection: "column", gap: 14, minHeight: 200,
@@ -497,8 +497,8 @@ function Index() {
                 <div style={{
                   width: 44, height: 44, borderRadius: 12,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  background: "rgba(59,130,246,0.12)",
-                  border: "1px solid rgba(59,130,246,0.25)",
+                  background: "rgba(217,70,239,0.12)",
+                  border: "1px solid rgba(217,70,239,0.25)",
                   color: "#e879f9",
                 }}>
                   <Icon size={22} strokeWidth={1.6} />
@@ -514,9 +514,9 @@ function Index() {
         <style>{`
           .svc-tile:hover {
             transform: translateY(-6px) scale(1.01);
-            border-color: rgba(59,130,246,0.55) !important;
-            box-shadow: 0 0 0 1px rgba(59,130,246,0.25), 0 18px 50px -18px rgba(59,130,246,0.55);
-            background: #233044 !important;
+            border-color: rgba(217,70,239,0.55) !important;
+            box-shadow: 0 0 0 1px rgba(217,70,239,0.25), 0 18px 50px -18px rgba(217,70,239,0.55);
+            background: #2a1f3e !important;
           }
           @media (max-width: 1100px) { .svc-card-grid { grid-template-columns: repeat(2, 1fr) !important; } }
           @media (max-width: 640px)  { .svc-card-grid { grid-template-columns: 1fr !important; } }
@@ -546,7 +546,7 @@ function Index() {
             }}>
               <div style={{
                 position: "relative", aspectRatio: "16 / 10",
-                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #111827`,
+                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #0a0a0a`,
                 borderBottom: "1px solid rgba(168,85,247,0.15)",
                 display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10,
               }}>
@@ -600,7 +600,7 @@ function Index() {
 
 
       {/* VOICES */}
-      <section id="voices" style={{ padding: "120px 6vw", background: "#111827" }}>
+      <section id="voices" style={{ padding: "120px 6vw", background: "#0a0a0a" }}>
         <div style={{ maxWidth: 1500, margin: "0 auto" }}>
           <div className="sec-label reveal">05 — Voices</div>
           <h2 className="reveal" style={{
@@ -610,7 +610,7 @@ function Index() {
           <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {QUOTES.map(q => (
               <div key={q.n} className="interactive" style={{
-                background: "#1e293b", border: "1px solid rgba(168,85,247,0.1)",
+                background: "#1a1f2e", border: "1px solid rgba(168,85,247,0.1)",
                 borderRadius: 18, padding: 36, display: "flex", flexDirection: "column", gap: 28,
               }}>
                 <div style={{
@@ -637,7 +637,7 @@ function Index() {
 
       {/* CONNECT */}
 
-      <section id="connect" style={{ padding: "140px 6vw", background: "#111827" }}>
+      <section id="connect" style={{ padding: "140px 6vw", background: "#0a0a0a" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
