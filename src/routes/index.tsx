@@ -542,11 +542,11 @@ function Index() {
           display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18,
         }}>
           {[
-            { name: "Golden Roofing", industry: "Roofing · UK", metrics: ["177 keywords", "Top 3 — 'roofers in london'"], img: "Screenshot 2026-06-11 at 4.45.59 AM.png" },
-            { name: "Ovenu", industry: "Oven Cleaning · UK", metrics: ["4K+ keywords", "12.4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.44.11 AM.png" },
-            { name: "Steel Buildings", industry: "Industrial · UK", metrics: ["3,956+ keywords", "13.4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.45.26 AM.png" },
-            { name: "EcoClean Dubai", industry: "Cleaning · Dubai", metrics: ["602 keywords", "#1 — kitchen deep cleaning dubai"], img: "Screenshot 2026-06-11 at 4.43.17 AM.png" },
-            { name: "NutriScan App", industry: "Nutrition · Global", metrics: ["1,144 keywords", "4K monthly traffic"], img: "Screenshot 2026-06-11 at 4.46.21 AM.png" },
+{ name: "Golden Roofing", industry: "Roofing · UK", metrics: ["177 keywords", "Top 3 — 'roofers in london'"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/golden-home.png" },
+{ name: "Ovenu", industry: "Oven Cleaning · UK", metrics: ["4K+ keywords", "12.4K monthly traffic"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/ovenu-home.png" },
+{ name: "Steel Buildings", industry: "Industrial · UK", metrics: ["3,956+ keywords", "13.4K monthly traffic"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/steel-home.png" },
+{ name: "EcoClean Dubai", industry: "Cleaning · Dubai", metrics: ["602 keywords", "#1 — kitchen deep cleaning dubai"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/eco-home.png" },
+{ name: "NutriScan App", industry: "Nutrition · Global", metrics: ["1,144 keywords", "4K monthly traffic"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/nutri-home.png" },
           ].map(c => (
             <Link key={c.name} to={"/seo-portfolio" as any} className="seo-mini-card interactive" style={{
               textDecoration: "none", color: "inherit",
