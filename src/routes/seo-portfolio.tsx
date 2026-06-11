@@ -15,7 +15,7 @@ export const Route = createFileRoute("/seo-portfolio")({
   }),
 });
 
-const BASE = "https://raw.githubusercontent.com/muskann12/portfloio-images/main/";
+const BASE = "https://github.com/muskann12/portfloio-images/blob/main/";
 const img = (filename: string) => BASE + encodeURI(filename);
 
 type CaseStudy = {
