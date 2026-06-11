@@ -13,6 +13,7 @@ import { Route as WebDevelopmentRouteImport } from './routes/web-development'
 import { Route as VideoEditingRouteImport } from './routes/video-editing'
 import { Route as UiUxDesignRouteImport } from './routes/ui-ux-design'
 import { Route as SoftwareAutomationRouteImport } from './routes/software-automation'
+import { Route as SeoPortfolioRouteImport } from './routes/seo-portfolio'
 import { Route as SeoGrowthRouteImport } from './routes/seo-growth'
 import { Route as RecruitingRouteImport } from './routes/recruiting'
 import { Route as GraphicDesigningRouteImport } from './routes/graphic-designing'
@@ -38,6 +39,11 @@ const UiUxDesignRoute = UiUxDesignRouteImport.update({
 const SoftwareAutomationRoute = SoftwareAutomationRouteImport.update({
   id: '/software-automation',
   path: '/software-automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoPortfolioRoute = SeoPortfolioRouteImport.update({
+  id: '/seo-portfolio',
+  path: '/seo-portfolio',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SeoGrowthRoute = SeoGrowthRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/graphic-designing': typeof GraphicDesigningRoute
   '/recruiting': typeof RecruitingRoute
   '/seo-growth': typeof SeoGrowthRoute
+  '/seo-portfolio': typeof SeoPortfolioRoute
   '/software-automation': typeof SoftwareAutomationRoute
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/graphic-designing': typeof GraphicDesigningRoute
   '/recruiting': typeof RecruitingRoute
   '/seo-growth': typeof SeoGrowthRoute
+  '/seo-portfolio': typeof SeoPortfolioRoute
   '/software-automation': typeof SoftwareAutomationRoute
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/graphic-designing': typeof GraphicDesigningRoute
   '/recruiting': typeof RecruitingRoute
   '/seo-growth': typeof SeoGrowthRoute
+  '/seo-portfolio': typeof SeoPortfolioRoute
   '/software-automation': typeof SoftwareAutomationRoute
   '/ui-ux-design': typeof UiUxDesignRoute
   '/video-editing': typeof VideoEditingRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/graphic-designing'
     | '/recruiting'
     | '/seo-growth'
+    | '/seo-portfolio'
     | '/software-automation'
     | '/ui-ux-design'
     | '/video-editing'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/graphic-designing'
     | '/recruiting'
     | '/seo-growth'
+    | '/seo-portfolio'
     | '/software-automation'
     | '/ui-ux-design'
     | '/video-editing'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/graphic-designing'
     | '/recruiting'
     | '/seo-growth'
+    | '/seo-portfolio'
     | '/software-automation'
     | '/ui-ux-design'
     | '/video-editing'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   GraphicDesigningRoute: typeof GraphicDesigningRoute
   RecruitingRoute: typeof RecruitingRoute
   SeoGrowthRoute: typeof SeoGrowthRoute
+  SeoPortfolioRoute: typeof SeoPortfolioRoute
   SoftwareAutomationRoute: typeof SoftwareAutomationRoute
   UiUxDesignRoute: typeof UiUxDesignRoute
   VideoEditingRoute: typeof VideoEditingRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/software-automation'
       fullPath: '/software-automation'
       preLoaderRoute: typeof SoftwareAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo-portfolio': {
+      id: '/seo-portfolio'
+      path: '/seo-portfolio'
+      fullPath: '/seo-portfolio'
+      preLoaderRoute: typeof SeoPortfolioRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/seo-growth': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   GraphicDesigningRoute: GraphicDesigningRoute,
   RecruitingRoute: RecruitingRoute,
   SeoGrowthRoute: SeoGrowthRoute,
+  SeoPortfolioRoute: SeoPortfolioRoute,
   SoftwareAutomationRoute: SoftwareAutomationRoute,
   UiUxDesignRoute: UiUxDesignRoute,
   VideoEditingRoute: VideoEditingRoute,

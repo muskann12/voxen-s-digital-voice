@@ -146,7 +146,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
   useEffect(() => { window.scrollTo({ top: 0 }); }, [cs.slug]);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0f172a", color: "#E9D5FF" }}>
+    <div style={{ minHeight: "100vh", background: "#000000", color: "#E9D5FF" }}>
       <Cursor />
       <Header />
 
@@ -344,7 +344,7 @@ export function CaseStudyPage({ cs }: { cs: CaseStudy }) {
       </section>
 
       {/* RESULTS */}
-      <section style={{ padding: "80px 6vw", background: "#111827" }}>
+      <section style={{ padding: "80px 6vw", background: "#0a0a0a" }}>
         <div style={{ maxWidth: 1400, margin: "0 auto" }}>
           <SectionLabel n={cs.modules ? "09" : "08"}>Business Impact</SectionLabel>
           <H2>Measurable results.</H2>
