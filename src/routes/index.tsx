@@ -288,8 +288,8 @@ function Index() {
               <br /><span style={{ color: "#C084FC", fontSize: 13, letterSpacing: 1.5 }}>PAKISTAN · UAE · UK · USA</span>
             </p>
             <div className="reveal" style={{ marginTop: 44, display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <button onClick={() => jump("work")} className="btn-violet">See Our Work</button>
-              <button onClick={() => jump("story")} className="btn-ghost">Our Story →</button>
+              <button onClick={() => jump("case-studies")} className="btn-violet">See Our Work</button>
+              <button onClick={() => jump("pricing")} className="btn-ghost">View Pricing →</button>
             </div>
           </div>
         </div>
