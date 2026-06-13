@@ -598,19 +598,71 @@ function Index() {
       </section>
 
 
+      {/* PRICING / VALUE */}
+      <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="sec-label reveal">04 — Pricing</div>
+        <h2 className="reveal" style={{
+          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+          fontSize: "clamp(34px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em", maxWidth: 1000,
+        }}>
+          Agency-level work, <span className="grad-text">without the agency-level invoice.</span>
+        </h2>
+        <p className="reveal" style={{
+          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 680, fontWeight: 300, marginBottom: 56,
+        }}>
+          We charge a fraction of what traditional agencies bill — same craft, same senior team,
+          honest pricing built for founders and growing brands.
+        </p>
+        <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
+          {[
+            { k: "Up to 60%", l: "Less than agency rates", d: "Lean team, zero overhead, all senior talent — savings passed straight to you." },
+            { k: "Flat &", l: "Transparent quotes", d: "No surprise invoices, no scope-creep games. One clear price, locked from day one." },
+            { k: "Built for", l: "Real budgets", d: "Startup, SMB or enterprise — we shape a scope that fits, not one that bleeds you." },
+          ].map(c => (
+            <div key={c.l} className="cap-card interactive" style={{ padding: 32 }}>
+              <div style={{
+                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                fontSize: 34, color: "#fff", letterSpacing: "-0.01em",
+              }}>{c.k}</div>
+              <div style={{ fontSize: 14, color: "#C084FC", marginTop: 6, fontWeight: 500, letterSpacing: 0.5 }}>{c.l}</div>
+              <div style={{ marginTop: 16, fontSize: 14, color: "rgba(233,213,255,0.65)", lineHeight: 1.6 }}>{c.d}</div>
+            </div>
+          ))}
+        </div>
+        <style>{`@media (max-width: 900px) { #pricing > div[style*="repeat(3"] { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+
       {/* VOICES */}
-      <section id="voices" style={{ padding: "120px 6vw", background: "#0a0a0a" }}>
-        <div style={{ maxWidth: 1500, margin: "0 auto" }}>
-          <div className="sec-label reveal">05 — Voices</div>
+      <section id="voices" style={{
+        padding: "120px 6vw",
+        background: "linear-gradient(180deg, #1a0d2e 0%, #2d1b4e 50%, #1a0d2e 100%)",
+        position: "relative", overflow: "hidden",
+      }}>
+        <div aria-hidden style={{
+          position: "absolute", inset: 0,
+          background: "radial-gradient(ellipse at 20% 30%, rgba(217,70,239,0.25), transparent 55%), radial-gradient(ellipse at 80% 70%, rgba(192,132,252,0.22), transparent 55%)",
+          pointerEvents: "none",
+        }} />
+        <div style={{ maxWidth: 1500, margin: "0 auto", position: "relative", zIndex: 1 }}>
+          <div className="sec-label reveal" style={{ color: "#f5d0fe" }}>05 — Voices</div>
           <h2 className="reveal" style={{
             fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-            fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 60px", fontWeight: 400, letterSpacing: "-0.015em",
+            fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 16px", fontWeight: 400, letterSpacing: "-0.015em", color: "#fff",
           }}>What our <span className="grad-text">clients say.</span></h2>
+          <p className="reveal" style={{
+            fontSize: 17, lineHeight: 1.6, color: "rgba(245,208,254,0.85)", maxWidth: 720, fontWeight: 300, marginBottom: 56,
+          }}>
+            Founders pick Voxen because the work lands at the top of the market — at a price that doesn't.
+            Here's what they say after shipping with us.
+          </p>
           <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
             {QUOTES.map(q => (
               <div key={q.n} className="interactive" style={{
-                background: "#1a1f2e", border: "1px solid rgba(168,85,247,0.1)",
-                borderRadius: 18, padding: 36, display: "flex", flexDirection: "column", gap: 28,
+                background: "linear-gradient(160deg, rgba(255,255,255,0.08), rgba(217,70,239,0.06))",
+                border: "1px solid rgba(245,208,254,0.25)",
+                borderRadius: 20, padding: 36, display: "flex", flexDirection: "column", gap: 28,
+                backdropFilter: "blur(8px)",
+                boxShadow: "0 10px 40px -12px rgba(217,70,239,0.35)",
               }}>
                 <div style={{
                   fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
@@ -619,16 +671,23 @@ function Index() {
                 <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: "auto" }}>
                   <div style={{
                     width: 44, height: 44, borderRadius: "50%",
-                    background: "linear-gradient(135deg, #7C3AED, #C084FC)",
+                    background: "linear-gradient(135deg, #d946ef, #f5d0fe)",
+                    boxShadow: "0 0 18px rgba(217,70,239,0.6)",
                   }} />
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 500 }}>{q.n}</div>
-                    <div style={{ fontSize: 12, color: "rgba(233,213,255,0.55)" }}>{q.t}</div>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>{q.n}</div>
+                    <div style={{ fontSize: 12, color: "rgba(245,208,254,0.75)" }}>{q.t}</div>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          <p className="reveal" style={{
+            marginTop: 40, fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase",
+            color: "#f5d0fe", textAlign: "center", fontWeight: 500,
+          }}>
+            Premium craft · Honest, affordable pricing
+          </p>
           <style>{`@media (max-width: 900px) { #voices > div > div[style*="repeat(3"] { grid-template-columns: 1fr !important; } }`}</style>
         </div>
       </section>
