@@ -388,18 +388,13 @@ function Index() {
 
       {/* SERVICES */}
       <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">— Services</div>
-        <h2 className="reveal" style={{
+        <div className="sec-label reveal" style={{
           fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
           fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 14px", fontWeight: 400, letterSpacing: "-0.015em",
           display: "inline-block", position: "relative",
-        }}>
-          What we do, <span className="grad-text">end to end.</span>
-          <span style={{
-            display: "block", marginTop: 14, width: 96, height: 3, borderRadius: 3,
-            background: "linear-gradient(90deg, #d946ef, #e879f9, transparent)",
-          }} />
-        </h2>
+        }>— Services</div>
+      
+      
         <div className="reveal-stagger svc-card-grid" style={{
           marginTop: 50, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20,
         }}>
