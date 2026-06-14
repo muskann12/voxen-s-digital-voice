@@ -388,13 +388,21 @@ function Index() {
 
       {/* SERVICES */}
       <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(34px, 4.5vw, 56px)", margin: "20px 0 14px", fontWeight: 400, letterSpacing: "-0.015em",
-          display: "inline-block", position: "relative",
-        }>— Services</div>
-      
-      
+      <div className="sec-label reveal" style={{
+  display: "flex", alignItems: "center", justifyContent: "center", gap: "20px",
+  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+  fontSize: "clamp(42px, 5.5vw, 68px)", fontWeight: 400, color: "#ffffff",
+}}>
+  <span style={{
+    width: "60px", height: "2px", background: "linear-gradient(90deg, #d946ef, #e879f9)",
+    borderRadius: "2px",
+  }} />
+  <span>Services</span>
+  <span style={{
+    width: "60px", height: "2px", background: "linear-gradient(90deg, #e879f9, #d946ef)",
+    borderRadius: "2px",
+  }} />
+</div>
         <div className="reveal-stagger svc-card-grid" style={{
           marginTop: 50, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20,
         }}>
