@@ -348,7 +348,7 @@ function Index() {
                 fontSize: "clamp(30px, 4.4vw, 56px)", margin: "16px 0 18px", fontWeight: 400,
                 letterSpacing: "-0.015em", color: "#fff",
               }}>
-                AI-Powered Workflow Automation <span className="grad-text">From Missed to Matched.</span>
+           From Zero Automation to <span className="grad-text"> Enterprise AI Operations.</span>
               </h2>
               <p style={{
                 fontSize: 17, lineHeight: 1.65, color: "rgba(233,213,255,0.78)", fontWeight: 300,
