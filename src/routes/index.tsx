@@ -476,7 +476,7 @@ function Index() {
             }}>
               <div style={{ aspectRatio: "16 / 10", background: "#0a0a0a", overflow: "hidden" }}>
                 <img
-                  src={"https://github.com/muskann12/portfloio-images/blob/main/" + encodeURI(c.img)}
+                  src={ encodeURI(c.img)}
                   alt={c.name + " preview"}
                   loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
