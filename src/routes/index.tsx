@@ -348,14 +348,13 @@ function Index() {
                 fontSize: "clamp(30px, 4.4vw, 56px)", margin: "16px 0 18px", fontWeight: 400,
                 letterSpacing: "-0.015em", color: "#fff",
               }}>
-                AI-Powered <span className="grad-text">Automation Suite</span>
+                AI-Powered Workflow Automation <span className="grad-text">From Missed to Matched.</span>
               </h2>
               <p style={{
                 fontSize: 17, lineHeight: 1.65, color: "rgba(233,213,255,0.78)", fontWeight: 300,
                 maxWidth: 560, marginBottom: 28,
               }}>
-                WhatsApp &amp; Telegram integration, AI task assignment, Stripe invoicing,
-                real-time dashboard, and AI client memory. See how we automated an entire
+                How AI task assignment and WhatsApp/Telegram automation helped a business follow up 85% of leads within 5 minutes and AI client memory. See how we automated an entire
                 business operation.
               </p>
               <Link
