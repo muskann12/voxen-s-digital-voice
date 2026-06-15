@@ -8,7 +8,7 @@ export default defineConfig({
     },
   },
   tanstackStart: {
-    server: { entry: "server" },
+    server: { entry: "server", preset: "vercel" },
     spa: { enabled: true, prerender: { outputPath: "/index" } },
     pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index" } }],
     sitemap: { enabled: false },
