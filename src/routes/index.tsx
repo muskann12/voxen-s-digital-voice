@@ -93,7 +93,7 @@ function Nav({ active }: { active: string }) {
   }, []);
   const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
   const links = [
-    { id: "services", label: "Services" },
+ 
     { id: "case-studies", label: "Case Studies" },
     { id: "pricing", label: "Pricing" },
   ];
