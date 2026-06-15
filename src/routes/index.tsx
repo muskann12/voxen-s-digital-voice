@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Voxen — Give Your Business A Voice" },
-      { name: "description", content: "Voxen is a B2B digital agency crafting world-class 3D websites, brand identities, and digital experiences across Pakistan, UAE, UK, and USA." },
+      { name: "description", content: "Voxen is a B2B digital agency crafting world-class 3D websites, brand identities, and digital experiences across EUROPE · MIDDLE EAST · ASIA · AFRICA" },
       { property: "og:title", content: "Voxen — Give Your Business A Voice" },
       { property: "og:description", content: "World-class B2B digital experiences. 3D websites, UI/UX, brand identity." },
       { name: "twitter:card", content: "summary_large_image" },
@@ -94,7 +94,7 @@ function Nav({ active }: { active: string }) {
   const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
   const links = [
  
-    
+
     { id: "case-studies", label: "Case Studies" },
     { id: "pricing", label: "Pricing" },
   ];
@@ -286,7 +286,7 @@ function Index() {
               maxWidth: 520, fontWeight: 300,
             }}>
               We create world-class digital experiences for B2B businesses done being invisible.
-              <br /><span style={{ color: "#C084FC", fontSize: 13, letterSpacing: 1.5 }}>PAKISTAN · UAE · UK · USA</span>
+              <br /><span style={{ color: "#C084FC", fontSize: 13, letterSpacing: 1.5 }}>EUROPE · MIDDLE EAST · ASIA · AFRICA</span>
             </p>
             <div className="reveal" style={{ marginTop: 44, display: "flex", gap: 14, flexWrap: "wrap" }}>
               <button onClick={() => jump("case-studies")} className="btn-violet">See Our Work</button>
@@ -317,7 +317,7 @@ function Index() {
         </div>
       </section>
 
-      <Marquee items={["NexaShop", "AnalytixHQ", "PulseHR", "ClearPay", "EstatePro", "Rebrand Studio", "Pakistan · UAE · UK · US"]} />
+      <Marquee items={["NexaShop", "AnalytixHQ", "PulseHR", "ClearPay", "EstatePro", "Rebrand Studio", "EUROPE · MIDDLE EAST · ASIA · AFRICA"]} />
       <Marquee reverse items={["3D Websites", "UI/UX Design", "Web Development", "Brand Identity", "SEO", "Digital Marketing", "SaaS Automation", "Recruitment"]} />
 
       {/* AI AUTOMATION SUITE FEATURED */}
@@ -784,7 +784,7 @@ function Index() {
           <Logo size={56} />
         </div>
         <div style={{ textAlign: "center", fontSize: 11, color: "rgba(233,213,255,0.4)", letterSpacing: 1 }}>
-          © {new Date().getFullYear()} VOXEN — All rights reserved · Pakistan · UAE · UK · USA
+          © {new Date().getFullYear()} VOXEN — All rights reserved · EUROPE · MIDDLE EAST · ASIA · AFRICA
         </div>
         <style>{`@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }`}</style>
       </footer>
