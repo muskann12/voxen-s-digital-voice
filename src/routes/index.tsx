@@ -712,53 +712,67 @@ function Index() {
 
 
       {/* CONNECT */}
-
-      <section id="connect" style={{ padding: "140px 6vw", background: "#0a0a0a" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", textAlign: "center" }}>
-          <h2 className="reveal" style={{
-            fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-            fontSize: "clamp(28px, 3.6vw, 48px)", lineHeight: 1.2, fontWeight: 400,
-            margin: 0, letterSpacing: "-0.01em",
-          }}>
-            But we're here not to talk about ourselves — we're here to talk about <span className="grad-text">you, your company, your product, and your goals.</span>
-          </h2>
-          <p className="reveal" style={{ marginTop: 24, fontSize: 16, color: "rgba(233,213,255,0.65)" }}>
-            With us it happens. We would love to hear from you.
-          </p>
-
-          {sent ? (
-            <div className="reveal" style={{ marginTop: 60, fontSize: 22, color: "#fff", fontFamily: "'DM Serif Display', serif", fontStyle: "italic" }}>
-              ♥ Thank you. We'll be in touch within 24 hours.
-            </div>
-          ) : (
-            <>
-              <div className="reveal" style={{ marginTop: 60, display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
-       
-            
-              </div>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                if (!email) return;
-                const subject = encodeURIComponent(`New project enquiry — ${budget}`);
-                const body = encodeURIComponent(`Hi Voxen,\n\nI'd like to discuss a project.\nBudget: ${budget}\nEmail: ${email}\n\n— Sent from voxen.com`);
-                window.location.href = `mailto:hello@voxen.com?subject=${subject}&body=${body}`;
-                setSent(true);
-              }} className="reveal" style={{
-                marginTop: 40, display: "flex", gap: 16, alignItems: "center",
-                maxWidth: 640, margin: "40px auto 0", flexWrap: "wrap", justifyContent: "center",
-              }}>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} required placeholder="your@email.com" style={{
-                  flex: 1, minWidth: 260, background: "transparent", border: "none",
-                  borderBottom: "1px solid rgba(233,213,255,0.3)", padding: "14px 4px",
-                  color: "#fff", fontSize: 16, outline: "none", fontFamily: "inherit",
-                }} />
-                <button type="submit" className="btn-violet">Send →</button>
-              </form>
-            </>
-          )}
-        </div>
-      </section>
-
+<section style={{
+  padding: "100px 6vw",
+  background: "linear-gradient(135deg, #0a0a0a, #0f1117)",
+  borderTop: "1px solid rgba(217,70,239,0.2)",
+  borderBottom: "1px solid rgba(217,70,239,0.2)",
+}}>
+  <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+    <h2 style={{
+      fontFamily: "'DM Serif Display', serif",
+      fontStyle: "italic",
+      fontSize: "clamp(42px, 6vw, 72px)",
+      fontWeight: 400,
+      background: "linear-gradient(135deg, #ffffff, #f5d0fe)",
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      color: "transparent",
+      marginBottom: 20,
+    }}>
+      Ready to Give Your <br />
+      Business A Voice?
+    </h2>
+    <p style={{
+      fontSize: 18,
+      color: "#cbd5e1",
+      maxWidth: 600,
+      margin: "0 auto 32px",
+      lineHeight: 1.5,
+    }}>
+      Get a FREE sample — no pitch, no pressure. Just quality work that speaks for itself.
+    </p>
+    <a
+      href="https://wa.me/YOUR_NUMBER"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 12,
+        background: "linear-gradient(135deg, #d946ef, #a855f7)",
+        padding: "14px 32px",
+        borderRadius: 60,
+        textDecoration: "none",
+        color: "#fff",
+        fontWeight: 600,
+        fontSize: 16,
+        transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        boxShadow: "0 8px 20px -8px rgba(217,70,239,0.5)",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = "translateY(-3px)";
+        e.currentTarget.style.boxShadow = "0 12px 28px -8px rgba(217,70,239,0.7)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "0 8px 20px -8px rgba(217,70,239,0.5)";
+      }}
+    >
+      <span>WhatsApp Us Now →</span>
+    </a>
+  </div>
+</section>
       {/* FOOTER */}
       <footer style={{ padding: "80px 6vw 40px", borderTop: "1px solid rgba(168,85,247,0.12)" }}>
         <div style={{
