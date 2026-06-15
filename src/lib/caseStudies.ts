@@ -471,7 +471,7 @@ export const CASE_STUDIES: CaseStudy[] = [
 ];
 
 export const FEATURED_SLUGS = [
-  "ai-automation-suite",
+
   "wholesale-shopify-sync",
 
   "product-scraping-sync",
