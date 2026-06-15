@@ -482,6 +482,7 @@ function Index() {
           }
         `}</style>
       </section>
+      
     {/* CASE STUDIES — SEO + FEATURED MERGED (6 TOTAL) */}
       <section id="case-studies" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
         <div className="sec-label reveal">04 — Featured Case Studies</div>
@@ -495,7 +496,7 @@ function Index() {
           AI inventory, ecommerce automation, voice AI, and SEO growth — production-grade results shipped for real clients.
         </p>
         <div className="reveal-stagger cs-feat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
-
+        
           {/* --- 3 FEATURED DEV CASE STUDIES --- */}
           {FEATURED_CASES.map(cs => (
             <Link key={cs.slug} to={`/case-studies/${cs.slug}` as any} className="interactive" style={{
