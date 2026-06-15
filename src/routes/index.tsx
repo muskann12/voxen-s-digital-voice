@@ -387,20 +387,25 @@ function Index() {
 
 
       {/* SERVICES */}
-      <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
-      <div className="sec-label reveal" style={{
-  display: "flex", alignItems: "center", justifyContent: "center", gap: "20px",
-  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-  fontSize: "clamp(42px, 5.5vw, 68px)", fontWeight: 400, color: "#ffffff",
+<section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
+  <div className="reveal" style={{
+  display: "flex", alignItems: "center", gap: "20px",
+  margin: "20px 0 14px",
 }}>
   <span style={{
-    width: "60px", height: "2px", background: "linear-gradient(90deg, #d946ef, #e879f9)",
-    borderRadius: "2px",
+    width: "60px", height: "3px", borderRadius: "3px",
+    background: "linear-gradient(90deg, #d946ef, #e879f9)",
   }} />
-  <span>Services</span>
+  <h2 style={{
+    fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+    fontSize: "clamp(34px, 4.5vw, 56px)", fontWeight: 400, letterSpacing: "-0.015em",
+    color: "#ffffff", margin: 0,
+  }}>
+    Services
+  </h2>
   <span style={{
-    width: "60px", height: "2px", background: "linear-gradient(90deg, #e879f9, #d946ef)",
-    borderRadius: "2px",
+    width: "60px", height: "3px", borderRadius: "3px",
+    background: "linear-gradient(90deg, #e879f9, #d946ef)",
   }} />
 </div>
         <div className="reveal-stagger svc-card-grid" style={{
@@ -430,7 +435,28 @@ function Index() {
                 <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.55 }}>
                   {s.tagline} <span style={{ color: "#e879f9" }}>↗</span>
                 </div>
+
+                <div className="svc-tile-mobile-cta" style={{
+                  display: "none",
+                  fontSize: 12, fontWeight: 600, color: "#e879f9",
+                  marginTop: 4,
+                }}>
+                  Click to view portfolio →
+                </div>
+
+                <div className="svc-tile-overlay" style={{
+                  position: "absolute", inset: 0, borderRadius: 16,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "rgba(10,12,20,0.85)",
+                  transition: "opacity 0.35s ease",
+                  fontSize: 15, fontWeight: 600, color: "#e879f9",
+                  pointerEvents: "none",
+                  zIndex: 2,
+                }}>
+                  View Portfolio ↗
+                </div>
               </Link>
+              
             );
           })}
         </div>
@@ -441,11 +467,20 @@ function Index() {
             box-shadow: 0 0 0 1px rgba(217,70,239,0.25), 0 18px 50px -18px rgba(217,70,239,0.55);
             background: #2a1f3e !important;
           }
+          .svc-tile-overlay {
+            opacity: 0;
+          }
+          .svc-tile:hover .svc-tile-overlay {
+            opacity: 1;
+          }
           @media (max-width: 1100px) { .svc-card-grid { grid-template-columns: repeat(2, 1fr) !important; } }
           @media (max-width: 640px)  { .svc-card-grid { grid-template-columns: 1fr !important; } }
+          @media (max-width: 768px) {
+            .svc-tile-overlay { display: none; }
+            .svc-tile-mobile-cta { display: block !important; }
+          }
         `}</style>
       </section>
-
       {/* SEO CASE STUDIES */}
       <section id="seo-portfolio" style={{ padding: "100px 6vw 60px", maxWidth: 1500, margin: "0 auto" }}>
         <div className="sec-label reveal">— SEO Portfolio</div>
@@ -656,33 +691,37 @@ function Index() {
             Founders pick Voxen because the work lands at the top of the market — at a price that doesn't.
             Here's what they say after shipping with us.
           </p>
-          <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
-            {QUOTES.map(q => (
-              <div key={q.n} className="interactive" style={{
-                background: "linear-gradient(160deg, rgba(255,255,255,0.08), rgba(217,70,239,0.06))",
-                border: "1px solid rgba(245,208,254,0.25)",
-                borderRadius: 20, padding: 36, display: "flex", flexDirection: "column", gap: 28,
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 10px 40px -12px rgba(217,70,239,0.35)",
-              }}>
-                <div style={{
-                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                  fontSize: 22, lineHeight: 1.4, color: "#fff",
-                }}>"{q.q}"</div>
-                <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: "auto" }}>
-                  <div style={{
-                    width: 44, height: 44, borderRadius: "50%",
-                    background: "linear-gradient(135deg, #d946ef, #f5d0fe)",
-                    boxShadow: "0 0 18px rgba(217,70,239,0.6)",
-                  }} />
-                  <div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>{q.n}</div>
-                    <div style={{ fontSize: 12, color: "rgba(245,208,254,0.75)" }}>{q.t}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+    <div className="reveal-stagger" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+  {QUOTES.map(q => (
+    <div key={q.n} className="interactive" style={{
+      background: "#ffffff",
+      border: "1px solid rgba(217,70,239,0.2)",
+      borderRadius: 20, padding: 36, display: "flex", flexDirection: "column", gap: 28,
+      boxShadow: "0 10px 30px -12px rgba(0,0,0,0.1)",
+      transition: "all 0.3s ease",
+    }}>
+      <div style={{
+        fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+        fontSize: 22, lineHeight: 1.4, color: "#111827",
+      }}>"{q.q}"</div>
+      <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: "auto" }}>
+        <div style={{
+          width: 44, height: 44, borderRadius: "50%",
+          background: "linear-gradient(135deg, #d946ef, #a855f7)",
+          boxShadow: "0 0 12px rgba(217,70,239,0.4)",
+        }} />
+        <div>
+          <div style={{ fontSize: 14, fontWeight: 600, color: "#1f2937" }}>{q.n}</div>
+<div style={{
+  fontSize: 12,
+  color: "#d946ef",
+  textShadow: "0 0 1px #1f2937",
+  fontWeight: 500,
+}}>{q.t}</div></div>
+      </div>
+    </div>
+  ))}
+</div>
           <p className="reveal" style={{
             marginTop: 40, fontSize: 13, letterSpacing: 1.5, textTransform: "uppercase",
             color: "#f5d0fe", textAlign: "center", fontWeight: 500,
