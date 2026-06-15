@@ -1,16 +1,19 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+import viteTsConfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
+import { nitro } from "nitro/vite";
 
 export default defineConfig({
-  
-  vite: {
-    build: {
-      chunkSizeWarningLimit: 1500,
-    },
+  build: {
+    chunkSizeWarningLimit: 1500,
   },
-  tanstackStart: {
-    server: { entry: "server", preset: "vercel" },
-    spa: { enabled: true, prerender: { outputPath: "/index" } },
-    pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index" } }],
-    sitemap: { enabled: false },
-  },
+  plugins: [
+    viteTsConfigPaths({ projects: ["./tsconfig.json"] }),
+    tailwindcss(),
+    tanstackStart(),
+    nitro({ preset: "vercel" }),
+    viteReact(),
+  ],
 });
