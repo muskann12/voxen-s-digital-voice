@@ -10,6 +10,7 @@ import { FloatingBox3D } from "@/components/FloatingBox3D";
 import { SERVICES } from "@/lib/services";
 import { FEATURED_CASES } from "@/lib/caseStudies";
 
+
 const SERVICE_ICONS: Record<string, ComponentType<{ size?: number; strokeWidth?: number }>> = {
   "graphic-designing": Palette,
   "video-editing": Film,
@@ -87,65 +88,201 @@ function Nav({ active }: { active: string }) {
   const [open, setOpen] = useState(false);
   const [svcOpen, setSvcOpen] = useState(false);
   const [svcOpenMobile, setSvcOpenMobile] = useState(false);
+  const [csOpen, setCsOpen] = useState(false);
+  const [csOpenMobile, setCsOpenMobile] = useState(false);
+
   useEffect(() => {
     const f = () => setScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", f); return () => window.removeEventListener("scroll", f);
+    window.addEventListener("scroll", f);
+    return () => window.removeEventListener("scroll", f);
   }, []);
-  const go = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); setOpen(false); };
-  const links = [
- 
 
-    { id: "case-studies", label: "Case Studies" },
+  const go = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
+  };
+
+  const caseStudyLinks = [
+    { label: "SEO Growth", to: "/seo-growth" },
+    { label: "Software Automation", to: "/software-automation" },
+    { label: "AI Chatbot Development", to: "/ai-chatbot-development" },
+  ];
+
+  const links = [
+    { id: "hero", label: "Home" },
     { id: "pricing", label: "Pricing" },
   ];
+
   return (
-<nav className={`${scrolled ? "nav-scrolled" : ""} nav-bar`} style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      display: "flex", alignItems: "center", justifyContent: "space-between",
-      transition: "all 0.35s ease",
-    }}>
-<button onClick={() => go("hero")} style={{ background: "none", border: "none", padding: 0 }}>
+    <nav
+      className={`${scrolled ? "nav-scrolled" : ""} nav-bar`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        transition: "all 0.35s ease",
+      }}
+    >
+      <button onClick={() => go("hero")} style={{ background: "none", border: "none", padding: 0 }}>
         <span className="nav-logo-wrap">
           <Logo />
         </span>
       </button>
+
       <div className="hide-md" style={{ display: "flex", gap: 36, fontSize: 13, color: "rgba(233,213,255,0.85)", alignItems: "center" }}>
         {links.map(l => (
           <button key={l.id} onClick={() => go(l.id)} style={{
-            background: "none", border: "none", color: active === l.id ? "#fff" : "inherit",
-            fontSize: 13, padding: 0, transition: "color 0.2s",
+            background: "none",
+            border: "none",
+            color: active === l.id ? "#fff" : "inherit",
+            fontSize: 13,
+            padding: 0,
+            transition: "color 0.2s",
+            cursor: "pointer",
           }}>{l.label}</button>
         ))}
+
+        {/* CASE STUDIES DROPDOWN */}
+        <div
+          onMouseEnter={() => setCsOpen(true)}
+          onMouseLeave={() => setCsOpen(false)}
+          style={{ position: "relative" }}
+        >
+          <button style={{
+            background: "none",
+            border: "none",
+            color: active === "case-studies" ? "#fff" : "inherit",
+            fontSize: 13,
+            padding: 0,
+            transition: "color 0.2s",
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            cursor: "pointer",
+          }}>
+            Case Studies <span style={{ fontSize: 9, opacity: 0.7 }}>▾</span>
+          </button>
+          {csOpen && (
+            <div style={{
+              position: "absolute",
+              top: "100%",
+              right: 0,
+              paddingTop: 14,
+              minWidth: 240,
+            }}>
+              <div style={{
+                background: "rgba(22,14,40,0.97)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(168,85,247,0.18)",
+                borderRadius: 14,
+                padding: 10,
+                display: "flex",
+                flexDirection: "column",
+                boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+              }}>
+                {caseStudyLinks.map(item => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    className="interactive"
+                    style={{
+                      textDecoration: "none",
+                      color: "rgba(233,213,255,0.85)",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      fontSize: 13,
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: 16,
+                      transition: "background 0.2s, color 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "rgba(168,85,247,0.12)";
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = "rgba(233,213,255,0.85)";
+                    }}
+                  >
+                    <span>{item.label}</span>
+                    <span style={{ color: "#C084FC", fontSize: 14 }}>↗</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* SERVICES DROPDOWN */}
         <div
           onMouseEnter={() => setSvcOpen(true)}
           onMouseLeave={() => setSvcOpen(false)}
           style={{ position: "relative" }}
         >
-          <button onClick={() => go("services")} style={{
-            background: "none", border: "none", color: active === "services" ? "#fff" : "inherit",
-            fontSize: 13, padding: 0, transition: "color 0.2s", display: "flex", alignItems: "center", gap: 4,
+          <button style={{
+            background: "none",
+            border: "none",
+            color: active === "services" ? "#fff" : "inherit",
+            fontSize: 13,
+            padding: 0,
+            transition: "color 0.2s",
+            display: "flex",
+            alignItems: "center",
+            gap: 4,
+            cursor: "pointer",
           }}>
             Services <span style={{ fontSize: 9, opacity: 0.7 }}>▾</span>
           </button>
           {svcOpen && (
             <div style={{
-              position: "absolute", top: "100%", right: 0, paddingTop: 14, minWidth: 280,
+              position: "absolute",
+              top: "100%",
+              right: 0,
+              paddingTop: 14,
+              minWidth: 280,
             }}>
               <div style={{
-                background: "rgba(22,14,40,0.97)", backdropFilter: "blur(20px)",
-                border: "1px solid rgba(168,85,247,0.18)", borderRadius: 14,
-                padding: 10, display: "flex", flexDirection: "column",
+                background: "rgba(22,14,40,0.97)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(168,85,247,0.18)",
+                borderRadius: 14,
+                padding: 10,
+                display: "flex",
+                flexDirection: "column",
                 boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
               }}>
                 {SERVICES.map(s => (
-                  <Link key={s.slug} to={s.to} className="interactive" style={{
-                    textDecoration: "none", color: "rgba(233,213,255,0.85)",
-                    padding: "10px 14px", borderRadius: 8, fontSize: 13,
-                    display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16,
-                    transition: "background 0.2s, color 0.2s",
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(168,85,247,0.12)"; e.currentTarget.style.color = "#fff"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "rgba(233,213,255,0.85)"; }}
+                  <Link
+                    key={s.slug}
+                    to={s.to}
+                    className="interactive"
+                    style={{
+                      textDecoration: "none",
+                      color: "rgba(233,213,255,0.85)",
+                      padding: "10px 14px",
+                      borderRadius: 8,
+                      fontSize: 13,
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: 16,
+                      transition: "background 0.2s, color 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "rgba(168,85,247,0.12)";
+                      e.currentTarget.style.color = "#fff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "transparent";
+                      e.currentTarget.style.color = "rgba(233,213,255,0.85)";
+                    }}
                   >
                     <span>{s.title}</span>
                     <span style={{ color: "#C084FC", fontSize: 14 }}>↗</span>
@@ -156,37 +293,159 @@ function Nav({ active }: { active: string }) {
           )}
         </div>
       </div>
+
       <button onClick={() => go("connect")} className="hide-md" style={{
-        background: "none", border: "none", color: "#C084FC", fontSize: 15, fontWeight: 600,
+        background: "none",
+        border: "none",
+        color: "#C084FC",
+        fontSize: 15,
+        fontWeight: 600,
+        cursor: "pointer",
       }}>Connect →</button>
+
       <button onClick={() => setOpen(!open)} style={{
-        display: "none", background: "none", border: "none", color: "#fff",
+        display: "none",
+        background: "none",
+        border: "none",
+        color: "#fff",
+        fontSize: 28,
+        cursor: "pointer",
       }} className="mobile-toggle">☰</button>
+
       {open && (
         <div style={{
-          position: "fixed", inset: "70px 0 0 0", background: "rgba(8,5,15,0.97)",
-          backdropFilter: "blur(20px)", display: "flex", flexDirection: "column",
-          padding: 40, gap: 28, fontSize: 22, overflowY: "auto",
+          position: "fixed",
+          inset: "70px 0 0 0",
+          background: "rgba(8,5,15,0.97)",
+          backdropFilter: "blur(20px)",
+          display: "flex",
+          flexDirection: "column",
+          padding: 40,
+          gap: 28,
+          fontSize: 22,
+          overflowY: "auto",
         }}>
-          {links.map(l => <button key={l.id} onClick={() => go(l.id)} style={{ background: "none", border: "none", color: "#fff", textAlign: "left", fontSize: 22 }}>{l.label}</button>)}
+          {links.map(l => (
+            <button key={l.id} onClick={() => go(l.id)} style={{
+              background: "none",
+              border: "none",
+              color: "#fff",
+              textAlign: "left",
+              fontSize: 22,
+              cursor: "pointer",
+            }}>{l.label}</button>
+          ))}
+
+          {/* Case Studies - Mobile */}
           <div>
-            <button onClick={() => setSvcOpenMobile(!svcOpenMobile)} style={{ background: "none", border: "none", color: "#fff", textAlign: "left", fontSize: 22, display: "flex", alignItems: "center", gap: 8 }}>
-              Services <span style={{ fontSize: 14, transform: svcOpenMobile ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
+            <button
+              onClick={() => setCsOpenMobile(!csOpenMobile)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                textAlign: "left",
+                fontSize: 22,
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                cursor: "pointer",
+              }}
+            >
+              Case Studies <span style={{
+                fontSize: 14,
+                transform: csOpenMobile ? "rotate(180deg)" : "none",
+                transition: "transform 0.2s",
+              }}>▾</span>
+            </button>
+            {csOpenMobile && (
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 14,
+                marginTop: 16,
+                paddingLeft: 14,
+                borderLeft: "1px solid rgba(168,85,247,0.25)",
+              }}>
+                {caseStudyLinks.map(item => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setOpen(false)}
+                    style={{
+                      color: "rgba(233,213,255,0.85)",
+                      textDecoration: "none",
+                      fontSize: 16,
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Services - Mobile */}
+          <div>
+            <button
+              onClick={() => setSvcOpenMobile(!svcOpenMobile)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "#fff",
+                textAlign: "left",
+                fontSize: 22,
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                cursor: "pointer",
+              }}
+            >
+              Services <span style={{
+                fontSize: 14,
+                transform: svcOpenMobile ? "rotate(180deg)" : "none",
+                transition: "transform 0.2s",
+              }}>▾</span>
             </button>
             {svcOpenMobile && (
-              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 16, paddingLeft: 14, borderLeft: "1px solid rgba(168,85,247,0.25)" }}>
+              <div style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 14,
+                marginTop: 16,
+                paddingLeft: 14,
+                borderLeft: "1px solid rgba(168,85,247,0.25)",
+              }}>
                 {SERVICES.map(s => (
-                  <Link key={s.slug} to={s.to} onClick={() => setOpen(false)} style={{ color: "rgba(233,213,255,0.85)", textDecoration: "none", fontSize: 16 }}>
+                  <Link
+                    key={s.slug}
+                    to={s.to}
+                    onClick={() => setOpen(false)}
+                    style={{
+                      color: "rgba(233,213,255,0.85)",
+                      textDecoration: "none",
+                      fontSize: 16,
+                    }}
+                  >
                     {s.title}
                   </Link>
                 ))}
               </div>
             )}
           </div>
-          <button onClick={() => go("connect")} style={{ background: "none", border: "none", color: "#C084FC", textAlign: "left", fontSize: 22 }}>Connect →</button>
+
+          <button onClick={() => go("connect")} style={{
+            background: "none",
+            border: "none",
+            color: "#C084FC",
+            textAlign: "left",
+            fontSize: 22,
+            cursor: "pointer",
+          }}>Connect →</button>
         </div>
       )}
-<style>{`
+
+      <style>{`
         .nav-bar { padding: 20px 40px; }
         .nav-logo-wrap svg, .nav-logo-wrap img { width: 160px; height: auto; }
         @media (max-width: 900px) { 
@@ -197,7 +456,13 @@ function Nav({ active }: { active: string }) {
         @media (min-width: 901px) {
           .hide-md { display: flex !important; }
         }
-      `}</style></nav>
+        .nav-scrolled {
+          background: rgba(8,5,15,0.85);
+          backdrop-filter: blur(20px);
+          border-bottom: 1px solid rgba(168,85,247,0.12);
+        }
+      `}</style>
+    </nav>
   );
 }
 
@@ -729,7 +994,7 @@ function Index() {
 
       {/* CONNECT */}
 
-    <section style={{
+    <section  id="connect" style={{
   padding: "100px 6vw",
   background: "linear-gradient(135deg, #0a0a0a, #0f1117)",
   borderTop: "1px solid rgba(217,70,239,0.2)",
