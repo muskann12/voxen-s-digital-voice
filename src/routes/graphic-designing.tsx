@@ -18,14 +18,18 @@ const COLORS: Record<string, string> = {
 
 const ImgThumb = ({ src, alt }: { src: string; alt: string }) => (
   <img src={src} alt={alt} loading="lazy" style={{
-    width: "80%", aspectRatio: "4 / 3", objectFit: "cover", borderRadius: 10,
+    width: "100%",
+    height: "auto",
+    display: "block",
+    borderRadius: 10,
     border: "1px solid rgba(168,85,247,0.35)",
   }} />
 );
 
 const imageUrl = (filename: string) => `${BASE_URL}${filename}`;
+
 const cards: PortfolioCard[] = [
-  // === Existing Banners (kept as is) ===
+  // BANNERS
   { id: "b1", title: "New Collection Drop – Fashion Season", description: "Seasonal banner set for men's, women's, and accessories collection. Up to 60% off.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 1.png")} alt="New Collection Drop – Fashion Season" /> },
   { id: "b2", title: "Smarter Workflow – AI Automation Suite", description: "Tech banner series for business automation, real estate, and travel packages.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 2.png")} alt="Smarter Workflow – AI Automation Suite" /> },
   { id: "b3", title: "Smart Solar – Clean Energy Campaign", description: "Minimalist solar energy banner focused on cutting bills without cutting comfort.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 3.png")} alt="Smart Solar – Clean Energy Campaign" /> },
@@ -36,7 +40,7 @@ const cards: PortfolioCard[] = [
   { id: "b8", title: "Game On – Elite Gaming Gear", description: "Precision gaming gear designed to dominate.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 8.png")} alt="Game On – Elite Gaming Gear" /> },
   { id: "b9", title: "Jheelstreet Real Estate – Prime Locations", description: "Luxury homes and smart investments with trusted service.", category: "Banners", tag: "Banner", tagColor: COLORS.Banners, thumbnail: <ImgThumb src={imageUrl("banner 9.png")} alt="Jheelstreet Real Estate – Prime Locations" /> },
 
-  // === Existing Social Media (kept) ===
+  // EXISTING SOCIAL MEDIA
   { id: "s1", title: "Study Smarter – IELTS Bootcamp", description: "Intensive IELTS prep with proven score increase techniques.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10001.webp")} alt="Study Smarter – IELTS Bootcamp" /> },
   { id: "s2", title: "Gravity Gym – 3 Month Transformation", description: "Fitness motivation and strength training carousel posts.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10005.webp")} alt="Gravity Gym – 3 Month Transformation" /> },
   { id: "s3", title: "CodeBase – Start Coding Today", description: "Software development masterclass and coding bootcamp.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10003.webp")} alt="CodeBase – Start Coding Today" /> },
@@ -51,9 +55,7 @@ const cards: PortfolioCard[] = [
   { id: "s14", title: "Luxury Living – Real Estate Highlights", description: "Dream kitchen, waterfront masterpiece, sold alerts.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10021.webp")} alt="Luxury Living – Real Estate Highlights" /> },
   { id: "s15", title: "Gravity Gym – Price Table (placeholder)", description: "Gym membership plans and recharge packages.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("10002.webp")} alt="Gravity Gym – Price Table (placeholder)" /> },
 
-  // === NEW SOCIAL MEDIA PROJECTS (from the images you sent) ===
-  // Note: Replace filenames with the actual names you've uploaded.
-  // I've used descriptive names – change the string inside imageUrl() accordingly.
+  // NEW SOCIAL MEDIA
   { id: "n1", title: "NoorElan – Premium Shalwar Kameez", description: "Elegant men's wear with fine fabrics, expert stitching, and modern designs.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("noorelan.png")} alt="NoorElan – Premium Shalwar Kameez" /> },
   { id: "n2", title: "Brew Haven – Coffee Shop", description: "Cozy coffee shop with quality beans, perfect blends, and a warm ambiance.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("brew-haven.png")} alt="Brew Haven – Coffee Shop" /> },
   { id: "n3", title: "Frosty Scoops – Ice Cream Parlour", description: "Mouthwatering ice cream flavors that melt hearts – perfect for every mood.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("frosty-scoops.png")} alt="Frosty Scoops – Ice Cream Parlour" /> },
@@ -85,17 +87,15 @@ const cards: PortfolioCard[] = [
   { id: "n29", title: "Eventique – Event Management", description: "From corporate events to weddings – we create moments that matter.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("eventique.png")} alt="Eventique – Event Management" /> },
   { id: "n30", title: "Visa Experts – Hassle-Free Visa Solutions", description: "Expert guidance for tourist, study, work, and business visas worldwide.", category: "Social Media", tag: "Social", tagColor: COLORS["Social Media"], thumbnail: <ImgThumb src={imageUrl("visa-experts.png")} alt="Visa Experts – Hassle-Free Visa Solutions" /> },
 ];
+
 function Page() {
   return (
     <ServicePage
       title="Graphic Designing"
-       filters={["All", ...CATS]}
-      oneLiner="Visual identities, marketing collateral, and social systems crafted with intent and polish . "
-     
-
-
+      oneLiner="Visual identities, marketing collateral, and social systems crafted with intent and polish."
+      filters={["All", ...CATS]}
       cards={cards}
+      showCategoryPopup={true}
     />
-
   );
 }
