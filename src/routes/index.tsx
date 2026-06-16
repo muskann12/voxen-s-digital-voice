@@ -99,13 +99,15 @@ function Nav({ active }: { active: string }) {
     { id: "pricing", label: "Pricing" },
   ];
   return (
-    <nav className={scrolled ? "nav-scrolled" : ""} style={{
+<nav className={`${scrolled ? "nav-scrolled" : ""} nav-bar`} style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      padding: "20px 40px", display: "flex", alignItems: "center", justifyContent: "space-between",
+      display: "flex", alignItems: "center", justifyContent: "space-between",
       transition: "all 0.35s ease",
     }}>
-      <button onClick={() => go("hero")} style={{ background: "none", border: "none", padding: 0 }}>
-        <Logo />
+<button onClick={() => go("hero")} style={{ background: "none", border: "none", padding: 0 }}>
+        <span className="nav-logo-wrap">
+          <Logo />
+        </span>
       </button>
       <div className="hide-md" style={{ display: "flex", gap: 36, fontSize: 13, color: "rgba(233,213,255,0.85)", alignItems: "center" }}>
         {links.map(l => (
@@ -155,7 +157,7 @@ function Nav({ active }: { active: string }) {
         </div>
       </div>
       <button onClick={() => go("connect")} className="hide-md" style={{
-        background: "none", border: "none", color: "#C084FC", fontSize: 13, fontWeight: 500,
+        background: "none", border: "none", color: "#C084FC", fontSize: 15, fontWeight: 600,
       }}>Connect →</button>
       <button onClick={() => setOpen(!open)} style={{
         display: "none", background: "none", border: "none", color: "#fff",
@@ -184,8 +186,18 @@ function Nav({ active }: { active: string }) {
           <button onClick={() => go("connect")} style={{ background: "none", border: "none", color: "#C084FC", textAlign: "left", fontSize: 22 }}>Connect →</button>
         </div>
       )}
-      <style>{`@media (max-width: 900px) { .mobile-toggle { display: block !important; } }`}</style>
-    </nav>
+<style>{`
+        .nav-bar { padding: 20px 40px; }
+        .nav-logo-wrap svg, .nav-logo-wrap img { width: 160px; height: auto; }
+        @media (max-width: 900px) { 
+          .mobile-toggle { display: block !important; }
+          .nav-bar { padding: 10px 18px; }
+          .nav-logo-wrap svg, .nav-logo-wrap img { width: 90px; }
+        }
+        @media (min-width: 901px) {
+          .hide-md { display: flex !important; }
+        }
+      `}</style></nav>
   );
 }
 
@@ -321,72 +333,118 @@ function Index() {
       <Marquee reverse items={["3D Websites", "UI/UX Design", "Web Development", "Brand Identity", "SEO", "Digital Marketing", "SaaS Automation", "Recruitment"]} />
 
       {/* AI AUTOMATION SUITE FEATURED */}
-      <section id="automation-suite" style={{ padding: "100px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="reveal" style={{
-          position: "relative",
-          borderRadius: 24,
-          padding: "clamp(28px, 4vw, 56px)",
-          background: "linear-gradient(135deg, rgba(34,211,238,0.10), rgba(124,58,237,0.18) 60%, rgba(14,8,24,0.9))",
-          border: "1px solid rgba(34,211,238,0.25)",
-          boxShadow: "0 40px 120px -40px rgba(34,211,238,0.35), inset 0 0 80px rgba(124,58,237,0.08)",
-          overflow: "hidden",
+<section style={{ padding: "100px 6vw", background: "#000000", maxWidth: 1400, margin: "0 auto" }}>
+  {/* Section header - left aligned */}
+  <div style={{ marginBottom: 60, textAlign: "left" }}>
+    <div style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 12,
+      background: "rgba(217,70,239,0.1)",
+      padding: "6px 18px",
+      borderRadius: 60,
+      marginBottom: 20,
+    }}>
+      <span style={{
+        width: 8, height: 8, borderRadius: "50%", background: "#d946ef",
+      }} />
+      <span style={{ fontSize: 12, letterSpacing: 2, color: "#f5d0fe", textTransform: "uppercase" }}>How It Works</span>
+    </div>
+    <h2 style={{
+      fontFamily: "'DM Serif Display', serif",
+      fontStyle: "italic",
+      fontSize: "clamp(38px, 5vw, 64px)",
+      fontWeight: 400,
+      color: "#ffffff",
+      marginBottom: 12,
+    }}>
+      Simple Process, <span style={{ color: "#d946ef" }}>Real Results</span>
+    </h2>
+  </div>
+
+  {/* Steps grid - left aligned cards */}
+  <div style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)",
+    gap: 24,
+    marginTop: 20,
+  }}>
+    {[
+      {
+        number: "01",
+        title: "You Reach Out",
+        desc: "Drop us a message on WhatsApp, email or Instagram. Tell us about your business and what you need.",
+      },
+      {
+        number: "02",
+        title: "Free Sample",
+        desc: "We create a FREE sample — a post, reel or website mockup — so you see the quality before committing.",
+      },
+      {
+        number: "03",
+        title: "You Approve",
+        desc: "You review the sample, share feedback and confirm you are happy. No payment until you are completely satisfied.",
+      },
+      {
+        number: "04",
+        title: "We Deliver",
+        desc: "We handle everything on time, every time. You focus on your business — we handle your digital presence.",
+      },
+    ].map((step, idx) => (
+      <div
+        key={idx}
+        className="howit-card"
+        style={{
+          background: "#1a1f2e",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: 20,
+          padding: 28,
+          transition: "all 0.3s ease",
+          textAlign: "left",
+        }}
+      >
+        <div style={{
+          fontSize: 48,
+          fontWeight: 700,
+          fontFamily: "'DM Serif Display', serif",
+          background: "linear-gradient(135deg, #d946ef, #e879f9)",
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          color: "transparent",
+          marginBottom: 16,
         }}>
-          <div style={{
-            position: "absolute", inset: -2, pointerEvents: "none",
-            background: "radial-gradient(60% 60% at 20% 0%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(50% 50% at 100% 100%, rgba(192,132,252,0.18), transparent 60%)",
-          }} />
-          <div style={{
-            position: "relative",
-            display: "grid",
-            gridTemplateColumns: "1.05fr 1fr",
-            gap: 40,
-            alignItems: "center",
-          }} className="auto-suite-grid">
-            <div>
-              <div className="sec-label" style={{ color: "#22D3EE" }}>New — Case Study</div>
-              <h2 style={{
-                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                fontSize: "clamp(30px, 4.4vw, 56px)", margin: "16px 0 18px", fontWeight: 400,
-                letterSpacing: "-0.015em", color: "#fff",
-              }}>
-           From Zero Automation to <span className="grad-text"> Enterprise AI Operations.</span>
-              </h2>
-              <p style={{
-                fontSize: 17, lineHeight: 1.65, color: "rgba(233,213,255,0.78)", fontWeight: 300,
-                maxWidth: 560, marginBottom: 28,
-              }}>
-                How AI task assignment and WhatsApp/Telegram automation helped a business follow up 85% of leads within 5 minutes and AI client memory. See how we automated an entire
-                business operation.
-              </p>
-              <Link
-                to="/case-studies/$slug"
-                params={{ slug: "ai-automation-suite" }}
-                className="btn-violet"
-                style={{ textDecoration: "none", display: "inline-block" }}
-              >
-                View Full Case Study →
-              </Link>
-            </div>
-            <div style={{
-              borderRadius: 16, overflow: "hidden",
-              border: "1px solid rgba(34,211,238,0.3)",
-              background: "#000",
-              boxShadow: "0 30px 80px -30px rgba(34,211,238,0.5)",
-            }}>
-              <video
-                src="https://raw.githubusercontent.com/muskann12/portfloio-images/main/dashboard-preview.mp4"
-                autoPlay muted loop playsInline
-                style={{ width: "100%", display: "block" }}
-              />
-            </div>
-          </div>
+          {step.number}
         </div>
-        <style>{`@media (max-width: 900px) { .auto-suite-grid { grid-template-columns: 1fr !important; } }`}</style>
-      </section>
+        <h3 style={{
+          fontSize: 20,
+          fontWeight: 600,
+          color: "#ffffff",
+          marginBottom: 12,
+        }}>{step.title}</h3>
+        <p style={{
+          fontSize: 14,
+          color: "#cbd5e1",
+          lineHeight: 1.5,
+        }}>{step.desc}</p>
+      </div>
+    ))}
+  </div>
 
-
-
-
+  <style>{`
+    .howit-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(217,70,239,0.55);
+      box-shadow: 0 0 0 1px rgba(217,70,239,0.25), 0 20px 40px -16px rgba(217,70,239,0.4);
+      background: #2a1f3e;
+    }
+    @media (max-width: 1000px) {
+      .howit-card-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 640px) {
+      .howit-card-grid { grid-template-columns: 1fr !important; }
+    }
+  `}</style>
+</section>
       {/* SERVICES */}
 <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
   <div className="reveal" style={{
@@ -482,137 +540,69 @@ function Index() {
           }
         `}</style>
       </section>
-      
-    {/* CASE STUDIES — SEO + FEATURED MERGED (6 TOTAL) */}
-      <section id="case-studies" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
-        <div className="sec-label reveal">04 — Featured Case Studies</div>
-        <h2 className="reveal" style={{
-          fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-          fontSize: "clamp(36px, 5vw, 64px)", margin: "20px 0 24px", fontWeight: 400, letterSpacing: "-0.015em",
-        }}>Real systems, <span className="grad-text">real outcomes.</span></h2>
-        <p className="reveal" style={{
-          fontSize: 17, lineHeight: 1.6, color: "rgba(233,213,255,0.7)", maxWidth: 720, fontWeight: 300, marginBottom: 50,
+            <section id="automation-suite" style={{ padding: "100px 6vw", maxWidth: 1500, margin: "0 auto" }}>
+        <div className="reveal" style={{
+          position: "relative",
+          borderRadius: 24,
+          padding: "clamp(28px, 4vw, 56px)",
+          background: "linear-gradient(135deg, rgba(34,211,238,0.10), rgba(124,58,237,0.18) 60%, rgba(14,8,24,0.9))",
+          border: "1px solid rgba(34,211,238,0.25)",
+          boxShadow: "0 40px 120px -40px rgba(34,211,238,0.35), inset 0 0 80px rgba(124,58,237,0.08)",
+          overflow: "hidden",
         }}>
-          AI inventory, ecommerce automation, voice AI, and SEO growth — production-grade results shipped for real clients.
-        </p>
-        <div className="reveal-stagger cs-feat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 22 }}>
-        
-          {/* --- 3 FEATURED DEV CASE STUDIES --- */}
-          {FEATURED_CASES.map(cs => (
-            <Link key={cs.slug} to={`/case-studies/${cs.slug}` as any} className="interactive" style={{
-              textDecoration: "none", color: "inherit",
-              border: "1px solid rgba(168,85,247,0.18)", borderRadius: 16,
-              background: "linear-gradient(135deg, rgba(22,14,40,0.85), rgba(14,8,24,0.85))",
-              overflow: "hidden", display: "flex", flexDirection: "column",
-              transition: "all 0.35s ease",
-            }}>
-              <div style={{
-                position: "relative", aspectRatio: "16 / 10",
-                background: `radial-gradient(circle at 30% 30%, ${cs.color}28, transparent 65%), #0a0a0a`,
-                borderBottom: "1px solid rgba(168,85,247,0.15)",
-                display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10,
+          <div style={{
+            position: "absolute", inset: -2, pointerEvents: "none",
+            background: "radial-gradient(60% 60% at 20% 0%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(50% 50% at 100% 100%, rgba(192,132,252,0.18), transparent 60%)",
+          }} />
+          <div style={{
+            position: "relative",
+            display: "grid",
+            gridTemplateColumns: "1.05fr 1fr",
+            gap: 40,
+            alignItems: "center",
+          }} className="auto-suite-grid">
+            <div>
+              <div className="sec-label" style={{ color: "#22D3EE" }}>New — Case Study</div>
+              <h2 style={{
+                fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
+                fontSize: "clamp(30px, 4.4vw, 56px)", margin: "16px 0 18px", fontWeight: 400,
+                letterSpacing: "-0.015em", color: "#fff",
               }}>
-                <div style={{
-                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                  fontSize: 72, color: cs.color, letterSpacing: "-0.02em", lineHeight: 1,
-                }}>{cs.initial}</div>
-                <div style={{
-                  position: "absolute", top: 14, left: 14,
-                  fontSize: 10, letterSpacing: 2, textTransform: "uppercase",
-                  padding: "4px 10px", borderRadius: 999,
-                  background: cs.color + "22", color: cs.color, border: `1px solid ${cs.color}55`,
-                }}>{cs.industry}</div>
-              </div>
-              <div style={{ padding: 26, display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
-                <h3 style={{
-                  fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-                  fontSize: 22, margin: 0, lineHeight: 1.25, color: "#fff", fontWeight: 400,
-                }}>{cs.shortTitle}</h3>
-                <p style={{ fontSize: 13.5, lineHeight: 1.6, color: "rgba(233,213,255,0.65)", margin: 0 }}>
-                  {cs.summary}
-                </p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 4 }}>
-                  {cs.technologies.slice(0, 4).map(t => (
-                    <span key={t} style={{
-                      fontSize: 10.5, padding: "3px 8px", borderRadius: 4,
-                      background: "rgba(124,58,237,0.18)", color: "#E9D5FF",
-                      border: "1px solid rgba(168,85,247,0.22)",
-                    }}>{t}</span>
-                  ))}
-                </div>
-                <div style={{
-                  marginTop: "auto", paddingTop: 16,
-                  borderTop: "1px solid rgba(168,85,247,0.12)",
-                  display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
-                }}>
-                  <div>
-                    <div style={{ fontSize: 10, letterSpacing: 2, color: "rgba(233,213,255,0.5)", textTransform: "uppercase" }}>Outcome</div>
-                    <div style={{ fontSize: 13, color: "#fff", marginTop: 2 }}>{cs.outcome}</div>
-                  </div>
-                  <span style={{ fontSize: 12, color: cs.color, letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500 }}>
-                    View Case Study →
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
-
-          {/* --- 3 SEO CASE STUDIES --- */}
-          {[
-            { name: "Ovenu", industry: "Oven Cleaning · UK", metrics: ["4K+ keywords", "12.4K monthly traffic"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/ovenu-home.png" },
-            { name: "Steel Buildings", industry: "Industrial · UK", metrics: ["3,956+ keywords", "13.4K monthly traffic"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/steel-home.png" },
-            { name: "EcoClean Dubai", industry: "Cleaning · Dubai", metrics: ["602 keywords", "#1 — kitchen deep cleaning dubai"], img: "https://raw.githubusercontent.com/muskann12/portfloio-images/main/eco-home.png" },
-          ].map(c => (
-            <Link key={c.name} to={"/seo-portfolio" as any} className="seo-mini-card interactive" style={{
-              textDecoration: "none", color: "inherit",
-              background: "#1a1f2e", border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 16, overflow: "hidden", display: "flex", flexDirection: "column",
-              transition: "transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease",
+           From Zero Automation to <span className="grad-text"> Enterprise AI Operations.</span>
+              </h2>
+              <p style={{
+                fontSize: 17, lineHeight: 1.65, color: "rgba(233,213,255,0.78)", fontWeight: 300,
+                maxWidth: 560, marginBottom: 28,
+              }}>
+                How AI task assignment and WhatsApp/Telegram automation helped a business follow up 85% of leads within 5 minutes and AI client memory. See how we automated an entire
+                business operation.
+              </p>
+              <Link
+                to="/case-studies/$slug"
+                params={{ slug: "ai-automation-suite" }}
+                className="btn-violet"
+                style={{ textDecoration: "none", display: "inline-block" }}
+              >
+                View Full Case Study →
+              </Link>
+            </div>
+            <div style={{
+              borderRadius: 16, overflow: "hidden",
+              border: "1px solid rgba(34,211,238,0.3)",
+              background: "#000",
+              boxShadow: "0 30px 80px -30px rgba(34,211,238,0.5)",
             }}>
-              <div style={{ aspectRatio: "16 / 10", background: "#0a0a0a", overflow: "hidden" }}>
-                <img
-                  src={encodeURI(c.img)}
-                  alt={c.name + " preview"}
-                  loading="lazy"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </div>
-              <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 10, flex: 1 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10 }}>
-                  <h3 style={{ margin: 0, color: "#ffffff", fontSize: 18, fontWeight: 600 }}>{c.name}</h3>
-                  <span style={{ fontSize: 10.5, color: "#d946ef", letterSpacing: 1, textTransform: "uppercase" }}>{c.industry}</span>
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {c.metrics.map(m => (
-                    <span key={m} style={{
-                      fontSize: 11, padding: "4px 9px", borderRadius: 6,
-                      background: "rgba(217,70,239,0.1)", color: "#f5d0fe",
-                      border: "1px solid rgba(217,70,239,0.28)",
-                    }}>{m}</span>
-                  ))}
-                </div>
-                <div style={{
-                  marginTop: "auto", paddingTop: 12,
-                  borderTop: "1px solid rgba(217,70,239,0.12)",
-                  fontSize: 12, color: "#d946ef", letterSpacing: 1.5, textTransform: "uppercase", fontWeight: 500,
-                }}>
-                  View SEO Case Study →
-                </div>
-              </div>
-            </Link>
-          ))}
-
+              <video
+                src="https://raw.githubusercontent.com/muskann12/portfloio-images/main/dashboard-preview.mp4"
+                autoPlay muted loop playsInline
+                style={{ width: "100%", display: "block" }}
+              />
+            </div>
+          </div>
         </div>
-        <style>{`
-          .seo-mini-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(217,70,239,0.55) !important;
-            box-shadow: 0 0 0 1px rgba(217,70,239,0.2), 0 18px 50px -18px rgba(217,70,239,0.55);
-          }
-          @media (max-width: 1100px) { .cs-feat-grid { grid-template-columns: 1fr 1fr !important; } }
-          @media (max-width: 750px) { .cs-feat-grid { grid-template-columns: 1fr !important; } }
-        `}</style>
-      </section>     {/* PRICING / VALUE */}
+        <style>{`@media (max-width: 900px) { .auto-suite-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+   {/* PRICING / VALUE */}
       <section id="pricing" style={{ padding: "120px 6vw", maxWidth: 1500, margin: "0 auto" }}>
         <div className="sec-label reveal">04 — Pricing</div>
         <h2 className="reveal" style={{
@@ -712,7 +702,8 @@ function Index() {
 
 
       {/* CONNECT */}
-<section style={{
+
+    <section style={{
   padding: "100px 6vw",
   background: "linear-gradient(135deg, #0a0a0a, #0f1117)",
   borderTop: "1px solid rgba(217,70,239,0.2)",
@@ -774,35 +765,35 @@ function Index() {
   </div>
 </section>
       {/* FOOTER */}
-      <footer style={{ padding: "80px 6vw 40px", borderTop: "1px solid rgba(168,85,247,0.12)" }}>
-        <div style={{
-          maxWidth: 1500, margin: "0 auto",
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40,
-        }} className="footer-grid">
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 13, color: "rgba(233,213,255,0.65)" }}>
-            <div className="eyebrow" style={{ marginBottom: 8 }}>Menu</div>
-            {["Work", "Our Story", "Services", "Connect", "Privacy"].map(l => <a key={l} href="#" className="interactive">{l}</a>)}
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 13, color: "rgba(233,213,255,0.65)" }}>
-            <div className="eyebrow" style={{ marginBottom: 8 }}>Social</div>
-            {["LinkedIn", "Instagram", "Dribbble", "X / Twitter"].map(l => <a key={l} href="#" className="interactive">{l}</a>)}
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12, fontSize: 13, color: "rgba(233,213,255,0.65)" }}>
-            <div className="eyebrow" style={{ marginBottom: 8 }}>Contact</div>
-            <a href="mailto:hello@voxen.com" className="interactive" style={{ color: "#fff" }}>hello@voxen.com</a>
-            <span style={{ fontFamily: "'DM Serif Display', serif", fontStyle: "italic", color: "#C084FC", fontSize: 18, marginTop: 6 }}>
-              Give Your Business A Voice.
-            </span>
-          </div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "center", margin: "60px 0 24px" }}>
-          <Logo size={56} />
-        </div>
-        <div style={{ textAlign: "center", fontSize: 11, color: "rgba(233,213,255,0.4)", letterSpacing: 1 }}>
-          © {new Date().getFullYear()} VOXEN — All rights reserved · EUROPE · MIDDLE EAST · ASIA · AFRICA
-        </div>
-        <style>{`@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; } }`}</style>
-      </footer>
+   <footer style={{ padding: "80px 6vw 40px", borderTop: "1px solid rgba(168,85,247,0.12)" }}>
+  <div style={{
+    maxWidth: 1500, margin: "0 auto",
+    display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40,
+  }} className="footer-grid">
+    <div style={{ display: "flex", flexDirection: "column", gap: 14, fontSize: 15, color: "rgba(233,213,255,0.7)" }}>
+      <div className="eyebrow" style={{ marginBottom: 8, fontSize: 14, letterSpacing: 1.5, color: "#d946ef" }}>Menu</div>
+      {["Work", "Our Story", "Services", "Connect", "Privacy"].map(l => <a key={l} href="#" className="interactive" style={{ fontSize: 16, fontWeight: 500 }}>{l}</a>)}
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 14, fontSize: 15, color: "rgba(233,213,255,0.7)" }}>
+      <div className="eyebrow" style={{ marginBottom: 8, fontSize: 14, letterSpacing: 1.5, color: "#d946ef" }}>Social</div>
+      {["LinkedIn", "Instagram", "Dribbble", "X / Twitter"].map(l => <a key={l} href="#" className="interactive" style={{ fontSize: 16, fontWeight: 500 }}>{l}</a>)}
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 14, fontSize: 15, color: "rgba(233,213,255,0.7)" }}>
+      <div className="eyebrow" style={{ marginBottom: 8, fontSize: 14, letterSpacing: 1.5, color: "#d946ef" }}>Contact</div>
+      <a href="mailto:hello@voxen.com" className="interactive" style={{ color: "#fff", fontSize: 16, fontWeight: 500 }}>hello@voxen.com</a>
+      <span style={{ fontFamily: "'DM Serif Display', serif", fontStyle: "italic", color: "#C084FC", fontSize: 20, marginTop: 10 }}>
+        Give Your Business A Voice.
+      </span>
+    </div>
+  </div>
+  <div style={{ display: "flex", justifyContent: "center", margin: "70px 0 28px" }}>
+    <Logo size={216} />
+  </div>
+  <div style={{ textAlign: "center", fontSize: 13, color: "rgba(233,213,255,0.5)", letterSpacing: 1 }}>
+    © {new Date().getFullYear()} VOXEN — All rights reserved · EUROPE · MIDDLE EAST · ASIA · AFRICA
+  </div>
+  <style>{`@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr !important; gap: 42px !important; } }`}</style>
+</footer>
     </>
   );
 }
