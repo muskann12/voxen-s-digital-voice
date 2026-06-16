@@ -5,7 +5,6 @@ export type ServiceDef = {
   tagline: string;
   oneLiner: string;
 };
-
 export const SERVICES: ServiceDef[] = [
   {
     slug: "graphic-designing",
@@ -52,15 +51,15 @@ export const SERVICES: ServiceDef[] = [
   {
     slug: "ai-chatbot-development",
     to: "/ai-chatbot-development",
-    title: "AI Chatbot Development",
-    tagline: "Custom bots, LLM integrations, automation.",
-    oneLiner: "Custom LLM-powered assistants across web, WhatsApp, and internal tools.",
+    title: "AI Agents",
+    tagline: "AI chatbots, voice agents, LLM integrations & automation.",
+    oneLiner: "Custom AI agents — chatbots, voice assistants, and LLM-powered tools across web, WhatsApp, and internal systems.",
   },
   {
     slug: "software-automation",
     to: "/software-automation",
-    title: "Software Automation",
-    tagline: "AI workflows, integrations, internal tools.",
-    oneLiner: "Automating busywork with custom workflows, integrations, and internal tools.",
+    title: "Business Automation",
+    tagline: "AI workflows, integrations & internal tools.",
+    oneLiner: "Automating busywork with custom AI workflows, integrations, and internal tools.",
   },
 ];

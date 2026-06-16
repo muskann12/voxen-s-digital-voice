@@ -362,8 +362,8 @@ function Index() {
     </h2>
   </div>
 
-  {/* Steps grid - left aligned cards */}
-  <div style={{
+  {/* Steps grid - responsive */}
+  <div className="howit-card-grid" style={{
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
     gap: 24,
@@ -438,33 +438,59 @@ function Index() {
       background: #2a1f3e;
     }
     @media (max-width: 1000px) {
-      .howit-card-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .howit-card-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+      }
     }
     @media (max-width: 640px) {
-      .howit-card-grid { grid-template-columns: 1fr !important; }
+      .howit-card-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .howit-card {
+        padding: 20px !important;
+      }
+      .howit-card h3 {
+        font-size: 18px !important;
+      }
+      .howit-card p {
+        font-size: 13px !important;
+      }
     }
   `}</style>
 </section>
       {/* SERVICES */}
 <section id="services" style={{ padding: "100px 6vw 120px", maxWidth: 1500, margin: "0 auto" }}>
-  <div className="reveal" style={{
-  display: "flex", alignItems: "center", gap: "20px",
-  margin: "20px 0 14px",
+<div className="sec-label reveal">— What we do, end to end.</div>
+<div className="reveal" style={{
+  display: "flex",
+  alignItems: "center",
+  gap: "20px",
+  marginTop: "20px",
+  marginBottom: "14px",
 }}>
-  <span style={{
-    width: "60px", height: "3px", borderRadius: "3px",
+   <span style={{
+    width: "60px",
+    height: "3px",
+    borderRadius: "3px",
     background: "linear-gradient(90deg, #d946ef, #e879f9)",
-  }} />
-  <h2 style={{
-    fontFamily: "'DM Serif Display', serif", fontStyle: "italic",
-    fontSize: "clamp(34px, 4.5vw, 56px)", fontWeight: 400, letterSpacing: "-0.015em",
-    color: "#ffffff", margin: 0,
+  }} /> <h2 style={{
+    fontFamily: "'DM Serif Display', serif",
+    fontStyle: "italic",
+    fontSize: "clamp(34px, 4.5vw, 56px)",
+    fontWeight: 400,
+    letterSpacing: "-0.015em",
+    margin: 0,
+    display: "inline-block",
   }}>
-    Services
+    Ser<span className="grad-text">vices</span>
   </h2>
   <span style={{
-    width: "60px", height: "3px", borderRadius: "3px",
-    background: "linear-gradient(90deg, #e879f9, #d946ef)",
+    width: "60px",
+    height: "3px",
+    borderRadius: "3px",
+    background: "linear-gradient(90deg, #d946ef, #e879f9)",
   }} />
 </div>
         <div className="reveal-stagger svc-card-grid" style={{
@@ -490,8 +516,8 @@ function Index() {
                 }}>
                   <Icon size={22} strokeWidth={1.6} />
                 </div>
-                <div style={{ fontSize: 17, fontWeight: 600, color: "#f0f0f0", lineHeight: 1.25 }}>{s.title}</div>
-                <div style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.55 }}>
+                <div style={{ fontSize: 19, fontWeight: 600, color: "#f0f0f0", lineHeight: 1.25 }}>{s.title}</div>
+                <div style={{ fontSize: 15, color: "#cbd5e1", lineHeight: 1.55 }}>
                   {s.tagline} <span style={{ color: "#e879f9" }}>↗</span>
                 </div>
 
@@ -787,12 +813,14 @@ function Index() {
     </div>
   </div>
   <div style={{ display: "flex", justifyContent: "center", margin: "70px 0 28px" }}>
-    <Logo size={216} />
+<span className="nav-logo-wrap">
+          <Logo />
+        </span>
   </div>
-  <div style={{ textAlign: "center", fontSize: 13, color: "rgba(233,213,255,0.5)", letterSpacing: 1 }}>
+  <div style={{ textAlign: "center", fontSize: 12, color: "rgba(233,213,255,0.5)", letterSpacing: 1 }}>
     © {new Date().getFullYear()} VOXEN — All rights reserved · EUROPE · MIDDLE EAST · ASIA · AFRICA
   </div>
-  <style>{`@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr !important; gap: 42px !important; } }`}</style>
+  <style>{`@media (max-width: 700px) { .nav-logo-wrap svg, .nav-logo-wrap img { width: 100px; } .footer-grid { grid-template-columns: 1fr !important; gap: 42px !important; } }`}</style>
 </footer>
     </>
   );

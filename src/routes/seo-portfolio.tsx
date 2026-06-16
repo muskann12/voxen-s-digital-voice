@@ -100,13 +100,17 @@ function Header() {
       background: "rgba(0,0,0,0.7)", backdropFilter: "blur(18px)",
       borderBottom: "1px solid rgba(217,70,239,0.18)",
     }}>
-      <Link to="/" style={{ textDecoration: "none" }}><Logo /></Link>
+      <Link to="/" style={{ textDecoration: "none" }}><span className="nav-logo-wrap">
+          <Logo />
+        </span></Link>
       <Link to="/" style={{
         color: "rgba(245,208,254,0.9)", textDecoration: "none", fontSize: 13,
         display: "inline-flex", alignItems: "center", gap: 8,
       }}>
         <span style={{ color: "#d946ef" }}>←</span> Back to Home
-      </Link>
+      </Link><style>{`
+        .nav-logo-wrap svg, .nav-logo-wrap img { width: 100px; }
+      `}</style>
     </header>
   );
 }
