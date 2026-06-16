@@ -139,22 +139,7 @@ export function ServicePage({
         </div>
       )}
 
-      {filters && filters.length > 0 && !popupOpen && (
-        <button
-          onClick={() => setPopupOpen(true)}
-          style={{
-            position: "fixed", bottom: 30, right: 30, zIndex: 99,
-            background: "linear-gradient(135deg, #d946ef, #a855f7)",
-            border: "none", color: "#fff", padding: "12px 24px", borderRadius: 60,
-            fontWeight: 600, fontSize: 14, boxShadow: "0 8px 20px rgba(217,70,239,0.5)",
-            cursor: "pointer", transition: "transform 0.2s",
-            fontFamily: "'Inter', sans-serif",
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
-        >🔄 Change Category</button>
-      )}
-
+  
       <section style={{ padding: "80px 6vw 40px", maxWidth: 1500, margin: "0 auto" }}>
         <nav style={{ fontSize: 12, letterSpacing: 2, textTransform: "uppercase", color: "rgba(233,213,255,0.5)" }}>
           <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>Home</Link>
@@ -184,29 +169,53 @@ export function ServicePage({
           </div>
         )}
       </section>
-
-      {filters && filters.length > 0 && (
-        <section style={{ padding: "0 6vw", maxWidth: 1500, margin: "0 auto" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 10 }}>
-            {filters.map(f => (
-              <button
-                key={f}
-                className="svc-filter filter-btn"
-                data-active={active === f ? "true" : "false"}
-                onClick={() => setActive(f)}
-                style={{
-                  padding: "10px 18px", borderRadius: 999, cursor: "pointer",
-                  fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase",
-                  border: `1px solid ${active === f ? "#d946ef" : "rgba(255,255,255,0.2)"}`,
-                  background: active === f ? "rgba(255,255,255,0.1)" : "transparent",
-                  color: active === f ? "#f0f0f0" : "rgba(233,213,255,0.7)",
-                  transition: "all 0.25s ease",
-                }}
-              >{f}</button>
-            ))}
-          </div>
-        </section>
-      )}
+{/* Inside the filter section, after the category buttons */}
+{filters && filters.length > 0 && (
+  <section style={{ padding: "0 6vw", maxWidth: 1500, margin: "0 auto" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 10, alignItems: "center" }}>
+      {filters.map(f => (
+        <button
+          key={f}
+          className="svc-filter filter-btn"
+          data-active={active === f ? "true" : "false"}
+          onClick={() => setActive(f)}
+          style={{
+            padding: "10px 18px", borderRadius: 999, cursor: "pointer",
+            fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase",
+            border: `1px solid ${active === f ? "#d946ef" : "rgba(255,255,255,0.2)"}`,
+            background: active === f ? "rgba(255,255,255,0.1)" : "transparent",
+            color: active === f ? "#f0f0f0" : "rgba(233,213,255,0.7)",
+            transition: "all 0.25s ease",
+          }}
+        >{f}</button>
+      ))}
+      {/* Change Category button - inline */}
+      <button
+        onClick={() => setPopupOpen(true)}
+        style={{
+          padding: "10px 18px", borderRadius: 999, cursor: "pointer",
+          fontSize: 12, letterSpacing: 1.5, textTransform: "uppercase",
+          border: "1px dashed rgba(217,70,239,0.5)",
+          background: "transparent",
+          color: "rgba(233,213,255,0.7)",
+          transition: "all 0.25s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = "#d946ef";
+          e.currentTarget.style.color = "#fff";
+          e.currentTarget.style.background = "rgba(217,70,239,0.1)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = "rgba(217,70,239,0.5)";
+          e.currentTarget.style.color = "rgba(233,213,255,0.7)";
+          e.currentTarget.style.background = "transparent";
+        }}
+      >
+        Change Category ↻
+      </button>
+    </div>
+  </section>
+)}
 
       <section style={{ padding: "40px 6vw 140px", maxWidth: 1500, margin: "0 auto" }}>
         <div className="svc-grid" style={{
